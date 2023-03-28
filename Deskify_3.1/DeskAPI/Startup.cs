@@ -36,6 +36,10 @@ namespace DeskAPI
 
             services.AddTransient<FloorService, FloorService>();
 
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<EmployeeService, EmployeeService>();
+
+
             services.AddTransient<SeatService, SeatService>();
 
             services.AddTransient<IFloorRepository, FloorRepository>();
