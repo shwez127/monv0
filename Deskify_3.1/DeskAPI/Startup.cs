@@ -34,6 +34,10 @@ namespace DeskAPI
             string connectionStr = Configuration.GetConnectionString("sqlConnection");
             services.AddDbContext<DeskDbContext>(options => options.UseSqlServer(connectionStr));
 
+
+            services.AddTransient<BookingRoomService, BookingRoomService>();
+            services.AddTransient<IBookingRoomRepository, BookingRoomRepository>();
+
             services.AddTransient<FloorService, FloorService>();
             services.AddTransient<IFloorRepository, FloorRepository>();
 
@@ -54,11 +58,13 @@ namespace DeskAPI
 
             services.AddTransient <IBookingSeatRepository, BookingSeatRepository>();
 
+
             services.AddTransient<LoginTableService, LoginTableService>();
             services.AddTransient<ILoginTableRepository, LoginTableRepository>();
 
             services.AddTransient<QRScannerService, QRScannerService>();
             services.AddTransient<IQRScannerRepository, QRScannerRepository>();
+
 
 
 
