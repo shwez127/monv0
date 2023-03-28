@@ -35,16 +35,22 @@ namespace DeskAPI
             services.AddDbContext<DeskDbContext>(options => options.UseSqlServer(connectionStr));
 
             services.AddTransient<FloorService, FloorService>();
-
-            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
-            services.AddTransient<EmployeeService, EmployeeService>();
-
-
-            services.AddTransient<SeatService, SeatService>();
-
             services.AddTransient<IFloorRepository, FloorRepository>();
 
+            services.AddTransient<EmployeeService, EmployeeService>();
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+
+            services.AddTransient<SeatService, SeatService>();
             services.AddTransient<ISeatRepository, SeatRepository>();
+
+            services.AddTransient<RoomService, RoomService>();
+            services.AddTransient<IRoomRepository, RoomRepository>();
+
+            services.AddTransient<ChoicesService, ChoicesService>();
+            services.AddTransient<IChoicesRepository, ChoicesRepository>();
+
+            services.AddTransient<ReservedRoomService, ReservedRoomService>();
+            services.AddTransient<IReservedRoomRepository, ReservedRoomRepository>();
 
             services.AddTransient <IBookingSeatRepository, BookingSeatRepository>();
 
