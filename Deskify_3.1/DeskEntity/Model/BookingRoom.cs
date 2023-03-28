@@ -6,17 +6,18 @@ using System.Text;
 
 namespace DeskEntity.Model
 {
-    [Table("bookingSeats")]
-    public class BookingSeat
+    [Table("bookingRooms")]
+    public class BookingRoom
     {
+
         [Key]
-        public int BookingSeatId { get; set; }
-        public int SeatStatus { get; set; }
+        public int BookingRoomId { get; set; }
+        public int RoomStatus { get; set; }
         public DateTime ToDate { get; set; }
         public DateTime FromDate { get; set; }
-        public string SeatShiftTime { get; set; }
-        public DateTime ShiftStart { get; set; }
-        public DateTime ShiftEnd { get; set; }
+        public string MeetingHours { get; set; }
+        public DateTime MeetingStart { get; set; }
+        public DateTime MeetingEnd { get; set; }
 
         [ForeignKey("Employee")]
         public int EmployeeID { get; set; }

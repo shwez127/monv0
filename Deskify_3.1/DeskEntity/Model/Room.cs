@@ -6,18 +6,16 @@ using System.Text;
 
 namespace DeskEntity.Model
 {
-    [Table("seats")]
-    public class Seat
+    [Table("rooms")]
+    public class Room
     {
-
         [Key]
-       
-        public int SeatId { get; set; }
-
-        public string SeatNumber { get; set; }
+        public int RoomId { get; set; }
+        public string RoomNumber { get; set; }
 
         [ForeignKey("Floor")]
         public int FloorId { get; set; }
+
         public Floor Floor { get; set; }
     }
 }

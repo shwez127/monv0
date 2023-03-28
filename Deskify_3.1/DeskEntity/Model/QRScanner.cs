@@ -6,17 +6,12 @@ using System.Text;
 
 namespace DeskEntity.Model
 {
-
-    [Table("reservedSeats")]
-    public class ReservedSeat
+    [Table("qrscanners")]
+    public class QRScanner
     {
         [Key]
-        
-        public int ReservedSeatId { get; set; }
-
-        [ForeignKey("Seat")]
-        public int SeatId { get; set; }
-        public Seat Seat { get; set; }
+        public int QId { get; set; }
+        public byte[] QRCode { get; set; }
 
         [ForeignKey("BookingSeat")]
         public int BookingSeatId { get; set; }
