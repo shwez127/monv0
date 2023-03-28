@@ -35,6 +35,7 @@ namespace DeskData.Data
 
            dbContextOptionsBuilder.UseSqlServer("Data Source=DESKTOP-8E9A3F4\\SQLEXPRESS;Initial Catalog=deskdb; Integrated Security=true; ");
 
+
         }
     }
 }

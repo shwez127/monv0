@@ -1,4 +1,4 @@
-﻿using DeskBusiness.Services;
+﻿
 using DeskEntity.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -15,10 +15,10 @@ namespace DeskUI.Controllers
     public class EmployeeController : Controller
     {
         IConfiguration _configuration;
-        private EmployeeService _employeeService;
-        public EmployeeController(EmployeeService employeeService)
+        
+        public EmployeeController(IConfiguration configuration)
         {
-            _employeeService = employeeService;
+            _configuration = configuration; 
 
         }
         public IActionResult Index()
