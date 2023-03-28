@@ -4,4 +4,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DeskAPI\DeskAPI.csproj" />
+    <ProjectReference Include="..\DeskBusiness\DeskBusiness.csproj" />
+    <ProjectReference Include="..\DeskData\DeskData.csproj" />
+    <ProjectReference Include="..\DeskEntity\DeskEntity.csproj" />
+  </ItemGroup>
+
 </Project>
