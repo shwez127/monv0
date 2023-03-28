@@ -56,8 +56,8 @@ namespace DeskAPI
             services.AddTransient<ReservedRoomService, ReservedRoomService>();
             services.AddTransient<IReservedRoomRepository, ReservedRoomRepository>();
 
-            services.AddTransient <IBookingSeatRepository, BookingSeatRepository>();
-
+            services.AddTransient<BookingSeatService, BookingSeatService>();
+            services.AddTransient<IBookingSeatRepository, BookingSeatRepository>();
 
             services.AddTransient<LoginTableService, LoginTableService>();
             services.AddTransient<ILoginTableRepository, LoginTableRepository>();
