@@ -33,8 +33,7 @@ namespace DeskData.Data
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
 
-           dbContextOptionsBuilder.UseSqlServer("Data Source=DESKTOP-8E9A3F4\\SQLEXPRESS;Initial Catalog=deskdb; Integrated Security=true; ");
-
+           dbContextOptionsBuilder.UseSqlServer("Data Source=DESKTOP-5OV6BEA;Initial Catalog=deskdb1; Integrated Security=true; ");
 
         }
     }
