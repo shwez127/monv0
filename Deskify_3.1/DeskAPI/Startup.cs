@@ -36,6 +36,10 @@ namespace DeskAPI
 
             services.AddTransient<FloorService, FloorService>();
 
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<EmployeeService, EmployeeService>();
+
+
             services.AddTransient<SeatService, SeatService>();
 
             services.AddTransient<IFloorRepository, FloorRepository>();
@@ -43,6 +47,12 @@ namespace DeskAPI
             services.AddTransient<ISeatRepository, SeatRepository>();
 
             services.AddTransient <IBookingSeatRepository, BookingSeatRepository>();
+
+            services.AddTransient<LoginTableService, LoginTableService>();
+            services.AddTransient<ILoginTableRepository, LoginTableRepository>();
+
+            services.AddTransient<QRScannerService, QRScannerService>();
+            services.AddTransient<IQRScannerRepository, QRScannerRepository>();
 
 
 
@@ -54,8 +64,8 @@ namespace DeskAPI
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Clinic API",
-                    Description = "Clinic Management System API",
+                    Title = "Desk API",
+                    Description = "Office Desk Booking System API",
                 });
             });
         }
