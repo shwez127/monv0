@@ -15,6 +15,7 @@ namespace DeskData.Repository
         {
             _db = db;
         }
+
         #region AddSeat
         public void AddSeat(Seat seat)
         {
@@ -41,7 +42,6 @@ namespace DeskData.Repository
 
         }
         #endregion UpdateSeat
-
 
         #region GetSeatsById 
         public Seat GetSeatsById(int seatId)

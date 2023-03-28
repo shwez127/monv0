@@ -117,10 +117,6 @@ namespace DeskData.Migrations
                     b.Property<int>("EmployeeID")
                         .HasColumnType("int");
 
-                    b.Property<string>("EmployeeEmail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("EmployeeName")
                         .HasColumnType("nvarchar(max)");
 
@@ -133,11 +129,6 @@ namespace DeskData.Migrations
 
                     b.Property<byte[]>("Image")
                         .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PhoneNumber")
                         .HasMaxLength(12)
