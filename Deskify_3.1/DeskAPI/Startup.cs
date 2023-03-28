@@ -38,6 +38,8 @@ namespace DeskAPI
 
             services.AddTransient<SeatService, SeatService>();
 
+            services.AddTransient<BookingSeatService, BookingSeatService>();
+
             services.AddTransient<IFloorRepository, FloorRepository>();
 
             services.AddTransient<ISeatRepository, SeatRepository>();
