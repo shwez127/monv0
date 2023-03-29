@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DeskData.Migrations
 {
-    public partial class deskreserved : Migration
+    public partial class reserved : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -82,10 +82,8 @@ namespace DeskData.Migrations
                     EmployeeID = table.Column<int>(type: "int", nullable: false),
                     EmployeeName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmployeeNumber = table.Column<int>(type: "int", nullable: false),
-                    EmployeeEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: true),
                     Gender = table.Column<string>(type: "char(1)", nullable: false),
                     SecurityQuestion = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -113,6 +111,7 @@ namespace DeskData.Migrations
                     MeetingHours = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MeetingStart = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MeetingEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    RoomId = table.Column<int>(type: "int", nullable: false),
                     EmployeeID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -123,6 +122,12 @@ namespace DeskData.Migrations
                         column: x => x.EmployeeID,
                         principalTable: "employees",
                         principalColumn: "EmployeeID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_bookingRooms_rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "rooms",
+                        principalColumn: "RoomId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -138,6 +143,7 @@ namespace DeskData.Migrations
                     SeatShiftTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ShiftStart = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ShiftEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SeatId = table.Column<int>(type: "int", nullable: false),
                     EmployeeID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -149,6 +155,12 @@ namespace DeskData.Migrations
                         principalTable: "employees",
                         principalColumn: "EmployeeID",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_bookingSeats_seats_SeatId",
+                        column: x => x.SeatId,
+                        principalTable: "seats",
+                        principalColumn: "SeatId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -159,42 +171,16 @@ namespace DeskData.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FoodPerferences = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Data = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EmployeeID = table.Column<int>(type: "int", nullable: false)
+                    BookingSeatId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_choices", x => x.ChoiceId);
                     table.ForeignKey(
-                        name: "FK_choices_employees_EmployeeID",
-                        column: x => x.EmployeeID,
-                        principalTable: "employees",
-                        principalColumn: "EmployeeID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "reservedRooms",
-                columns: table => new
-                {
-                    ReservedRoomId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoomId = table.Column<int>(type: "int", nullable: false),
-                    BookingRoomId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_reservedRooms", x => x.ReservedRoomId);
-                    table.ForeignKey(
-                        name: "FK_reservedRooms_bookingRooms_BookingRoomId",
-                        column: x => x.BookingRoomId,
-                        principalTable: "bookingRooms",
-                        principalColumn: "BookingRoomId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_reservedRooms_rooms_RoomId",
-                        column: x => x.RoomId,
-                        principalTable: "rooms",
-                        principalColumn: "RoomId",
+                        name: "FK_choices_bookingSeats_BookingSeatId",
+                        column: x => x.BookingSeatId,
+                        principalTable: "bookingSeats",
+                        principalColumn: "BookingSeatId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -227,42 +213,16 @@ namespace DeskData.Migrations
                     RName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     REmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RPassword = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SeatId = table.Column<int>(type: "int", nullable: false)
+                    BookingSeatId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_receptionists", x => x.ReceptionistID);
                     table.ForeignKey(
-                        name: "FK_receptionists_bookingSeats_SeatId",
-                        column: x => x.SeatId,
-                        principalTable: "bookingSeats",
-                        principalColumn: "BookingSeatId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "reservedSeats",
-                columns: table => new
-                {
-                    ReservedSeatId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SeatId = table.Column<int>(type: "int", nullable: false),
-                    BookingSeatId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_reservedSeats", x => x.ReservedSeatId);
-                    table.ForeignKey(
-                        name: "FK_reservedSeats_bookingSeats_BookingSeatId",
+                        name: "FK_receptionists_bookingSeats_BookingSeatId",
                         column: x => x.BookingSeatId,
                         principalTable: "bookingSeats",
                         principalColumn: "BookingSeatId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_reservedSeats_seats_SeatId",
-                        column: x => x.SeatId,
-                        principalTable: "seats",
-                        principalColumn: "SeatId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -272,14 +232,24 @@ namespace DeskData.Migrations
                 column: "EmployeeID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_bookingRooms_RoomId",
+                table: "bookingRooms",
+                column: "RoomId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_bookingSeats_EmployeeID",
                 table: "bookingSeats",
                 column: "EmployeeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_choices_EmployeeID",
+                name: "IX_bookingSeats_SeatId",
+                table: "bookingSeats",
+                column: "SeatId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_choices_BookingSeatId",
                 table: "choices",
-                column: "EmployeeID");
+                column: "BookingSeatId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_qrscanners_BookingSeatId",
@@ -287,29 +257,9 @@ namespace DeskData.Migrations
                 column: "BookingSeatId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_receptionists_SeatId",
+                name: "IX_receptionists_BookingSeatId",
                 table: "receptionists",
-                column: "SeatId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_reservedRooms_BookingRoomId",
-                table: "reservedRooms",
-                column: "BookingRoomId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_reservedRooms_RoomId",
-                table: "reservedRooms",
-                column: "RoomId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_reservedSeats_BookingSeatId",
-                table: "reservedSeats",
                 column: "BookingSeatId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_reservedSeats_SeatId",
-                table: "reservedSeats",
-                column: "SeatId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_rooms_FloorId",
@@ -325,6 +275,9 @@ namespace DeskData.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "bookingRooms");
+
+            migrationBuilder.DropTable(
                 name: "choices");
 
             migrationBuilder.DropTable(
@@ -334,31 +287,22 @@ namespace DeskData.Migrations
                 name: "receptionists");
 
             migrationBuilder.DropTable(
-                name: "reservedRooms");
-
-            migrationBuilder.DropTable(
-                name: "reservedSeats");
-
-            migrationBuilder.DropTable(
-                name: "bookingRooms");
-
-            migrationBuilder.DropTable(
                 name: "rooms");
 
             migrationBuilder.DropTable(
                 name: "bookingSeats");
 
             migrationBuilder.DropTable(
-                name: "seats");
-
-            migrationBuilder.DropTable(
                 name: "employees");
 
             migrationBuilder.DropTable(
-                name: "floors");
+                name: "seats");
 
             migrationBuilder.DropTable(
                 name: "LoginTables");
+
+            migrationBuilder.DropTable(
+                name: "floors");
         }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeskData.Migrations
 {
     [DbContext(typeof(DeskDbContext))]
-    [Migration("20230328085543_deskify")]
-    partial class deskify
+    [Migration("20230329065239_reserved")]
+    partial class reserved
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,6 +43,9 @@ namespace DeskData.Migrations
                     b.Property<DateTime>("MeetingStart")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
                     b.Property<int>("RoomStatus")
                         .HasColumnType("int");
 
@@ -52,6 +55,8 @@ namespace DeskData.Migrations
                     b.HasKey("BookingRoomId");
 
                     b.HasIndex("EmployeeID");
+
+                    b.HasIndex("RoomId");
 
                     b.ToTable("bookingRooms");
                 });
@@ -68,6 +73,9 @@ namespace DeskData.Migrations
 
                     b.Property<DateTime>("FromDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("SeatId")
+                        .HasColumnType("int");
 
                     b.Property<string>("SeatShiftTime")
                         .HasColumnType("nvarchar(max)");
@@ -88,6 +96,8 @@ namespace DeskData.Migrations
 
                     b.HasIndex("EmployeeID");
 
+                    b.HasIndex("SeatId");
+
                     b.ToTable("bookingSeats");
                 });
 
@@ -98,18 +108,18 @@ namespace DeskData.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("BookingSeatId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Data")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EmployeeID")
-                        .HasColumnType("int");
 
                     b.Property<string>("FoodPerferences")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ChoiceId");
 
-                    b.HasIndex("EmployeeID");
+                    b.HasIndex("BookingSeatId");
 
                     b.ToTable("choices");
                 });
@@ -212,6 +222,9 @@ namespace DeskData.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("BookingSeatId")
+                        .HasColumnType("int");
+
                     b.Property<string>("REmail")
                         .HasColumnType("nvarchar(max)");
 
@@ -221,58 +234,11 @@ namespace DeskData.Migrations
                     b.Property<string>("RPassword")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SeatId")
-                        .HasColumnType("int");
-
                     b.HasKey("ReceptionistID");
-
-                    b.HasIndex("SeatId");
-
-                    b.ToTable("receptionists");
-                });
-
-            modelBuilder.Entity("DeskEntity.Model.ReservedRoom", b =>
-                {
-                    b.Property<int>("ReservedRoomId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("BookingRoomId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoomId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ReservedRoomId");
-
-                    b.HasIndex("BookingRoomId");
-
-                    b.HasIndex("RoomId");
-
-                    b.ToTable("reservedRooms");
-                });
-
-            modelBuilder.Entity("DeskEntity.Model.ReservedSeat", b =>
-                {
-                    b.Property<int>("ReservedSeatId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("BookingSeatId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SeatId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ReservedSeatId");
 
                     b.HasIndex("BookingSeatId");
 
-                    b.HasIndex("SeatId");
-
-                    b.ToTable("reservedSeats");
+                    b.ToTable("receptionists");
                 });
 
             modelBuilder.Entity("DeskEntity.Model.Room", b =>
@@ -323,7 +289,15 @@ namespace DeskData.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("DeskEntity.Model.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Employee");
+
+                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("DeskEntity.Model.BookingSeat", b =>
@@ -334,18 +308,26 @@ namespace DeskData.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("DeskEntity.Model.Choices", b =>
-                {
-                    b.HasOne("DeskEntity.Model.Employee", "Employee")
+                    b.HasOne("DeskEntity.Model.Seat", "Seat")
                         .WithMany()
-                        .HasForeignKey("EmployeeID")
+                        .HasForeignKey("SeatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Employee");
+
+                    b.Navigation("Seat");
+                });
+
+            modelBuilder.Entity("DeskEntity.Model.Choices", b =>
+                {
+                    b.HasOne("DeskEntity.Model.BookingSeat", "BookingSeat")
+                        .WithMany()
+                        .HasForeignKey("BookingSeatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BookingSeat");
                 });
 
             modelBuilder.Entity("DeskEntity.Model.Employee", b =>
@@ -374,49 +356,11 @@ namespace DeskData.Migrations
                 {
                     b.HasOne("DeskEntity.Model.BookingSeat", "BookingSeat")
                         .WithMany()
-                        .HasForeignKey("SeatId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BookingSeat");
-                });
-
-            modelBuilder.Entity("DeskEntity.Model.ReservedRoom", b =>
-                {
-                    b.HasOne("DeskEntity.Model.BookingRoom", "BookingRoom")
-                        .WithMany()
-                        .HasForeignKey("BookingRoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DeskEntity.Model.Room", "Room")
-                        .WithMany()
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BookingRoom");
-
-                    b.Navigation("Room");
-                });
-
-            modelBuilder.Entity("DeskEntity.Model.ReservedSeat", b =>
-                {
-                    b.HasOne("DeskEntity.Model.BookingSeat", "BookingSeat")
-                        .WithMany()
                         .HasForeignKey("BookingSeatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DeskEntity.Model.Seat", "Seat")
-                        .WithMany()
-                        .HasForeignKey("SeatId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("BookingSeat");
-
-                    b.Navigation("Seat");
                 });
 
             modelBuilder.Entity("DeskEntity.Model.Room", b =>
