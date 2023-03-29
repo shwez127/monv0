@@ -35,15 +35,12 @@ namespace DeskAPI
             services.AddDbContext<DeskDbContext>(options => options.UseSqlServer(connectionStr));
 
             services.AddTransient<FloorService, FloorService>();
+            services.AddTransient<IFloorRepository, FloorRepository>();
 
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<EmployeeService, EmployeeService>();
 
-
             services.AddTransient<SeatService, SeatService>();
-
-            services.AddTransient<IFloorRepository, FloorRepository>();
-
             services.AddTransient<ISeatRepository, SeatRepository>();
 
             services.AddTransient <IBookingSeatRepository, BookingSeatRepository>();
@@ -54,7 +51,8 @@ namespace DeskAPI
             services.AddTransient<QRScannerService, QRScannerService>();
             services.AddTransient<IQRScannerRepository, QRScannerRepository>();
 
-
+            services.AddTransient<ChoicesService, ChoicesService>();
+            services.AddTransient<IChoicesRepository, ChoicesRepository>();
 
 
             services.AddControllers();
