@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeskData.Migrations
 {
     [DbContext(typeof(DeskDbContext))]
-    [Migration("20230329065239_reserved")]
-    partial class reserved
+    [Migration("20230329094503_bookingdesk")]
+    partial class bookingdesk
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -91,6 +91,9 @@ namespace DeskData.Migrations
 
                     b.Property<DateTime>("ToDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("bookingrequesttype")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BookingSeatId");
 
