@@ -19,7 +19,7 @@ namespace DeskEntity.Model
         public string RPassword { get; set; }
 
         [ForeignKey("BookingSeat")]
-        public int SeatId { get; set; }
+        public int BookingSeatId { get; set; }
         public BookingSeat BookingSeat { get; set; }
     }
 }

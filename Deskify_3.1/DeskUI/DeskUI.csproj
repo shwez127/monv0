@@ -9,8 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DeskAPI\DeskAPI.csproj" />
-    <ProjectReference Include="..\DeskBusiness\DeskBusiness.csproj" />
     <ProjectReference Include="..\DeskData\DeskData.csproj" />
     <ProjectReference Include="..\DeskEntity\DeskEntity.csproj" />
   </ItemGroup>

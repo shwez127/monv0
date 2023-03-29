@@ -24,7 +24,7 @@ namespace DeskUI.Controllers
             using (HttpClient client = new HttpClient())
             {
 
-                string endPoint = _configuration["WebApiBasedUrl"] + "Seat/GetAllSeats";
+                string endPoint = _configuration["WebApiBaseUrl"] + "Seat/GetAllSeats";
                 using (var response = await client.GetAsync(endPoint))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -51,7 +51,7 @@ namespace DeskUI.Controllers
             using (HttpClient client = new HttpClient())
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(seat), Encoding.UTF8, "application/json");
-                string endPoint = _configuration["WebApiBasedUrl"] + "Seat/AddSeat";
+                string endPoint = _configuration["WebApiBaseUrl"] + "Seat/AddSeat";
                 using (var response = await client.PostAsync(endPoint, content))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -74,7 +74,7 @@ namespace DeskUI.Controllers
             Seat seat = new Seat();
             using (HttpClient client = new HttpClient())
             {
-                string endPoint = _configuration["WebApiBasedUrl"] + "Seat/GetSeatsById?seatId=" + SeatId;
+                string endPoint = _configuration["WebApiBaseUrl"] + "Seat/GetSeatsById?seatId=" + SeatId;
 
                 using (var response = await client.GetAsync(endPoint))
                 {
@@ -95,7 +95,7 @@ namespace DeskUI.Controllers
         {
             using (HttpClient client = new HttpClient())
             {
-                string endPoint = _configuration["WebApiBasedUrl"] + "Seat/DeleteSeat?seatId=" + seat.SeatId;
+                string endPoint = _configuration["WebApiBaseUrl"] + "Seat/DeleteSeat?seatId=" + seat.SeatId;
                 using (var response = await client.DeleteAsync(endPoint))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -120,7 +120,7 @@ namespace DeskUI.Controllers
             Seat seat = null;
             using (HttpClient client = new HttpClient())
             {
-                string endPoint = _configuration["WebApiBasedUrl"] + "Seat/GetSeatsById?seatId=" + SeatId;
+                string endPoint = _configuration["WebApiBaseUrl"] + "Seat/GetSeatsById?seatId=" + SeatId;
 
                 using (var response = await client.GetAsync(endPoint))
                 {
@@ -143,7 +143,7 @@ namespace DeskUI.Controllers
             using (HttpClient client = new HttpClient())
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(seat), Encoding.UTF8, "application/json");
-                string endPoint = _configuration["WebApiBasedUrl"] + "Seat/UpdateSeat";
+                string endPoint = _configuration["WebApiBaseUrl"] + "Seat/UpdateSeat";
                 using (var response = await client.PutAsync(endPoint, content))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
