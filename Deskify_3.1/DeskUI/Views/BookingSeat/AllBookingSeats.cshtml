@@ -15,6 +15,7 @@
         <table class="table table-light table-bordered table-hover">
             <thead>
                 <tr>
+                    <th>BookingSeatID</th>
                     <th>Seat Status</th>
                     <th>ToDate</th>
                     <th>FromDate</th>
@@ -28,6 +29,7 @@
                 @foreach (var seat in Model)
                 {
                     <tr>
+                        
                         <td>@seat.BookingSeatId</td>
                         <td>@seat.SeatStatus</td>
                         <td>@seat.ToDate</td>

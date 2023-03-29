@@ -131,7 +131,7 @@ namespace DeskUI.Controllers
             using (HttpClient client = new HttpClient())
             {
                 string endPoint = _configuration["WebApiBaseUrl"] + "BookingRoom/DeleteBookingRoom?bookingRoomId=" + RoomId;
-                using (var response = await client.GetAsync(endPoint))
+                using (var response = await client.DeleteAsync(endPoint))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
