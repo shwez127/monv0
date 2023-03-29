@@ -32,7 +32,7 @@ namespace DeskData.Data
         {
 
 
-           dbContextOptionsBuilder.UseSqlServer("Data Source=DESKTOP-SCHFIU6\\SQLEXPRESS;Initial Catalog=deskdb12; Integrated Security=true; ");
+           dbContextOptionsBuilder.UseSqlServer("Data Source=DESKTOP-SCHFIU6\\SQLEXPRESS;Initial Catalog=dbdesk; Integrated Security=true; ");
 
 
         }

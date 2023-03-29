@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DeskData.Migrations
 {
-    public partial class reserved : Migration
+    public partial class bookingdesk : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -143,6 +143,7 @@ namespace DeskData.Migrations
                     SeatShiftTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ShiftStart = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ShiftEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    bookingrequesttype = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SeatId = table.Column<int>(type: "int", nullable: false),
                     EmployeeID = table.Column<int>(type: "int", nullable: false)
                 },
