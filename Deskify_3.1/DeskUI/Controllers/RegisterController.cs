@@ -182,7 +182,7 @@ namespace DeskUI.Controllers
             LoginTable loginTable = new LoginTable();
             loginTable.ID = Convert.ToInt32(TempData["ForgetId"]);
             loginTable.Type = Convert.ToInt32(TempData["TypeId"]);
-            if (Convert.ToInt32(TempData["TypeId"]) == 1)
+            if (Convert.ToInt32(TempData["TypeId"]) == 0)
             {
                 Employee employee1 = null;
                 using (HttpClient client = new HttpClient())
