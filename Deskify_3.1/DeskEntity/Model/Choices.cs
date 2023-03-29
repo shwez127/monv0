@@ -14,8 +14,8 @@ namespace DeskEntity.Model
         public string FoodPerferences { get; set; }
         public string Data { get; set; }
 
-        [ForeignKey("Employee")]
-        public int EmployeeID { get; set; }
-        public Employee Employee { get; set; }
+        [ForeignKey("BookingSeat")]
+        public int BookingSeatId { get; set; }
+        public BookingSeat BookingSeat { get; set; }
     }
 }

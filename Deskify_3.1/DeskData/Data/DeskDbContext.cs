@@ -22,8 +22,6 @@ namespace DeskData.Data
         public DbSet<BookingRoom> bookingRooms { get; set; }
         public DbSet<BookingSeat> bookingSeats { get; set; }
         public DbSet<Seat> seats { get; set; }
-        public DbSet<ReservedRoom> reservedRooms { get; set; }
-        public DbSet<ReservedSeat> reservedSeats { get; set; }
         public DbSet<Choices> choices { get; set; }
         public DbSet<Room> rooms { get; set; }
         public DbSet<Floor> floors { get; set; }
@@ -33,7 +31,9 @@ namespace DeskData.Data
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
 
+
            dbContextOptionsBuilder.UseSqlServer("Data Source=DESKTOP-SCHFIU6\\SQLEXPRESS;Initial Catalog=deskdb12; Integrated Security=true; ");
+
 
         }
     }

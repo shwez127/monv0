@@ -53,8 +53,6 @@ namespace DeskAPI
             services.AddTransient<ChoicesService, ChoicesService>();
             services.AddTransient<IChoicesRepository, ChoicesRepository>();
 
-            services.AddTransient<ReservedRoomService, ReservedRoomService>();
-            services.AddTransient<IReservedRoomRepository, ReservedRoomRepository>();
 
             services.AddTransient<BookingSeatService, BookingSeatService>();
             services.AddTransient<IBookingSeatRepository, BookingSeatRepository>();
@@ -65,11 +63,7 @@ namespace DeskAPI
             services.AddTransient<QRScannerService, QRScannerService>();
             services.AddTransient<IQRScannerRepository, QRScannerRepository>();
 
-            services.AddTransient<ReservedSeatService, ReservedSeatService>();
-            services.AddTransient<IReservedSeatRepository, ReservedSeatRepository>();
-
-
-
+          
 
             services.AddControllers();
             services.AddSwaggerGen();

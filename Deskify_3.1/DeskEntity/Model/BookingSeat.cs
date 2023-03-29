@@ -18,6 +18,10 @@ namespace DeskEntity.Model
         public DateTime ShiftStart { get; set; }
         public DateTime ShiftEnd { get; set; }
 
+        [ForeignKey("Seat")]
+        public int SeatId { get; set; }
+        public Seat Seat { get; set; }  
+
         [ForeignKey("Employee")]
         public int EmployeeID { get; set; }
         public Employee Employee { get; set; }
