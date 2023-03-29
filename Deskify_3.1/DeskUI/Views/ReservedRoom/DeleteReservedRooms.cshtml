@@ -1,0 +1,40 @@
+﻿@model DeskEntity.Model.ReservedRoom
+@{
+    ViewData["Title"] = "DeleteReservedRooms";
+}
+
+<div>
+    <hr />
+    <a asp-controller="ReservedRoom" asp-action="Index">Index</a>
+    <hr />
+</div>
+
+
+
+<form method="post" enctype="multipart/form-data">
+    <h2>Delete ReservedRoom</h2>
+    <div class="form-group">
+        <label> ReservedRoomId </label>
+        <input type="text" asp-for="ReservedRoomId" class="form-control" placeholder="enter ReservedRoom Id" required />
+    </div>
+
+
+
+    <input type="submit" value="Save" class="btn btn-outline-success" />
+    <input type="button" value="Reset" class="btn btn-outline-secondary" />
+    <hr />
+    @if (ViewBag.status == "Ok")
+    {
+        <div class="alert alert-success">
+            @ViewBag.message
+        </div>
+    }
+    else if (ViewBag.status == "Error")
+    {
+        <div class="alert alert-danger">
+            @ViewBag.message
+        </div>
+    }
+</form>
+
+
