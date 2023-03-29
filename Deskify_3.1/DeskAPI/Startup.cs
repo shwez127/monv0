@@ -41,8 +41,10 @@ namespace DeskAPI
             services.AddTransient<FloorService, FloorService>();
             services.AddTransient<IFloorRepository, FloorRepository>();
 
-            services.AddTransient<EmployeeService, EmployeeService>();
+
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<EmployeeService, EmployeeService>();
+           
 
             services.AddTransient<SeatService, SeatService>();
             services.AddTransient<ISeatRepository, SeatRepository>();
@@ -63,7 +65,10 @@ namespace DeskAPI
             services.AddTransient<QRScannerService, QRScannerService>();
             services.AddTransient<IQRScannerRepository, QRScannerRepository>();
 
-          
+
+            services.AddTransient<ChoicesService, ChoicesService>();
+            services.AddTransient<IChoicesRepository, ChoicesRepository>();          
+
 
             services.AddControllers();
             services.AddSwaggerGen();
