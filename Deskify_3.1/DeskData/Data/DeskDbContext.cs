@@ -33,6 +33,7 @@ namespace DeskData.Data
 
            dbContextOptionsBuilder.UseSqlServer("Data Source=DESKTOP-TQ40A7V;Initial Catalog=deskdb500; Integrated Security=true; ");
 
+
         }
     }
 }

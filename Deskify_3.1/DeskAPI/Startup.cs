@@ -34,25 +34,37 @@ namespace DeskAPI
             string connectionStr = Configuration.GetConnectionString("sqlConnection");
             services.AddDbContext<DeskDbContext>(options => options.UseSqlServer(connectionStr));
 
+
+            services.AddTransient<BookingRoomService, BookingRoomService>();
+            services.AddTransient<IBookingRoomRepository, BookingRoomRepository>();
+
             services.AddTransient<FloorService, FloorService>();
-
-            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
-            services.AddTransient<EmployeeService, EmployeeService>();
-
-
-            services.AddTransient<SeatService, SeatService>();
-
             services.AddTransient<IFloorRepository, FloorRepository>();
 
+            services.AddTransient<EmployeeService, EmployeeService>();
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+
+            services.AddTransient<SeatService, SeatService>();
             services.AddTransient<ISeatRepository, SeatRepository>();
 
-            services.AddTransient <IBookingSeatRepository, BookingSeatRepository>();
+            services.AddTransient<RoomService, RoomService>();
+            services.AddTransient<IRoomRepository, RoomRepository>();
+
+            services.AddTransient<ChoicesService, ChoicesService>();
+            services.AddTransient<IChoicesRepository, ChoicesRepository>();
+
+            services.AddTransient<ReservedRoomService, ReservedRoomService>();
+            services.AddTransient<IReservedRoomRepository, ReservedRoomRepository>();
+
+            services.AddTransient<BookingSeatService, BookingSeatService>();
+            services.AddTransient<IBookingSeatRepository, BookingSeatRepository>();
 
             services.AddTransient<LoginTableService, LoginTableService>();
             services.AddTransient<ILoginTableRepository, LoginTableRepository>();
 
             services.AddTransient<QRScannerService, QRScannerService>();
             services.AddTransient<IQRScannerRepository, QRScannerRepository>();
+
 
 
 

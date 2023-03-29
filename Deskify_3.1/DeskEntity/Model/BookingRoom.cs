@@ -26,5 +26,6 @@ namespace DeskEntity.Model
         [ForeignKey("Employee")]
         public int EmployeeID { get; set; }
         public Employee Employee { get; set; }
+       
     }
 }
