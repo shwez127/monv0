@@ -9,55 +9,55 @@ using System.Threading.Tasks;
 
 namespace DeskUI.Controllers
 {
-    public class SeatController : Controller
+    public class ReservedSeatController:Controller
     {
         private IConfiguration _configuration;
 
-        public SeatController(IConfiguration configuration)
+        public ReservedSeatController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
         [HttpGet]
-        public async Task<IActionResult> AllSeats()
+        public async Task<IActionResult> AllReservedSeats()
         {
-            IEnumerable<Seat> seatresult = null;
+            IEnumerable<ReservedSeat> reservedseatresult = null;
             using (HttpClient client = new HttpClient())
             {
 
-                string endPoint = _configuration["WebApiBaseUrl"] + "Seat/GetAllSeats";
+                string endPoint = _configuration["WebApiBaseUrl"] + "ReservedSeat/GetAllReservedSeats";
                 using (var response = await client.GetAsync(endPoint))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         var result = await response.Content.ReadAsStringAsync();
-                        seatresult = JsonConvert.DeserializeObject<IEnumerable<Seat>>(result);
+                        reservedseatresult = JsonConvert.DeserializeObject<IEnumerable<ReservedSeat>>(result);
                     }
                 }
             }
-            return View(seatresult);
+            return View(reservedseatresult);
         }
 
 
-        public IActionResult AddSeats()
+        public IActionResult AddReservedSeats()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddSeats(Seat seat)
+        public async Task<IActionResult> AddReservedSeats(ReservedSeat reservedseat)
 
         {
 
             using (HttpClient client = new HttpClient())
             {
-                StringContent content = new StringContent(JsonConvert.SerializeObject(seat), Encoding.UTF8, "application/json");
-                string endPoint = _configuration["WebApiBaseUrl"] + "Seat/AddSeat";
+                StringContent content = new StringContent(JsonConvert.SerializeObject(reservedseat), Encoding.UTF8, "application/json");
+                string endPoint = _configuration["WebApiBaseUrl"] + "ReservedSeat/AddReservedSeat";
                 using (var response = await client.PostAsync(endPoint, content))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         ViewBag.status = "Ok";
-                        ViewBag.message = "Seat Booked!!";
+                        ViewBag.message = "Seat Reserved!!";
                     }
                     else
                     {
@@ -69,12 +69,12 @@ namespace DeskUI.Controllers
             return View();
         }
 
-        public async Task<IActionResult> DeleteSeats(int SeatId)
+        public async Task<IActionResult> DeleteReservedSeats(int ReservedSeatId)
         {
             Seat seat = new Seat();
             using (HttpClient client = new HttpClient())
             {
-                string endPoint = _configuration["WebApiBaseUrl"] + "Seat/GetSeatsById?seatId=" + SeatId;
+                string endPoint = _configuration["WebApiBaseUrl"] + "ReservedSeat/GetReservedSeatById?reservedseatId=" + ReservedSeatId;
 
                 using (var response = await client.GetAsync(endPoint))
                 {
@@ -90,18 +90,18 @@ namespace DeskUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteSeats(Seat seat)
+        public async Task<IActionResult> DeleteReservedSeats(ReservedSeat reservedseat)
 
         {
             using (HttpClient client = new HttpClient())
             {
-                string endPoint = _configuration["WebApiBaseUrl"] + "Seat/DeleteSeat?seatId=" + seat.SeatId;
+                string endPoint = _configuration["WebApiBaseUrl"] + "ReservedSeat/DeleteReservedSeat?reservedseatId=" + reservedseat.ReservedSeatId;
                 using (var response = await client.DeleteAsync(endPoint))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         ViewBag.status = "Ok";
-                        ViewBag.message = "Seat details deleted successfully";
+                        ViewBag.message = "Reserved Seat details deleted successfully";
                     }
                     else
                     {
@@ -115,12 +115,12 @@ namespace DeskUI.Controllers
 
 
 
-        public async Task<IActionResult> EditSeats(int SeatId)
+        public async Task<IActionResult> EditReservedSeats(int ReservedSeatId)
         {
             Seat seat = null;
             using (HttpClient client = new HttpClient())
             {
-                string endPoint = _configuration["WebApiBaseUrl"] + "Seat/GetSeatsById?seatId=" + SeatId;
+                string endPoint = _configuration["WebApiBaseUrl"] + "ReservedSeat/GetReservedSeatById?reservedseatId=" + ReservedSeatId;
 
                 using (var response = await client.GetAsync(endPoint))
                 {
@@ -137,19 +137,19 @@ namespace DeskUI.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> EditSeats(Seat seat)
+        public async Task<IActionResult> EditReservedSeats(ReservedSeat reservedseat)
 
         {
             using (HttpClient client = new HttpClient())
             {
-                StringContent content = new StringContent(JsonConvert.SerializeObject(seat), Encoding.UTF8, "application/json");
-                string endPoint = _configuration["WebApiBaseUrl"] + "Seat/UpdateSeat";
+                StringContent content = new StringContent(JsonConvert.SerializeObject(reservedseat), Encoding.UTF8, "application/json");
+                string endPoint = _configuration["WebApiBaseUrl"] + "ReservedSeat/UpdateReservedSeat";
                 using (var response = await client.PutAsync(endPoint, content))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         ViewBag.status = "Ok";
-                        ViewBag.message = "Seat Updated!!";
+                        ViewBag.message = "Reserved Seat Updated!!";
                     }
                     else
                     {
@@ -162,5 +162,5 @@ namespace DeskUI.Controllers
         }
 
     }
-
 }
+

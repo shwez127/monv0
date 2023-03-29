@@ -65,6 +65,8 @@ namespace DeskAPI
             services.AddTransient<QRScannerService, QRScannerService>();
             services.AddTransient<IQRScannerRepository, QRScannerRepository>();
 
+            services.AddTransient<ReservedSeatService, ReservedSeatService>();
+            services.AddTransient<IReservedSeatRepository, ReservedSeatRepository>();
 
 
 

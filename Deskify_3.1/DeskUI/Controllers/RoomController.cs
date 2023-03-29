@@ -25,7 +25,7 @@ namespace DeskUI.Controllers
             _configuration = configuration;
         }
 
-        DeskDbContext db = new DeskDbContext();
+        //DeskDbContext db = new DeskDbContext();
 
         [HttpGet]
         public async Task<IActionResult> Index()
