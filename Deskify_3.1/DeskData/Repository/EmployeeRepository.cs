@@ -30,12 +30,20 @@ namespace DeskData.Repository
 
         public IEnumerable<Employee> GetAllEmployees()
         {
-            return _db.employees.ToList();
+            return _db.employees.Include(obj => obj.LoginTable).ToList();
         }
 
         public Employee GetEmployeeById(int employeeId)
         {
-            return _db.employees.Find(employeeId);
+            var result = _db.employees.Include(obj => obj.LoginTable).ToList();
+            foreach (var employee in result)
+            {
+                if (employeeId == employee.EmployeeID)
+                {
+                    return employee;
+                }
+            }
+            return null;
         }
 
       

@@ -1,6 +1,7 @@
 ﻿
 using DeskEntity.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -24,7 +25,31 @@ namespace DeskUI.Controllers
         public IActionResult Index()
         {
             return View();
-        }      
+        }
+
+        public async Task<IActionResult> Profile()
+        {
+            #region Employee profile
+            //storing the profile Id
+            int EmployeeProfileId = Convert.ToInt32(TempData["ProfileID"]);
+            TempData.Keep();
+
+            Employee employee = null;
+            using (HttpClient client = new HttpClient())
+            {
+                string endpoint = _configuration["WebApiBaseUrl"] + "Employee/GetEmployeeById?employeeId=" + EmployeeProfileId;
+                using (var response = await client.GetAsync(endpoint))
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        employee = JsonConvert.DeserializeObject<Employee>(result);
+                    }
+                }
+            }
+            return View(employee);
+            #endregion
+        }
 
         public IActionResult AddEmployee()
         {
@@ -32,6 +57,7 @@ namespace DeskUI.Controllers
 
         }
 
+       
         [HttpPost]
         public async Task<IActionResult> AddEmployee(Employee employee)
         {
@@ -80,6 +106,24 @@ namespace DeskUI.Controllers
             return View();
             #endregion
         }
+
+        public List<SelectListItem> GetGender()
+        {
+            #region Gender list
+            List<SelectListItem> gender = new List<SelectListItem>()
+            {
+                new SelectListItem{Value="Select",Text="Select"},
+                new SelectListItem{Value="M",Text="Male"},
+                new SelectListItem{Value="F",Text="Female"},
+                new SelectListItem{Value="O",Text="Others"},
+
+
+
+           };
+            return gender;
+            #endregion
+        }
+
         [HttpGet]
         public async Task<IActionResult> EditEmployee(int employeeId)
         {
@@ -90,7 +134,8 @@ namespace DeskUI.Controllers
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    string endPoint = _configuration["WebApiBaseUrl"] + "Employee/GetEmployeeById?employeeId=" + employeeId;//EmployeeId is apicontroleer passing argument name//api controller name and httppost name given inside httppost in Employeecontroller of api
+                    string endPoint = _configuration["WebApiBaseUrl"] + "Employee/GetEmployeeById?employeeId=" + employeeId;
+                    //EmployeeId is apicontroleer passing argument name//api controller name and httppost name given inside httppost in Employeecontroller of api
                     using (var response = await client.GetAsync(endPoint))
                     {
                         if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -111,6 +156,7 @@ namespace DeskUI.Controllers
                 Console.WriteLine(ex1.ToString());
 
             }
+            ViewBag.genderlist = GetGender();
             return View(employee);
             #endregion
         }
@@ -125,14 +171,14 @@ namespace DeskUI.Controllers
                 using (HttpClient client = new HttpClient())
                 {
                     StringContent content = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
-                    string endPoint = _configuration["WebApiBaseUrl"] + "Employee/UpdateEmployee";//api controller name and its function
-
+                    string endPoint = _configuration["WebApiBaseUrl"] + "Employee/UpdateEmployee";
+                    //api controller name and its function
                     using (var response = await client.PutAsync(endPoint, content))
                     {
                         if (response.StatusCode == System.Net.HttpStatusCode.OK)
                         {   //dynamic viewbag we can create any variable name in run time
                             ViewBag.status = "Ok";
-                            ViewBag.message = "Employees Details Updated Successfull!!";
+                            ViewBag.message = "Employees Details Updated Successfully!!";
                         }
 
                         else
@@ -157,6 +203,123 @@ namespace DeskUI.Controllers
             return View();
             #endregion
         }
+
+        public List<SelectListItem> ShiftTiming()
+        {
+            List<SelectListItem> shiftTiming = new List<SelectListItem>()
+            {
+                new SelectListItem { Value="Shift time", Text="Select Shift Time"},
+                new SelectListItem { Value = "0", Text = "09:00 AM - 06:00 PM" },
+                new SelectListItem { Value = "1", Text = "06:00 AM - 02:00 PM" },
+                new SelectListItem { Value = "2", Text = "02:00 PM - 10:00 PM" },
+                new SelectListItem { Value = "3", Text = "10:00 AM - 06:00 PM" },
+            };
+            return shiftTiming;
+        }
+
+        public IActionResult BookingSeat()
+        {
+            ViewBag.shiftTimings = ShiftTiming();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> BookingSeat(BookingSeat bookingSeat)
+        {
+            ViewBag.status = "";
+            using (HttpClient client = new HttpClient())
+            {
+                StringContent content = new StringContent(JsonConvert.SerializeObject(bookingSeat), Encoding.UTF8, "application/json");
+                string endpoint = _configuration["WebApiBaseUrl"] + "BookingSeat/AddSeatBooking";
+                using (var response = await client.GetAsync(endpoint))
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        ViewBag.status = "OK";
+                        ViewBag.message = "Seat Booked Successfully";
+                    }
+                    else
+                    {
+                        ViewBag.status = "Error";
+                        ViewBag.message = "Wrong Entries";
+                    }
+                }
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> BookingSeatHistory()
+        {
+            IEnumerable<BookingSeat> bookingResult = null;
+            using (HttpClient client = new HttpClient())
+            {
+                string endpoint = _configuration["WebApiBaseUrl"] + "BookingSeat/GetAllBookingSeats";
+                using (var response = await client.GetAsync(endpoint))
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        bookingResult = JsonConvert.DeserializeObject<IEnumerable<BookingSeat>>(result);
+                    }
+                }
+            }
+            return View(bookingResult); 
+        }
+
+        public IActionResult BookingRoom()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> BookingRoom(BookingRoom bookingRoom)
+        {
+            ViewBag.status = "";
+            using (HttpClient client = new HttpClient())
+            {
+                StringContent content = new StringContent(JsonConvert.SerializeObject(bookingRoom), Encoding.UTF8, "application/json");
+                string endpoint = _configuration["WebApiBaseUrl"] + "BookingRoom/AddRoomBooking";
+                using (var response = await client.GetAsync(endpoint))
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        ViewBag.status = "OK";
+                        ViewBag.message = "Seat Booked Successfully";
+                    }
+                    else
+                    {
+                        ViewBag.status = "Error";
+                        ViewBag.message = "Wrong Entries";
+                    }
+                }
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> BookingRoomHistory()
+        {
+            IEnumerable<BookingRoom> bookingroomResult = null;
+            using (HttpClient client = new HttpClient())
+            {
+                string endpoint = _configuration["WebApiBaseUrl"] + "BookingRoom/GetBookingRoom";
+                using (var response = await client.GetAsync(endpoint))
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        bookingroomResult = JsonConvert.DeserializeObject<IEnumerable<BookingRoom>>(result);
+                    }
+                }
+            }
+            return View(bookingroomResult);
+        }
+
+
+
+
+
 
         public async Task<IActionResult> DeleteEmployee(int employeeId)
         {
