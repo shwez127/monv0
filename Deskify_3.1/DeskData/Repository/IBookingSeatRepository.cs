@@ -7,7 +7,7 @@ namespace DeskData.Repository
 {
     public interface IBookingSeatRepository
     {
-        void AddSeatBooking(BookingSeat bookseat);
+        int AddSeatBooking(BookingSeat bookseat);
         void DeleteSeatBooking(int bookseatId);
         void UpdateSeatBooking(BookingSeat bookseat);
         BookingSeat GetSeatBookingById(int bookseatId);
