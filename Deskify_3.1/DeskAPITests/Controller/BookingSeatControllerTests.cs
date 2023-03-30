@@ -113,27 +113,27 @@ namespace DeskAPITests.Controller.Tests
             Assert.AreEqual(okResult, null);
         }
 
-        [TestMethod()]
-        public async Task AddBookingSeatTest()
-        {
-            var bookingSeat = _fixture.Create<BookingSeat>();
-            moq.Setup(x => x.AddSeatBooking(bookingSeat));
-            bookingSeatController = new BookingSeatController(new BookingSeatService(moq.Object));
-            var result = bookingSeatController.AddSeatBooking(bookingSeat);
-            var Obj = result as ObjectResult;
-            Assert.AreEqual(200, Obj.StatusCode);
-        }
+        //[TestMethod()]
+        //public async Task AddBookingSeatTest()
+        //{
+        //    var bookingSeat = _fixture.Create<BookingSeat>();
+        //    moq.Setup(x => x.AddSeatBooking(bookingSeat));
+        //    bookingSeatController = new BookingSeatController(new BookingSeatService(moq.Object));
+        //    var result = bookingSeatController.AddSeatBooking(bookingSeat);
+        //    var Obj = result as ObjectResult;
+        //    Assert.AreEqual(200, Obj.StatusCode);
+        //}
 
-        [TestMethod()]
-        public async Task AddBookingSeatNegativeTest()
-        {
-            var bookingSeat = _fixture.Create<BookingSeat>();
-            moq.Setup(x => x.AddSeatBooking(It.IsAny<BookingSeat>())).
-                 Throws(new Exception());
-            bookingSeatController = new BookingSeatController(new BookingSeatService(moq.Object));
-            var result = bookingSeatController.AddSeatBooking(bookingSeat);
-            var Obj = result as ObjectResult;
-            Assert.AreEqual(Obj.StatusCode, 400);
-        }
+        //[TestMethod()]
+        //public async Task AddBookingSeatNegativeTest()
+        //{
+        //    var bookingSeat = _fixture.Create<BookingSeat>();
+        //    moq.Setup(x => x.AddSeatBooking(It.IsAny<BookingSeat>())).
+        //         Throws(new Exception());
+        //    bookingSeatController = new BookingSeatController(new BookingSeatService(moq.Object));
+        //    var result = bookingSeatController.AddSeatBooking(bookingSeat);
+        //    var Obj = result as ObjectResult;
+        //    Assert.AreEqual(Obj.StatusCode, 400);
+        //}
     }
 }

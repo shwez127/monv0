@@ -74,5 +74,13 @@ namespace DeskAPI.Controllers
         {
             return _seatService.GetSeatsById(seatId);
         }
+
+
+        [HttpGet("GetAllSeatsByFloorId")]
+
+        public IEnumerable<Seat> GetAllSeatsFloorId(int floorId)
+        {
+            return _seatService.GetAllSeatsByFloorId(floorId);
+        }
     }
 }

@@ -56,5 +56,19 @@ namespace DeskData.Repository
             return _db.seats.ToList();
         }
         #endregion GetAllSeats
+        public IEnumerable<Seat> GetSeatsByFloorId(int floorId)
+        {
+            List<Seat> seats = _db.seats.ToList();
+            List<Seat>seats1 = new List<Seat>();
+
+            foreach (var item in seats)
+            {
+                if(item.FloorId == floorId)
+                { seats1.Add(item); }
+            }
+            return seats1;  
+        }
+
+       
     }
 }
