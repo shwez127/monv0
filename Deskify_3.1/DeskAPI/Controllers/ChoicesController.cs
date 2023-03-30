@@ -19,23 +19,46 @@ namespace DeskAPI.Controllers
         [HttpPost("AddChoice")]
         public IActionResult AddChoice(Choices choice)
         {
-            _choicesService.AddChoice(choice);
-            return Ok("Choices Added Successfully");
+            try
+            {
+                _choicesService.AddChoice(choice);
+                return Ok("Choices Added Successfully");
+            }
+            catch
+            {
+                return BadRequest(400);
+            }
 
         }
 
         [HttpDelete("DeleteChoice")]
         public IActionResult DeleteChoice(int choiceId)
         {
-            _choicesService.DeleteChoice(choiceId);
-            return Ok("Choices Deleted Successfully");
+            try
+            {
+                _choicesService.DeleteChoice(choiceId);
+                return Ok("Choices Deleted Successfully");
+            }
+            catch
+            {
+                return BadRequest(400);
+            }
+            
         }
 
         [HttpPut("UpdateChoice")]
         public IActionResult UpdateChoice(Choices choice)
         {
-            _choicesService.UpdateChoice(choice);
-            return Ok("Choices Updated Successfully");
+            try
+            {
+                _choicesService.UpdateChoice(choice);
+                return Ok("Choices Updated Successfully");
+            }
+            catch
+            {
+                return BadRequest(400);
+            }
+            
         }
 
         [HttpGet("GetAllChoices")]

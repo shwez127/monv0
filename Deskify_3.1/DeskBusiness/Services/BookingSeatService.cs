@@ -15,9 +15,9 @@ namespace DeskBusiness.Services
             _bookseatRepository = bookseatRepository;
         }
 
-        public void AddSeatBooking(BookingSeat bookseat)
+        public int AddSeatBooking(BookingSeat bookseat)
         {
-            _bookseatRepository.AddSeatBooking(bookseat);
+            return _bookseatRepository.AddSeatBooking(bookseat);
         }
 
         public void DeleteSeatBooking(int bookseatId)

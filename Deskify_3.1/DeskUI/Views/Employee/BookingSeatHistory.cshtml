@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<DeskEntity.Model.BookingSeat>
 
+@{
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
 <h1>AllSeats</h1>
 
 <div>
@@ -17,8 +21,9 @@
                 <tr>
                     <th>BookingSeatID</th>
                     <th>Seat Status</th>
-                    <th>ToDate</th>
                     <th>FromDate</th>
+                    <th>ToDate</th>
+                    
                     <th>ShiftTime</th>
                     <th>SeatId</th>
                     <th>EmployeeId</th>
@@ -33,13 +38,15 @@
 
                         <td>@seat.BookingSeatId</td>
                         <td>@seat.SeatStatus</td>
-                        <td>@seat.ToDate</td>
-                        <td>@seat.FromDate</td>
+                        <td>@seat.FromDate.ToShortDateString()</td>
+                        <td>@seat.ToDate.ToShortDateString()</td>
+                        
                         <td>@seat.SeatShiftTime</td>
                         <td>@seat.SeatId</td>
                         <td>@seat.EmployeeID</td>
-                        <td><a asp-controller="Employee" asp-action="CancelBooking" asp-route-BookSeatId=@seat.BookingSeatId>Delete</a></td>
+                        
                         <td><a asp-controller="Employee" asp-action="UpdateBooking" asp-route-BookSeatId=@seat.BookingSeatId>Edit</a></td>
+                        <td><a asp-controller="Employee" asp-action="CancelBooking" asp-route-BookSeatId=@seat.BookingSeatId>Delete</a></td>
                     </tr>
                 }
         </table>
