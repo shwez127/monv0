@@ -42,8 +42,16 @@ namespace DeskAPI.Controllers
         [HttpPost("AddFloor")]
         public IActionResult AddFloor([FromBody] Floor floor)
         {
-            _floorService.AddFloor(floor);
-            return Ok("Floor Created successfully");
+            try
+            {
+                _floorService.AddFloor(floor);
+                return Ok("Floor Created successfully");
+            }
+            catch
+            {
+                return BadRequest(400);
+            }
+            
         }
 
         #endregion
@@ -53,8 +61,16 @@ namespace DeskAPI.Controllers
         [HttpDelete("DeleteFloor")]
         public IActionResult DeleteFloor(int floorId)
         {
-            _floorService.DeleteFloor(floorId);
-            return Ok("Message Deleted sucessfully!!!");
+            try
+            {
+                _floorService.DeleteFloor(floorId);
+                return Ok("Message Deleted sucessfully!!!");
+            }
+            
+            catch
+            {
+                return BadRequest(400);
+            }
         }
 
         #endregion
@@ -64,8 +80,17 @@ namespace DeskAPI.Controllers
         [HttpPut("UpdateFloor")]
         public IActionResult UpdateFloor([FromBody] Floor floor)
         {
-            _floorService.UpdateFloor(floor);
-            return Ok("Floor Updated successfully");
+            try
+            {
+                _floorService.UpdateFloor(floor);
+                return Ok("Floor Updated successfully");
+            }
+            catch
+            {
+                return BadRequest(400);
+            }
+            
+
         }
 
         #endregion

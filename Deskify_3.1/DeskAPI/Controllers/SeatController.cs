@@ -20,23 +20,47 @@ namespace DeskAPI.Controllers
         [HttpPost("AddSeat")]
         public IActionResult AddSeat(Seat seat)
         {
-            _seatService.AddSeat(seat);
-            return Ok("Seat Added Successfully");
+            try
+            {
+                _seatService.AddSeat(seat);
+                return Ok("Seat Added Successfully");
+            }
+            catch
+            {
+                return BadRequest(400);
+            }
+            
 
         }
 
         [HttpDelete("DeleteSeat")]
         public IActionResult DeleteSeat(int seatId)
         {
-            _seatService.DeleteSeat(seatId);
-            return Ok("Seat Deleted Successfully");
+            try
+            {
+                _seatService.DeleteSeat(seatId);
+                return Ok("Seat Deleted Successfully");
+            }
+            catch
+            {
+                return BadRequest(400);
+            }
+           
         }
 
         [HttpPut("UpdateSeat")]
         public IActionResult UpdateSeat(Seat seat)
         {
-            _seatService.UpdateSeat(seat);
-            return Ok("Seat Updated Successfully");
+            try
+            {
+                _seatService.UpdateSeat(seat);
+                return Ok("Seat Updated Successfully");
+            }
+            catch
+            {
+                return BadRequest(400);
+            }
+            
         }
 
         [HttpGet("GetAllSeats")]

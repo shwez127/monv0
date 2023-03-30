@@ -22,31 +22,52 @@ namespace DeskAPI.Controllers
             [HttpPost("AddSeatBooking")]
             public IActionResult AddSeatBooking(BookingSeat bookseat)
             {
-                _bookingService.AddSeatBooking(bookseat);
-                return Ok("Seat Added Successfully");
-
+                try
+                {
+                    _bookingService.AddSeatBooking(bookseat);
+                    return Ok("Seat Added Successfully");
+                }
+                catch
+                {
+                    return BadRequest(400);
+                }               
             }
 
             [HttpDelete("DeleteSeatBooking")]
             public IActionResult DeleteSeatBooking(int bookingseatId)
             {
-                _bookingService.DeleteSeatBooking(bookingseatId);
-                return Ok("Seat Deleted Successfully");
+                try
+                {
+                    _bookingService.DeleteSeatBooking(bookingseatId);
+                    return Ok("Seat Deleted Successfully");
+                }
+                catch
+                {
+                    return BadRequest(400);
+                }             
             }
 
             [HttpPut("UpdateSeatBooking")]
             public IActionResult UpdateSeatBooking(BookingSeat bookseat)
             {
-                _bookingService.UpdateSeatBooking(bookseat);
-                return Ok("Seat Updated Successfully");
+                try
+                {
+                    _bookingService.UpdateSeatBooking(bookseat);
+                    return Ok("Seat Updated Successfully");
+                }
+                catch
+                {
+                    return BadRequest(400);
+                }
+                
             }
 
             [HttpGet("GetAllBookingSeats")]
-
             public IEnumerable<BookingSeat> GetAllBookingSeats()
             {
-                return _bookingService.GetAllBookingSeats().ToList();
+                return _bookingService.GetAllBookingSeats();
             }
+
             [HttpGet("GetSeatBookingById")]
             public BookingSeat GetSeatBookingById(int bookingseatId)
             {
