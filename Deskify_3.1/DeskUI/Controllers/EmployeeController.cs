@@ -16,10 +16,10 @@ namespace DeskUI.Controllers
     public class EmployeeController : Controller
     {
         IConfiguration _configuration;
-        
+
         public EmployeeController(IConfiguration configuration)
         {
-            _configuration = configuration; 
+            _configuration = configuration;
 
         }
         public IActionResult Index()
@@ -57,7 +57,7 @@ namespace DeskUI.Controllers
 
         }
 
-       
+
         [HttpPost]
         public async Task<IActionResult> AddEmployee(Employee employee)
         {
@@ -217,6 +217,7 @@ namespace DeskUI.Controllers
             return shiftTiming;
         }
 
+        #region BookingSeat
         public IActionResult BookingSeat()
         {
             ViewBag.shiftTimings = ShiftTiming();
@@ -230,13 +231,13 @@ namespace DeskUI.Controllers
             using (HttpClient client = new HttpClient())
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(bookingSeat), Encoding.UTF8, "application/json");
-                string endpoint = _configuration["WebApiBaseUrl"] + "BookingSeat/AddSeatBooking";
-                using (var response = await client.GetAsync(endpoint))
+                string endPoint = _configuration["WebApiBaseUrl"] + "BookingSeat/AddSeatBooking";
+                using (var response = await client.PostAsync(endPoint, content))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
-                        ViewBag.status = "OK";
-                        ViewBag.message = "Seat Booked Successfully";
+                        ViewBag.status = "Ok";
+                        ViewBag.message = "Booking Seat Added!!";
                     }
                     else
                     {
@@ -245,6 +246,7 @@ namespace DeskUI.Controllers
                     }
                 }
             }
+
             return View();
         }
 
@@ -254,8 +256,9 @@ namespace DeskUI.Controllers
             IEnumerable<BookingSeat> bookingResult = null;
             using (HttpClient client = new HttpClient())
             {
-                string endpoint = _configuration["WebApiBaseUrl"] + "BookingSeat/GetAllBookingSeats";
-                using (var response = await client.GetAsync(endpoint))
+
+                string endPoint = _configuration["WebApiBaseUrl"] + "BookingSeat/GetAllBookingSeats";
+                using (var response = await client.GetAsync(endPoint))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
@@ -264,28 +267,44 @@ namespace DeskUI.Controllers
                     }
                 }
             }
-            return View(bookingResult); 
+            return View(bookingResult);
+
         }
 
-        public IActionResult BookingRoom()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        public async Task<IActionResult> BookingRoom(BookingRoom bookingRoom)
+        public async Task<IActionResult> CancelBooking(int BookSeatId)
         {
-            ViewBag.status = "";
+            BookingSeat seat = new BookingSeat();
             using (HttpClient client = new HttpClient())
             {
-                StringContent content = new StringContent(JsonConvert.SerializeObject(bookingRoom), Encoding.UTF8, "application/json");
-                string endpoint = _configuration["WebApiBaseUrl"] + "BookingRoom/AddRoomBooking";
-                using (var response = await client.GetAsync(endpoint))
+                string endPoint = _configuration["WebApiBaseUrl"] + "BookingSeat/GetSeatBookingById?bookingseatId=" + BookSeatId;
+
+                using (var response = await client.GetAsync(endPoint))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
-                        ViewBag.status = "OK";
-                        ViewBag.message = "Seat Booked Successfully";
+                        var result = await response.Content.ReadAsStringAsync();
+                        seat = JsonConvert.DeserializeObject<BookingSeat>(result);
+                    }
+
+                }
+            }
+            return View(seat);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CancelBooking(BookingSeat bookseat)
+
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string endPoint = _configuration["WebApiBaseUrl"] + "BookingSeat/DeleteSeatBooking?bookingseatId=" + bookseat.BookingSeatId;
+                using (var response = await client.DeleteAsync(endPoint))
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        ViewBag.status = "Ok";
+                        ViewBag.message = "BookingSeat details deleted successfully";
                     }
                     else
                     {
@@ -297,114 +316,195 @@ namespace DeskUI.Controllers
             return View();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> BookingRoomHistory()
+
+        public async Task<IActionResult> UpdateBooking(int BookSeatId)
         {
-            IEnumerable<BookingRoom> bookingroomResult = null;
+            BookingSeat seat = null;
             using (HttpClient client = new HttpClient())
             {
-                string endpoint = _configuration["WebApiBaseUrl"] + "BookingRoom/GetBookingRoom";
-                using (var response = await client.GetAsync(endpoint))
+                string endPoint = _configuration["WebApiBaseUrl"] + "BookingSeat/GetSeatBookingById?bookingseatId=" + BookSeatId;
+
+                using (var response = await client.GetAsync(endPoint))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         var result = await response.Content.ReadAsStringAsync();
-                        bookingroomResult = JsonConvert.DeserializeObject<IEnumerable<BookingRoom>>(result);
+                        seat = JsonConvert.DeserializeObject<BookingSeat>(result);
                     }
+
                 }
             }
-            return View(bookingroomResult);
+            return View(seat);
         }
+        [HttpPost]
+        public async Task<IActionResult> UpdateBooking(BookingSeat bookseat)
 
-
-
-
-
-
-        public async Task<IActionResult> DeleteEmployee(int employeeId)
         {
-            #region Deleting Employee with id from database
-            ViewBag.status = "";
-            //using grabage collection only for inbuilt classes
-            try
+            using (HttpClient client = new HttpClient())
             {
-                using (HttpClient client = new HttpClient())
+                StringContent content = new StringContent(JsonConvert.SerializeObject(bookseat), Encoding.UTF8, "application/json");
+                string endPoint = _configuration["WebApiBaseUrl"] + "BookingSeat/UpdateSeatBooking";
+                using (var response = await client.PutAsync(endPoint, content))
                 {
-
-                    string endPoint = _configuration["WebApiBaseUrl"] + "Employee/DeleteEmployee?employeeId=" + employeeId;  //api controller name and its function
-
-                    using (var response = await client.DeleteAsync(endPoint))
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
-                        if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                        {   //dynamic viewbag we can create any variable name in run time
-                            ViewBag.status = "Ok";
-                            ViewBag.message = "Employees Details Deleted Successfull!!";
-
-                        }
-
-                        else
-                        {
-                            ViewBag.status = "Error";
-                            ViewBag.message = "Wrong Entries";
-                        }
-
+                        ViewBag.status = "Ok";
+                        ViewBag.message = "BookingSeat Updated!!";
+                    }
+                    else
+                    {
+                        ViewBag.status = "Error";
+                        ViewBag.message = "Wrong Entries";
                     }
                 }
             }
-            catch (System.NullReferenceException ex)
-            {
-                Console.WriteLine(ex.ToString());
-
-            }
-            catch (Exception ex1)
-            {
-                Console.WriteLine(ex1.ToString());
-
-            }
             return View();
-            #endregion
         }
-        public IActionResult GetAllEmployees()
+
+        #endregion BookingSeat
+
+
+        #region BookingRoom
+        public IActionResult BookingRooms()
         {
-            #region  Index of all  the employee present
             return View();
-            #endregion
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> BookingRooms(BookingRoom bookingRoom)
+        {
+            ViewBag.status = "";
+            using (HttpClient client = new HttpClient())
+            {
+                StringContent content = new StringContent(JsonConvert.SerializeObject(bookingRoom), Encoding.UTF8, "application/json");
+                string endPoint = _configuration["WebApiBaseUrl"] + "BookingRoom/AddBookingRoom";
+                using (var response = await client.PostAsync(endPoint, content))
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        ViewBag.status = "Ok";
+                        ViewBag.message = "BookingRoom details saved sucessfully!!";
+                    }
+                    else
+                    {
+                        ViewBag.status = "Error";
+                        ViewBag.message = "Wrong entries!";
+                    }
+                }
+            }
+            return View();
+        }
+
 
         [HttpGet]
-        public async Task<IActionResult> GetAllEmployees(Employee employee)
+        public async Task<IActionResult> BookingRoomHistory()
         {
-            #region Getting all Employees List from database
-
-            IEnumerable<Employee> employeeresult = null;
-            try
+            IEnumerable<BookingRoom> bookingroomresult = null;
+            using (HttpClient client = new HttpClient())
             {
-                using (HttpClient client = new HttpClient())
+                string endPoint = _configuration["WebApiBaseUrl"] + "BookingRoom/GetBookingRoom";
+                using (var response = await client.GetAsync(endPoint))
                 {
-                    string endPoint = _configuration["WebApiBaseUrl"] + "Employee/GetAllEmployees";//api controller name and httppost name given inside httppost in moviecontroller of api
-
-                    using (var response = await client.GetAsync(endPoint))
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
-                        if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                        {   //dynamic viewbag we can create any variable name in run time
-                            var result = await response.Content.ReadAsStringAsync();
-                            employeeresult = JsonConvert.DeserializeObject<IEnumerable<Employee>>(result);
-                        }
+                        var result = await response.Content.ReadAsStringAsync();
+                        bookingroomresult = JsonConvert.DeserializeObject<IEnumerable<BookingRoom>>(result);
+                    }
+                }
+
+            }
+            return View(bookingroomresult);
+        }
+
+        public async Task<IActionResult> UpdateBookingRooms(int RoomId)
+        {
+            BookingRoom bookingRoom = null;
+            using (HttpClient client = new HttpClient())
+            {
+                string endPoint = _configuration["WebApiBaseUrl"] + "BookingRoom/GetBookingRoomById?bookingRoomId=" + RoomId;
+                using (var response = await client.GetAsync(endPoint))
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        bookingRoom = JsonConvert.DeserializeObject<BookingRoom>(result);
                     }
                 }
             }
-            catch (System.NullReferenceException ex)
-            {
-                Console.WriteLine(ex.ToString());
+            return View(bookingRoom);
 
-            }
-            catch (Exception ex1)
-            {
-                Console.WriteLine(ex1.ToString());
-
-            }
-            return View(employeeresult);
-            #endregion
         }
+
+        [HttpPost]
+
+        public async Task<IActionResult> UpdateBookingRooms(BookingRoom bookingRoom)
+        {
+            ViewBag.status = "";
+            using (HttpClient client = new HttpClient())
+            {
+                StringContent content = new StringContent(JsonConvert.SerializeObject(bookingRoom), Encoding.UTF8, "application/json");
+                string endPoint = _configuration["WebApiBaseUrl"] + "BookingRoom/UpdateBookingRoom";
+                using (var response = await client.PutAsync(endPoint, content))
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        ViewBag.status = "Ok";
+                        ViewBag.message = "BookingRoom details updated sucessfully!!";
+                    }
+                    else
+                    {
+                        ViewBag.status = "Error";
+                        ViewBag.message = "Wrong entries!";
+                    }
+                }
+            }
+            return View();
+
+        }
+
+        public IActionResult CancelBookingRooms()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CancelBookingRooms(int RoomId)
+        {
+            BookingRoom bookingRoom = null;
+            using (HttpClient client = new HttpClient())
+            {
+                string endPoint = _configuration["WebApiBaseUrl"] + "BookingRoom/DeleteBookingRoom?bookingRoomId=" + RoomId;
+                using (var response = await client.DeleteAsync(endPoint))
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        ViewBag.status = "Ok";
+                        ViewBag.message = "BookingRoom details deleted sucessfully!!";
+                        return RedirectToAction("Index", "BookingRoom");
+                    }
+                    else
+                    {
+                        ViewBag.status = "Error";
+                        ViewBag.message = "Wrong entries!";
+                    }
+                }
+            }
+            return View();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        #endregion BookingRegion
+
     }
 }

@@ -17,6 +17,7 @@ namespace DeskEntity.Model
         public string SeatShiftTime { get; set; }
         public DateTime ShiftStart { get; set; }
         public DateTime ShiftEnd { get; set; }
+        public string bookingrequesttype { get; set; }
 
         [ForeignKey("Seat")]
         public int SeatId { get; set; }
