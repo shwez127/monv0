@@ -20,10 +20,10 @@ namespace DeskAPI.Controllers
             }
 
             [HttpPost("AddSeatBooking")]
-            public IActionResult AddSeatBooking(BookingSeat bookseat)
+            public int AddSeatBooking(BookingSeat bookseat)
             {
-                _bookingService.AddSeatBooking(bookseat);
-                return Ok("Seat Added Successfully");
+                 return _bookingService.AddSeatBooking(bookseat);
+                
 
             }
 

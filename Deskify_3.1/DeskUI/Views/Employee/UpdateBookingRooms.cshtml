@@ -1,7 +1,87 @@
-﻿
-@{
-    ViewData["Title"] = "UpdateBookingRooms";
+﻿@{
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
 }
 
 <h1>UpdateBookingRooms</h1>
 
+
+
+@model DeskEntity.Model.BookingRoom
+
+
+<div>
+    <a asp-controller="UpdateBookingRooms" asp-action="Index">Booking Room</a>
+
+</div>
+
+<form method="post" enctype="multipart/form-data">
+    <h2>Update Booking Room</h2><hr />
+
+
+    @*<div class="form-group">
+    <label>Room Status</label>
+    <input type="text" asp-for="RoomStatus" class="form-control"
+    placeholder="enter seatstatus" required />
+    </div>*@
+    <div class="form-group">
+        <label>FromDate</label>
+        <input type="date" asp-for="FromDate" class="form-control"
+               placeholder="enter seat" required>
+    </div>
+    <div class="form-group">
+        <label>ToDate</label>
+        <input type="date" asp-for="ToDate" class="form-control"
+               placeholder="enter status" required />
+    </div>
+
+
+    @*<div class="form-group">
+    <label>ShiftStart</label>
+    <input type="date" asp-for="ShiftStart" class="form-control"
+    placeholder="enter seat" required />
+    </div>
+
+
+    <div class="form-group">
+    <label>ShiftEnd</label>
+    <input type="date" asp-for="ShiftEnd" class="form-control"
+    placeholder="enter seat" required />
+    </div>
+    *@
+    @* <div class="form-group">
+    <label>Meeting Hours</label>
+    <select asp-for="@Model.MeetingHours" class="form-control" asp-items="@ViewBag.shiftTimings" required></select>
+    </div>*@
+
+    @*<div class="form-group">
+    <label>Room Number</label>
+    <input type="text" asp-for="RoomId" class="form-control"
+    placeholder="enter seat" required />
+    </div>
+    *@
+    <div class="form-group">
+        <label>Meeting Hours</label>
+        <select asp-for="MeetingHours" class="form-control" asp-items="@ViewBag.meetingHours" required></select>
+    </div>
+
+    <div class="form-group">
+        <label>Floor</label>
+        <select asp-for="Room.FloorId" class="form-control" asp-items="@ViewBag.FloorList" required></select>
+    </div>
+    <input type="submit" value="Save" class="btn btn-outline-success" />
+    <input type="button" value="Reset" class="btn btn-outline-secondary" />
+    <hr />
+    @if (ViewBag.Status == "Ok")
+    {
+        <div class="alert alert-success">
+            @ViewBag.message;
+        </div>
+    }
+
+    else if (ViewBag.Status == "Error")
+    {
+        <div class="alert alert-danger">
+            @ViewBag.message;
+        </div>
+    }
+</form>
