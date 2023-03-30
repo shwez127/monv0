@@ -11,9 +11,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.Email;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace DeskAPI
@@ -34,18 +38,15 @@ namespace DeskAPI
             string connectionStr = Configuration.GetConnectionString("sqlConnection");
             services.AddDbContext<DeskDbContext>(options => options.UseSqlServer(connectionStr));
 
-
             services.AddTransient<BookingRoomService, BookingRoomService>();
             services.AddTransient<IBookingRoomRepository, BookingRoomRepository>();
 
             services.AddTransient<FloorService, FloorService>();
             services.AddTransient<IFloorRepository, FloorRepository>();
 
-
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<EmployeeService, EmployeeService>();
            
-
             services.AddTransient<SeatService, SeatService>();
             services.AddTransient<ISeatRepository, SeatRepository>();
 
@@ -64,10 +65,40 @@ namespace DeskAPI
             services.AddTransient<QRScannerService, QRScannerService>();
             services.AddTransient<IQRScannerRepository, QRScannerRepository>();
 
-
             services.AddTransient<ChoicesService, ChoicesService>();
-            services.AddTransient<IChoicesRepository, ChoicesRepository>();          
+            services.AddTransient<IChoicesRepository, ChoicesRepository>();
 
+            //LOGGER CODE START
+            #region LOGGER 
+            var Logger = new LoggerConfiguration()
+            .MinimumLevel.Information()
+            .MinimumLevel.Override("Google", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.File("LogTesting.log", LogEventLevel.Information, fileSizeLimitBytes: 10_000_000, rollOnFileSizeLimit: true, shared: true)
+            .WriteTo.Email(new EmailConnectionInfo
+            {
+                FromEmail = "harshjeet35@gmail.com",
+                ToEmail = "atulyaaj6@gmail.com",
+                MailServer = "smtp.gmail.com",
+                NetworkCredentials = new NetworkCredential
+                {
+                    UserName = "harshjeet35@gmail.com",
+                    Password = "Harsh@123"
+                },
+                EnableSsl = true,
+                /* Port = 29,*/
+                Port = 993,
+                EmailSubject = "Error in app"
+             }, 
+             restrictedToMinimumLevel: LogEventLevel.Error, batchPostingLimit: 1)
+             .CreateLogger();
+
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.ClearProviders();
+                loggingBuilder.AddSerilog(Logger);
+            });
+            #endregion
 
             services.AddControllers();
             services.AddSwaggerGen();
