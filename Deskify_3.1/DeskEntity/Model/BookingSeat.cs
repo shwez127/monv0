@@ -23,7 +23,7 @@ namespace DeskEntity.Model
         public Seat Seat { get; set; }  
 
         [ForeignKey("Employee")]
-        public int EmployeeID { get; set; }
+        public int EmployeeID { get; set; }    
         public Employee Employee { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System;
-using DeskData.Data;
+/*using DeskData.Data;*/
 using DeskEntity.Model;
 using Newtonsoft.Json;
 
@@ -25,7 +25,7 @@ namespace DeskUI.Controllers
             _configuration = configuration;
         }
 
-        DeskDbContext db = new DeskDbContext();
+        /*DeskDbContext db = new DeskDbContext();*/
 
         [HttpGet]
         public async Task<IActionResult> Index()
