@@ -8,7 +8,6 @@ using System.Text.Json.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System;
-using DeskData.Data;
 using DeskEntity.Model;
 using Newtonsoft.Json;
 
@@ -24,8 +23,6 @@ namespace DeskUI.Controllers
         {
             _configuration = configuration;
         }
-
-        
 
         [HttpGet]
         public async Task<IActionResult> Index()

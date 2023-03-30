@@ -55,7 +55,6 @@ namespace DeskAPI
             services.AddTransient<ChoicesService, ChoicesService>();
             services.AddTransient<IChoicesRepository, ChoicesRepository>();
 
-
             services.AddTransient<BookingSeatService, BookingSeatService>();
             services.AddTransient<IBookingSeatRepository, BookingSeatRepository>();
 
