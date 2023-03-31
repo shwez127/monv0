@@ -1,0 +1,132 @@
+2023-03-30 15:16:40.100 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2023-03-30 15:16:40.122 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/weatherforecast  
+2023-03-30 15:16:40.135 +05:30 [INF] Hosting environment: Development
+2023-03-30 15:16:40.135 +05:30 [INF] Content root path: C:\Users\Atulya.Jaiswal\Desktop\POC Deskify\New-Deskify\Deskify_3.1\DeskAPI
+2023-03-30 15:16:40.191 +05:30 [INF] Executing endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-03-30 15:16:40.213 +05:30 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[DeskAPI.WeatherForecast] Get() on controller DeskAPI.Controllers.WeatherForecastController (DeskAPI).
+2023-03-30 15:16:40.217 +05:30 [INF] Executing ObjectResult, writing value of type 'DeskAPI.WeatherForecast[]'.
+2023-03-30 15:16:40.243 +05:30 [INF] Executed action DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI) in 25.1934ms
+2023-03-30 15:16:40.247 +05:30 [INF] Executed endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-03-30 15:16:40.254 +05:30 [INF] Request finished in 138.5399ms 200 application/json; charset=utf-8
+2023-03-30 15:17:06.646 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:44385/api/LoginTable/Login application/json; charset=utf-8 69
+2023-03-30 15:17:06.649 +05:30 [INF] Executing endpoint 'DeskAPI.Controllers.LoginTableController.Login (DeskAPI)'
+2023-03-30 15:17:06.660 +05:30 [INF] Route matched with {action = "Login", controller = "LoginTable"}. Executing controller action with signature Int32[] Login(DeskEntity.Model.LoginTable) on controller DeskAPI.Controllers.LoginTableController (DeskAPI).
+2023-03-30 15:17:07.598 +05:30 [INF] Entity Framework Core 5.0.0 initialized 'DeskDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-03-30 15:17:08.249 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [l].[ID], [l].[Email], [l].[Password], [l].[Type]
+FROM [LoginTables] AS [l]
+2023-03-30 15:17:08.307 +05:30 [INF] Executing ObjectResult, writing value of type 'null'.
+2023-03-30 15:17:08.307 +05:30 [INF] Executed action DeskAPI.Controllers.LoginTableController.Login (DeskAPI) in 1647.6489ms
+2023-03-30 15:17:08.308 +05:30 [INF] Executed endpoint 'DeskAPI.Controllers.LoginTableController.Login (DeskAPI)'
+2023-03-30 15:17:08.310 +05:30 [INF] Request finished in 1665.3138ms 204 
+2023-03-30 15:22:16.719 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2023-03-30 15:22:16.743 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/weatherforecast  
+2023-03-30 15:22:16.757 +05:30 [INF] Hosting environment: Development
+2023-03-30 15:22:16.758 +05:30 [INF] Content root path: C:\Users\Atulya.Jaiswal\Desktop\POC Deskify\New-Deskify\Deskify_3.1\DeskAPI
+2023-03-30 15:22:16.812 +05:30 [INF] Executing endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-03-30 15:22:16.836 +05:30 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[DeskAPI.WeatherForecast] Get() on controller DeskAPI.Controllers.WeatherForecastController (DeskAPI).
+2023-03-30 15:22:16.841 +05:30 [INF] Executing ObjectResult, writing value of type 'DeskAPI.WeatherForecast[]'.
+2023-03-30 15:22:16.868 +05:30 [INF] Executed action DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI) in 26.2052ms
+2023-03-30 15:22:16.870 +05:30 [INF] Executed endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-03-30 15:22:16.877 +05:30 [INF] Request finished in 140.4576ms 200 application/json; charset=utf-8
+2023-03-30 15:22:26.429 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/SWAGGER  
+2023-03-30 15:22:26.438 +05:30 [INF] Request finished in 9.82ms 301 
+2023-03-30 15:22:26.444 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/SWAGGER/index.html  
+2023-03-30 15:22:26.567 +05:30 [INF] Request finished in 122.8716ms 200 text/html;charset=utf-8
+2023-03-30 15:22:26.577 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/SWAGGER/swagger-ui-standalone-preset.js  
+2023-03-30 15:22:26.578 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/SWAGGER/swagger-ui.css  
+2023-03-30 15:22:26.580 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/SWAGGER/swagger-ui-bundle.js  
+2023-03-30 15:22:26.582 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/_framework/aspnetcore-browser-refresh.js  
+2023-03-30 15:22:26.585 +05:30 [INF] Request finished in 2.3624ms 200 application/javascript; charset=utf-8
+2023-03-30 15:22:26.608 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2023-03-30 15:22:26.608 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2023-03-30 15:22:26.608 +05:30 [INF] Request finished in 28.5662ms 200 application/javascript
+2023-03-30 15:22:26.609 +05:30 [INF] Request finished in 31.8236ms 200 text/css
+2023-03-30 15:22:26.608 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2023-03-30 15:22:26.609 +05:30 [INF] Request finished in 31.9988ms 200 application/javascript
+2023-03-30 15:22:26.642 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/_vs/browserLink  
+2023-03-30 15:22:26.678 +05:30 [INF] Request finished in 35.7206ms 200 text/javascript; charset=UTF-8
+2023-03-30 15:22:26.941 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/swagger/v1/swagger.json  
+2023-03-30 15:22:26.977 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/SWAGGER/favicon-32x32.png  
+2023-03-30 15:22:26.979 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-03-30 15:22:26.979 +05:30 [INF] Request finished in 4.1638ms 200 image/png
+2023-03-30 15:22:27.078 +05:30 [INF] Request finished in 137.4952ms 200 application/json;charset=utf-8
+2023-03-30 15:22:45.204 +05:30 [INF] Request starting HTTP/2.0 POST https://localhost:44385/api/LoginTable/Login application/json 71
+2023-03-30 15:22:45.206 +05:30 [INF] Executing endpoint 'DeskAPI.Controllers.LoginTableController.Login (DeskAPI)'
+2023-03-30 15:22:45.219 +05:30 [INF] Route matched with {action = "Login", controller = "LoginTable"}. Executing controller action with signature Int32[] Login(DeskEntity.Model.LoginTable) on controller DeskAPI.Controllers.LoginTableController (DeskAPI).
+2023-03-30 15:22:45.923 +05:30 [INF] Entity Framework Core 5.0.0 initialized 'DeskDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-03-30 15:22:46.506 +05:30 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [l].[ID], [l].[Email], [l].[Password], [l].[Type]
+FROM [LoginTables] AS [l]
+2023-03-30 15:22:46.568 +05:30 [INF] Executing ObjectResult, writing value of type 'null'.
+2023-03-30 15:22:46.568 +05:30 [INF] Executed action DeskAPI.Controllers.LoginTableController.Login (DeskAPI) in 1348.8376ms
+2023-03-30 15:22:46.568 +05:30 [INF] Executed endpoint 'DeskAPI.Controllers.LoginTableController.Login (DeskAPI)'
+2023-03-30 15:22:46.570 +05:30 [INF] Request finished in 1367.9887ms 204 
+2023-03-30 15:25:19.963 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2023-03-30 15:25:19.992 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/weatherforecast  
+2023-03-30 15:25:20.010 +05:30 [INF] Hosting environment: Development
+2023-03-30 15:25:20.010 +05:30 [INF] Content root path: C:\Users\Atulya.Jaiswal\Desktop\POC Deskify\New-Deskify\Deskify_3.1\DeskAPI
+2023-03-30 15:25:20.103 +05:30 [INF] Executing endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-03-30 15:25:20.130 +05:30 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[DeskAPI.WeatherForecast] Get() on controller DeskAPI.Controllers.WeatherForecastController (DeskAPI).
+2023-03-30 15:25:20.134 +05:30 [INF] Executing ObjectResult, writing value of type 'DeskAPI.WeatherForecast[]'.
+2023-03-30 15:25:20.160 +05:30 [INF] Executed action DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI) in 25.2892ms
+2023-03-30 15:25:20.161 +05:30 [INF] Executed endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-03-30 15:25:20.169 +05:30 [INF] Request finished in 184.0581ms 200 application/json; charset=utf-8
+2023-03-30 15:25:29.209 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/SWAGGER/index.html  
+2023-03-30 15:25:29.319 +05:30 [INF] Request finished in 110.8925ms 200 text/html;charset=utf-8
+2023-03-30 15:25:29.324 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/_framework/aspnetcore-browser-refresh.js  
+2023-03-30 15:25:29.326 +05:30 [INF] Request finished in 2.2607ms 200 application/javascript; charset=utf-8
+2023-03-30 15:25:29.357 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/_vs/browserLink  
+2023-03-30 15:25:29.384 +05:30 [INF] Request finished in 26.8813ms 200 text/javascript; charset=UTF-8
+2023-03-30 15:25:29.617 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/swagger/v1/swagger.json  
+2023-03-30 15:25:29.743 +05:30 [INF] Request finished in 126.3122ms 200 application/json;charset=utf-8
+2023-03-30 15:25:52.524 +05:30 [INF] Request starting HTTP/2.0 POST https://localhost:44385/api/LoginTable/Login application/json 65
+2023-03-30 15:25:52.525 +05:30 [INF] Executing endpoint 'DeskAPI.Controllers.LoginTableController.Login (DeskAPI)'
+2023-03-30 15:25:52.536 +05:30 [INF] Route matched with {action = "Login", controller = "LoginTable"}. Executing controller action with signature Int32[] Login(DeskEntity.Model.LoginTable) on controller DeskAPI.Controllers.LoginTableController (DeskAPI).
+2023-03-30 15:25:53.293 +05:30 [INF] Entity Framework Core 5.0.0 initialized 'DeskDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-03-30 15:25:53.757 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [l].[ID], [l].[Email], [l].[Password], [l].[Type]
+FROM [LoginTables] AS [l]
+2023-03-30 15:25:53.828 +05:30 [INF] Executing ObjectResult, writing value of type 'null'.
+2023-03-30 15:25:53.828 +05:30 [INF] Executed action DeskAPI.Controllers.LoginTableController.Login (DeskAPI) in 1291.4777ms
+2023-03-30 15:25:53.828 +05:30 [INF] Executed endpoint 'DeskAPI.Controllers.LoginTableController.Login (DeskAPI)'
+2023-03-30 15:25:53.832 +05:30 [INF] Request finished in 1309.8083ms 204 
+2023-03-30 15:26:36.285 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2023-03-30 15:26:36.353 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/weatherforecast  
+2023-03-30 15:26:36.359 +05:30 [INF] Hosting environment: Development
+2023-03-30 15:26:36.359 +05:30 [INF] Content root path: C:\Users\Atulya.Jaiswal\Desktop\POC Deskify\New-Deskify\Deskify_3.1\DeskAPI
+2023-03-30 15:26:36.434 +05:30 [INF] Executing endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-03-30 15:26:36.459 +05:30 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[DeskAPI.WeatherForecast] Get() on controller DeskAPI.Controllers.WeatherForecastController (DeskAPI).
+2023-03-30 15:26:36.465 +05:30 [INF] Executing ObjectResult, writing value of type 'DeskAPI.WeatherForecast[]'.
+2023-03-30 15:26:36.513 +05:30 [INF] Executed action DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI) in 44.3378ms
+2023-03-30 15:26:36.518 +05:30 [INF] Executed endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-03-30 15:26:36.527 +05:30 [INF] Request finished in 179.9527ms 200 application/json; charset=utf-8
+2023-03-30 15:27:25.633 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2023-03-30 15:27:25.664 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/weatherforecast  
+2023-03-30 15:27:25.715 +05:30 [INF] Hosting environment: Development
+2023-03-30 15:27:25.715 +05:30 [INF] Content root path: C:\Users\Atulya.Jaiswal\Desktop\POC Deskify\New-Deskify\Deskify_3.1\DeskAPI
+2023-03-30 15:27:25.830 +05:30 [INF] Executing endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-03-30 15:27:25.869 +05:30 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[DeskAPI.WeatherForecast] Get() on controller DeskAPI.Controllers.WeatherForecastController (DeskAPI).
+2023-03-30 15:27:25.875 +05:30 [INF] Executing ObjectResult, writing value of type 'DeskAPI.WeatherForecast[]'.
+2023-03-30 15:27:25.921 +05:30 [INF] Executed action DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI) in 42.4192ms
+2023-03-30 15:27:25.924 +05:30 [INF] Executed endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-03-30 15:27:25.937 +05:30 [INF] Request finished in 281.201ms 200 application/json; charset=utf-8
+2023-03-30 15:27:46.340 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/SWAGGER/index.html  
+2023-03-30 15:27:46.452 +05:30 [INF] Request finished in 112.888ms 200 text/html;charset=utf-8
+2023-03-30 15:27:46.459 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/_framework/aspnetcore-browser-refresh.js  
+2023-03-30 15:27:46.465 +05:30 [INF] Request finished in 6.4156ms 200 application/javascript; charset=utf-8
+2023-03-30 15:27:46.488 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/_vs/browserLink  
+2023-03-30 15:27:46.507 +05:30 [INF] Request finished in 19.5024ms 200 text/javascript; charset=UTF-8
+2023-03-30 15:27:46.616 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/swagger/v1/swagger.json  
+2023-03-30 15:27:46.751 +05:30 [INF] Request finished in 134.7682ms 200 application/json;charset=utf-8
+2023-03-30 15:28:09.069 +05:30 [INF] Request starting HTTP/2.0 POST https://localhost:44385/api/LoginTable/Login application/json 74
+2023-03-30 15:28:09.070 +05:30 [INF] Executing endpoint 'DeskAPI.Controllers.LoginTableController.Login (DeskAPI)'
+2023-03-30 15:28:09.106 +05:30 [INF] Route matched with {action = "Login", controller = "LoginTable"}. Executing controller action with signature Int32[] Login(DeskEntity.Model.LoginTable) on controller DeskAPI.Controllers.LoginTableController (DeskAPI).
+2023-03-30 15:28:09.898 +05:30 [INF] Entity Framework Core 5.0.0 initialized 'DeskDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-03-30 15:28:10.355 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [l].[ID], [l].[Email], [l].[Password], [l].[Type]
+FROM [LoginTables] AS [l]
+2023-03-30 15:28:10.411 +05:30 [INF] Executing ObjectResult, writing value of type 'null'.
+2023-03-30 15:28:10.412 +05:30 [INF] Executed action DeskAPI.Controllers.LoginTableController.Login (DeskAPI) in 1305.0622ms
+2023-03-30 15:28:10.412 +05:30 [INF] Executed endpoint 'DeskAPI.Controllers.LoginTableController.Login (DeskAPI)'
+2023-03-30 15:28:10.414 +05:30 [INF] Request finished in 1346.3963ms 204 

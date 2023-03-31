@@ -2,6 +2,8 @@
 using DeskEntity.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace DeskAPI.Controllers
 {
@@ -11,6 +13,7 @@ namespace DeskAPI.Controllers
     {
         //Private member
         LoginTableService _loginTableService;
+        private readonly ILogger<LoginTableController> _logger; 
 
         //Constructor
         public LoginTableController(LoginTableService loginTableService)
@@ -21,22 +24,33 @@ namespace DeskAPI.Controllers
         [HttpPost("Login")]
         public int[] Login(LoginTable loginTable)
         {
-            #region Role based login as admin and employee
-            int[] flag = _loginTableService.Login(loginTable);
-            if (flag[1] == 3)
+            try
             {
-                return flag;
+                #region Role based login as admin and employee
+                int[] flag = _loginTableService.Login(loginTable);
+                if (flag[1] == 3)
+                {
+                    return flag;
+                }
+                else
+                if (flag[1] == 0)
+                {
+                    return flag;
+                }
+
+                return null;
+                #endregion
             }
-            else
-            if (flag[1] == 0)
+            catch (NullReferenceException)
             {
-                return flag;
+                _logger.LogInformation("Logging demo");
+                _logger.LogWarning("logging Warning");
+                _logger.LogError("Log Errror");
+                _logger.LogCritical("Email Log");
+                return null;
             }
-
-            return null;
-            #endregion
-
         }
+
         [HttpPost("AddLogin")]
         public int AddLogin(LoginTable loginTable)
         {
@@ -47,6 +61,7 @@ namespace DeskAPI.Controllers
             return 0;
             #endregion
         }
+
         [HttpPost("ForgetPassword")]
         public LoginTable ForgetPassword(LoginTable login)
         {
@@ -54,6 +69,7 @@ namespace DeskAPI.Controllers
             return _loginTableService.ForgetPassword(login);
             #endregion
         }
+
         [HttpPut("UpdatePassword")]
         public void UpdatePassword(LoginTable login)
         {
