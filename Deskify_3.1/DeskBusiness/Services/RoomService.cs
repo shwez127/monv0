@@ -39,5 +39,10 @@ namespace DeskBusiness.Services
         {
             return _roomRepository.GetAllRooms();
         }
+
+        public IEnumerable<Room> GetAllSeatsByFloorId1(int floorId)
+        {
+            return _roomRepository.GetSeatsByFloorId1(floorId);
+        }
     }
 }
