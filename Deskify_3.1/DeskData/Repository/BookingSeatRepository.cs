@@ -51,7 +51,19 @@ namespace DeskData.Repository
         #region GetSeatBookingById 
         public BookingSeat GetSeatBookingById(int bookseatId)
         {
-            return _db.bookingSeats.Find(bookseatId);
+
+            /*return _db.bookingSeats.Find(bookseatId);*/
+            var result = _db.bookingSeats.Include(obj => obj.Employee).Include(obj => obj.Seat).ToList();
+            foreach (var bookingSeat in result)
+            {
+                if (bookseatId == bookingSeat.BookingSeatId)
+                {
+                    return bookingSeat;
+                }
+            }
+            return null;
+
+
         }
         #endregion GetSeatBookingById
 

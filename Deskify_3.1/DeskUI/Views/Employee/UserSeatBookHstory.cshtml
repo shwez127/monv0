@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewData["Title"] = "UserSeatBookHstory";
+}
+
+@{
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+<h1>UserSeatBookHstory</h1>
+
+@model DeskEntity.Model.BookingSeat
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width-device-width" />
+    </head>
+    <body style="background-color:#F0F8FF">
+
+        <br />
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <a class="text-uppercase d-inline-block text-center" style="color:#003399;font-size:x-large" align="center"> Appointment <span class="font-weight-bold" style="font-size:x-large">Details</span></a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="example" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>BookingSeat Id</th>
+                                <th>Employee Name</th>
+                                <th>Employee Phone</th>
+                                <th>Employee Role</th>
+                                <th>FromDate</th>
+                                <th>ToDate</th>
+                                <th>Seat Number</th>
+                                <th>Seat Status</th>
+                                <th>Employee Number</th>
+                               @* <th>Food Preferences</th>
+                              
+                                <th>Action</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                                    <tr>
+
+                                        <td>@Model.BookingSeatId</td>
+                                        <td>@Model.Employee.EmployeeName</td>
+                                        <td>@Model.Employee.PhoneNumber</td>
+                                        <td>@Model.Employee.Role</td>
+                                        <td>@Model.FromDate.ToShortDateString()</td>
+                                        <td>@Model.ToDate.ToShortDateString()</td>
+                                        <td>@Model.Seat.SeatNumber</td>
+                                        @if (Model.SeatStatus == 1)
+                                        {
+                                            <td>Approved</td>
+                                        }
+                                        else if (Model.SeatStatus == 0)
+                                        {
+                                            <td>Cancelled</td>
+                                        }
+                                        @*else if (doctor.Appointment_Status == 2)
+                                        {
+                                            <td>Pending</td>
+                                        }
+                                        else if (doctor.Appointment_Status == 3)
+                                        {
+                                            <td>Completed</td>
+                                        }
+                                        else if (doctor.Appointment_Status == 4)
+                                        {
+                                            <td>Rejected</td>
+                                        }*@
+
+                                        <td>@Model.Employee.EmployeeNumber</td>
+                                       @* @if (doctor.Bill_Status == 0)
+                                        {
+                                            <td>Unpaid</td>
+                                        }
+                                        else if (doctor.Bill_Status == 1)
+                                        {
+                                            <td>Paid</td>
+                                        }
+                                        <td><a class="btn btn-info " asp-controller="Employee" asp-action="Prescription" asp-route-AppointmentId="@doctor.AppointID">Prescription</a></td>*@
+                                    </tr>
+                                
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+
