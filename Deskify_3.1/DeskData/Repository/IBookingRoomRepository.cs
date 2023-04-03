@@ -10,7 +10,7 @@ namespace DeskData.Repository
 {
     public interface IBookingRoomRepository
     {
-        void AddBookingRoom(BookingRoom bookingRoom);
+        int AddBookingRoom(BookingRoom bookingRoom);
         void UpdateBookingRoom(BookingRoom bookingRoom);
         void DeleteBookingRoom(int bookingRoomId);
 

@@ -3,6 +3,7 @@ using DeskEntity.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DeskData.Repository
@@ -15,10 +16,15 @@ namespace DeskData.Repository
             _db = db;
         }
         #region AddBookingSeat
-        public void AddSeatBooking(BookingSeat bookseat)
+        public int AddSeatBooking(BookingSeat bookseat)
         {
             _db.bookingSeats.Add(bookseat);
             _db.SaveChanges();
+            List<BookingSeat> list = new List<BookingSeat>();
+            list = _db.bookingSeats.ToList();
+            var booking1 = (from list1 in list
+                            select list1).Last();
+            return booking1.BookingSeatId;
         }
         #endregion AddBookingSeat
 
@@ -45,7 +51,19 @@ namespace DeskData.Repository
         #region GetSeatBookingById 
         public BookingSeat GetSeatBookingById(int bookseatId)
         {
-            return _db.bookingSeats.Find(bookseatId);
+
+            /*return _db.bookingSeats.Find(bookseatId);*/
+            var result = _db.bookingSeats.Include(obj => obj.Employee).Include(obj => obj.Seat).ToList();
+            foreach (var bookingSeat in result)
+            {
+                if (bookseatId == bookingSeat.BookingSeatId)
+                {
+                    return bookingSeat;
+                }
+            }
+            return null;
+
+
         }
         #endregion GetSeatBookingById
 

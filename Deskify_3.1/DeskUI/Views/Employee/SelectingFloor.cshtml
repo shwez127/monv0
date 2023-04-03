@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "SelectingFloor";
+}
+
+<h1>SelectingFloor</h1>
+
+@model DeskEntity.Model.Floor
+
+
+@{
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+
+<body style="background-image: url('https://img.freepik.com/premium-vector/good-hospital-will-have-clear-procedural-service-system-public-health-standards_1150-50288.jpg?w=1800')">
+
+    <div class="container" style="padding-top:200px;opacity:0.9">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 border p-4 shadow bg-light">
+                <div class="col-12">
+                    <h3 class="fw-normal text-secondary fs-4 text-uppercase mb-4" align="center">Select Floor to Book a Seat</h3>
+                </div>
+                <form method="post">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="control-label" for="form3Example8">Floor</label>
+                            <select class="form-control" asp-for="FloorId" asp-items="@ViewBag.FloorList" required></select>
+                        </div>
+
+                        <div class="col-12 mt-5" style="margin-left:510px">
+                            <button type="reset" class="btn btn-outline-secondary float-end me-2">Reset</button>
+                            <button type="submit" class="btn btn-primary float-end">Select Floors</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+@if (ViewBag.Status == "Ok")
+{
+    <div class="alert alert-success">
+        @ViewBag.message
+    </div>
+}
+else if (ViewBag.Status == "Error")
+{
+    <div class="alert alert-danger">
+        @ViewBag.message
+    </div>
+}

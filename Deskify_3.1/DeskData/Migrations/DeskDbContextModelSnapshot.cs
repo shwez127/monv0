@@ -275,6 +275,9 @@ namespace DeskData.Migrations
                     b.Property<string>("SeatNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
                     b.HasKey("SeatId");
 
                     b.HasIndex("FloorId");

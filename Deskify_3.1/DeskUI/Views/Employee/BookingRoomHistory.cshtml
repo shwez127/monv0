@@ -1,7 +1,57 @@
-﻿
-@{
-    ViewData["Title"] = "BookingRoomHistory";
+﻿@{
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
 }
 
 <h1>BookingRoomHistory</h1>
 
+@model IEnumerable<DeskEntity.Model.BookingRoom>
+
+
+
+<div>
+    <a asp-controller="BookingRoom" asp-action="AllRooms">Index</a>
+
+</div>
+
+
+<div class="row">
+    <div class="col-12 ">
+        <h3>Rooms</h3>
+        <hr />
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>BookingRoomID</th>
+                   @* <th>Room Status</th>*@
+                    <th>FromDate</th>
+                    <th>ToDate</th>
+
+                    <th>Meeting Hours</th>
+                    <th>RoomId</th>
+                    <th>EmployeeId</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var room in Model)
+                {
+                    <tr>
+
+                        <td>@room.BookingRoomId</td>
+                        @*<td>@room.RoomStatus</td>*@
+                        <td>@room.FromDate.ToShortDateString()</td>
+                        <td>@room.ToDate.ToShortDateString()</td>
+
+                        <td>@room.MeetingHours</td>
+                        <td>@room.RoomId</td>
+                        <td>@room.EmployeeID</td>
+
+                        <td><a asp-controller="Employee" asp-action="UpdateBookingRooms" asp-route-RoomId=@room.BookingRoomId>Edit</a></td>
+                        <td><a asp-controller="Employee" asp-action="CancelBookingRooms" asp-route-RoomId=@room.BookingRoomId>Delete</a></td>
+                    </tr>
+                }
+        </table>
+    </div>
+
+</div>

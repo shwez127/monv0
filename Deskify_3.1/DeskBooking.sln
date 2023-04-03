@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeskBusiness", "DeskBusines
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeskAPI", "DeskAPI\DeskAPI.csproj", "{EB70232D-02FB-4DEE-8764-6DC2D2EBE25B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskUI", "DeskUI\DeskUI.csproj", "{16181507-2D42-47B1-9A83-1D96536252B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeskUI", "DeskUI\DeskUI.csproj", "{16181507-2D42-47B1-9A83-1D96536252B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskAPITests", "DeskAPITests\DeskAPITests.csproj", "{1A9322F9-9EA0-487C-8963-D90C9DAC8246}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{16181507-2D42-47B1-9A83-1D96536252B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16181507-2D42-47B1-9A83-1D96536252B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16181507-2D42-47B1-9A83-1D96536252B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A9322F9-9EA0-487C-8963-D90C9DAC8246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A9322F9-9EA0-487C-8963-D90C9DAC8246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A9322F9-9EA0-487C-8963-D90C9DAC8246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A9322F9-9EA0-487C-8963-D90C9DAC8246}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

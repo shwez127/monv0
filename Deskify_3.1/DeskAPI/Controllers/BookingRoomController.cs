@@ -37,10 +37,9 @@ namespace DeskAPI.Controllers
         #region ADD ROOM
 
         [HttpPost("AddBookingRoom")]
-        public IActionResult AddBookingRoom([FromBody] BookingRoom bookingRoom)
+        public int AddBookingRoom([FromBody] BookingRoom bookingRoom)
         {
-            _bookingRoomService.AddBookingRoom(bookingRoom);
-            return Ok("BookingRoom added successfully");
+            return _bookingRoomService.AddBookingRoom(bookingRoom);
         }
         #endregion
 

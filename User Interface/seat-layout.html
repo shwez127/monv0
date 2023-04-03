@@ -26,77 +26,12 @@
     crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="main">
-        <div class="header"> 
-            <h3 id="stitle">&nbsp;&nbsp;&nbsp;Deskify_</h3>
-        </div>
-        <div class="floor p-1 mx-5">
-            <div class='box position-relative'>
-                <span class="position-absolute top-0 start-0 translate-middle"></span>
-                <span class="position-absolute top-0 start-50 translate-middle"></span>
-                <span class="position-absolute top-0 start-100 translate-middle"></span>
-                <span class="position-absolute top-100 start-0 translate-middle"></span>
-                <span class="position-absolute top-100 start-50 translate-middle"></span>
-                <span class="position-absolute top-100 start-100 translate-middle"></span>
-            </div>
-            <div class='box position-relative'>
-                <span class="position-absolute top-0 start-0 translate-middle">X</span>
-                <span class="position-absolute top-0 start-50 translate-middle">X</span>
-                <span class="position-absolute top-0 start-100 translate-middle">X</span>
-                <span class="position-absolute top-100 start-0 translate-middle">X</span>
-                <span class="position-absolute top-100 start-50 translate-middle">X</span>
-                <span class="position-absolute top-100 start-100 translate-middle">X</span>
-            </div>
-            <div class='box position-relative'>
-                <span class="position-absolute top-0 start-0 translate-middle">X</span>
-                <span class="position-absolute top-0 start-50 translate-middle">X</span>
-                <span class="position-absolute top-0 start-100 translate-middle">X</span>
-                <span class="position-absolute top-100 start-0 translate-middle">X</span>
-                <span class="position-absolute top-100 start-50 translate-middle">X</span>
-                <span class="position-absolute top-100 start-100 translate-middle">X</span>
-            </div>
-            <div class='box position-relative'>
-                <span class="position-absolute top-0 start-0 translate-middle">X</span>
-                <span class="position-absolute top-0 start-50 translate-middle">X</span>
-                <span class="position-absolute top-0 start-100 translate-middle">X</span>
-                <span class="position-absolute top-100 start-0 translate-middle">X</span>
-                <span class="position-absolute top-100 start-50 translate-middle">X</span>
-                <span class="position-absolute top-100 start-100 translate-middle">X</span>
-            </div>
-            <div class='box position-relative'>
-                <span class="position-absolute top-0 start-0 translate-middle">X</span>
-                <span class="position-absolute top-0 start-50 translate-middle">X</span>
-                <span class="position-absolute top-0 start-100 translate-middle">X</span>
-                <span class="position-absolute top-100 start-0 translate-middle">X</span>
-                <span class="position-absolute top-100 start-50 translate-middle">X</span>
-                <span class="position-absolute top-100 start-100 translate-middle">X</span>
-            </div>
-            
-        </div>
-    </div> 
-    <script src="lib/jquery.js"></script>
-    <!-- <script>
-        var count = 0;
-        var si = null;
-        function closeHandler(evt){
-            if(evt.target.tagName === "SPAN"){
-                // document.getElementsByClassName("container")[0].removeChild(event.target.parentElement);
-                $(evt.target.parentElement).hide(500);
-                // $(evt.target.parentElement).fadeOut(500);
-                
-            }
-        }
-        function init(){
-            document.getElementsByClassName("floor")[0].addEventListener("click", closeHandler);
-            si = setInterval(function(){
-                document.getElementsByClassName("floor")[0].innerHTML += "<div class='box'><span>X</span></div>"
-                count++;
-                if(count >= 6){
-                    clearInterval(si);
-                }
-            },50)
-        }
-        document.addEventListener("DOMContentLoaded", init);
-    </script> -->
+  <nav class="navbar bg-body-tertiary header">
+    <div class="container-fluid">
+    <h1 class="ctitle">
+     Deskify_
+    </h1>
+    </div>
+  </nav>
 </body>
 </html>

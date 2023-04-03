@@ -12,5 +12,7 @@ namespace DeskData.Repository
         void UpdateSeat(Seat seat);
         Seat GetSeatsById(int seatId);
         IEnumerable<Seat> GetAllSeats();
+
+        IEnumerable<Seat> GetSeatsByFloorId(int floorId);
     }
 }
