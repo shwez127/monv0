@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<h1>CancelBookingRooms</h1>
+
+
+@model DeskEntity.Model.BookingRoom
+<h1>Delete Room</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>BookingRoom Id</label>
+        <input type="text" asp-for="BookingRoomId" class="form-control"
+               placeholder="Enter Booking Room Id" required />
+    </div>
+
+
+    <input type="submit" value="Delete" class="btn btn-outline-success" />
+    <input type="reset" value="Reset" class="btn btn-outline-secondary" />
+    <hr />
+    @if (ViewBag.Status == "Ok")
+    {
+        <div class="alert alert-success">
+            @ViewBag.message;
+        </div>
+    }
+
+    else if (ViewBag.Status == "Error")
+    {
+        <div class="alert alert-danger">
+            @ViewBag.message;
+        </div>
+    }
+</form>

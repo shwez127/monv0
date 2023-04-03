@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewData["Title"] = "UserRoomBookHistory";
+}
+
+<h1>UserRoomBookHistory</h1>
+
+@{
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+@model IEnumerable<DeskEntity.Model.BookingRoom>
+
+@if (Model.Count() >= 1)
+{
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width-device-width" />
+    </head>
+    <body style="background-color:#F0F8FF">
+
+        <br />
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <a class="text-uppercase d-inline-block text-center" style="color:#003399;font-size:x-large" align="center"> Appointment <span class="font-weight-bold" style="font-size:x-large">Details</span></a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="example" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>BookingRoom Id</th>
+                                <th>Employee Name</th>
+                                <th>Employee Phone</th>
+                                <th>Employee Role</th>
+                                <th>FromDate</th>
+                                <th>ToDate</th>
+                                <th>Room Number</th>
+                                <th>Room Status</th>
+                                <th>Food Preferences</th>
+
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var bookingRoom in Model)
+                            {
+                                if (bookingRoom.RoomStatus == 1)
+                                {
+                                    <tr>
+                                        <td>@bookingRoom.EmployeeID</td>
+                                        <td>@bookingRoom.Employee.EmployeeName</td>
+                                        <td>@bookingRoom.Employee.PhoneNumber</td>
+                                        <td>@bookingRoom.Employee.Role</td>
+                                        <td>@bookingRoom.FromDate.ToShortDateString()</td>
+                                        <td>@bookingRoom.ToDate</td>
+                                        <td>@bookingRoom.Room.RoomNumber</td>
+                                        @if (bookingRoom.RoomStatus == 1)
+                                        {
+                                            <td>Approved</td>
+                                        }
+                                        else if (bookingRoom.RoomStatus == 2)
+                                        {
+                                            <td>Cancelled</td>
+                                        }
+                                        @*else if (doctor.Appointment_Status == 2)
+                            {
+                            <td>Pending</td>
+                            }
+                            else if (doctor.Appointment_Status == 3)
+                            {
+                            <td>Completed</td>
+                            }
+                            else if (doctor.Appointment_Status == 4)
+                            {
+                            <td>Rejected</td>
+                            }*@
+
+                                        <td>@bookingRoom.Employee.EmployeeNumber</td>
+                                        @* @if (doctor.Bill_Status == 0)
+                            {
+                            <td>Unpaid</td>
+                            }
+                            else if (doctor.Bill_Status == 1)
+                            {
+                            <td>Paid</td>
+                            }
+                            <td><a class="btn btn-info " asp-controller="Employee" asp-action="Prescription" asp-route-AppointmentId="@doctor.AppointID">Prescription</a></td>*@
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+}
+else
+{
+    <h2 class="container h-100 d-flex align-items-center justify-content-center" style="color:#003399;font-family:Roboto,'sans-serif';padding-top:340px">
+        You have not Booked Any Room yet
+    </h2>
+}

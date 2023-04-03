@@ -1,0 +1,138 @@
+﻿@{
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+@*@model DeskEntity.Model.BookingSeat*@
+
+
+<div>
+    <a asp-controller="Booking" asp-action="Index">Booking</a>
+
+</div>
+@*
+<form method="post" enctype="multipart/form-data">*@
+
+
+
+ 
+
+    @*<div class="form-group">
+    <label>ShiftStart</label>
+    <input type="date" asp-for="ShiftStart" class="form-control"
+    placeholder="enter seat" required />
+    </div>
+
+
+    <div class="form-group">
+    <label>ShiftEnd</label>
+    <input type="date" asp-for="ShiftEnd" class="form-control"
+    placeholder="enter seat" required />
+    </div>*@
+   
+
+@*    <div class="form-group">
+        <label>Seat</label>
+        <select asp-for="SeatId" class="form-control" asp-items="@ViewBag.seatlist" required></select>
+    </div>*@
+
+    @*<div class="form-group">
+    <label>Seat Id</label>
+    <input type="text" asp-for="@Model.SeatId" class="form-control"
+    placeholder="enter seat" required />
+    </div>
+
+    <div class="form-group">
+    <label>Employee Id</label>
+    <input type="text" asp-for="@Model.EmployeeID" class="form-control"
+    placeholder="enter seat" required />
+    </div>*@
+
+
+
+
+@*
+
+    <div class="col-12 mt-5" style="margin-left:510px">
+        <button type="reset" class="btn btn-outline-secondary float-end me-2">Reset</button>
+        <button type="submit" class="btn btn-primary float-end">Book Seat</button>
+    </div>
+*@
+
+    @*<input type="submit" value="Save" class="btn btn-outline-success" />
+    <input type="button" value="Reset" class="btn btn-outline-secondary" />*@
+    <hr />
+   @* @if (ViewBag.Status == "Ok")
+    {
+        <div class="alert alert-success">
+            @ViewBag.message;
+        </div>
+    }
+
+    else if (ViewBag.Status == "Error")
+    {
+        <div class="alert alert-danger">
+            @ViewBag.message;
+        </div>
+    }
+</form>*@
+
+@model IEnumerable<DeskEntity.Model.Seat>
+@*//this name should be the name of projects under dependencies after adding referrences in MvcUi*@
+
+
+    <body>
+        <form method="post">
+        <div class="container">
+            <center>
+                <h2 class="text-light text-center">Select Your Seat</h2>
+                <div class=" row">
+                    @{
+                        int c = 0;
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-2">
+                                    <div>
+                                        <a asp-controller="Employee" asp-action="GetSeatsByFloorId" asp-route-SeatId="@item.SeatId" class="btn">
+                                            Seat Num:@item.SeatNumber
+                                            <svg width="40" height="40" style="border-radius:50%">
+                                            <rect x="5" y="5" rx="5" ry="5" width="30" height="30"
+                                                      style="fill:green;stroke:black;stroke-width:5;opacity:0.5" />
+                                        </a>
+
+                                        @if (c == 12)
+                                        {
+                                            c = 0;
+                                            <div class="row">
+                                                <div class="col-1">
+                                                    <svg width="400" height="50">
+                                                        <rect x="5" y="5" rx="5" ry="5" width="400" height="30"
+                                                              style="fill:blue;stroke:black;stroke-width:5;opacity:0.8" />
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </div>
+
+                                    @* <img class="img-fluid" src="https://www.svgrepo.com/show/105314/table.svg" style="width:100px;height:100px;background-color:green" />
+
+                        <a asp-controller="Order" asp-action="SelectedTable" asp-route-HallTableId="@item.HallTableId" class="btn"><img class="img-fluid" src="https://www.svgrepo.com/show/105314/table.svg" style="width:100px;height:100px;background-color:green" /></a>*@
+                                
+
+                               
+
+                            </div>
+
+                        }
+                    }
+                </div>
+                <div>
+                    <br />
+                </div>
+            </center>
+        </div>
+    </form>
+    </body>
+
+
+

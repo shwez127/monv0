@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DeskEntity.Model.Choices>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <hr />
+    <a asp-controller="Choices" asp-action="AddChoices">AddChoices</a>
+    <hr />
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h3>Choices</h3>
+        <hr />
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ChoiceId</th>
+                    <th>FoodPerferences</th>
+                    <th>Data</th>
+                    <th>EmployeeID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var choices in Model)
+                {
+                    <tr>
+                        <td>@choices.ChoiceId</td>
+                        <td>@choices.FoodPerferences</td>
+                        <td>@choices.Data</td>
+                        <td>@choices.BookingSeatId</td>
+                        <td>
+                            <a asp-controller="Choices" asp-action="EditChoices" asp-route-choicesID="@choices.ChoiceId">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-controller="Choices" asp-action="DeleteChoices" asp-route-choicesID="@choices.ChoiceId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

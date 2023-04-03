@@ -3,6 +3,7 @@ using DeskEntity.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace DeskAPI.Controllers
 {
@@ -23,8 +24,15 @@ namespace DeskAPI.Controllers
         [HttpPost("AddQScanner")]
         public IActionResult AddQScanner(QRScanner qScanner)
         {
-            _qScannerService.AddQScanner(qScanner);
-            return Ok("QScanner Added Successfully");
+            try
+            {
+                _qScannerService.AddQScanner(qScanner);
+                return Ok("QScanner Added Successfully");
+            }
+            catch
+            {
+                return BadRequest(400);
+            }
         }
         #endregion
 
@@ -32,8 +40,16 @@ namespace DeskAPI.Controllers
         [HttpPut("UpdateQScanner")]
         public IActionResult UpdateQScanner([FromBody] QRScanner qScanner)
         {
-            _qScannerService.UpdateQScanner(qScanner);
-            return Ok("QScanner updated successfully");
+            try
+            {
+                _qScannerService.UpdateQScanner(qScanner);
+                return Ok("QScanner updated successfully");
+            }
+            catch
+            {
+                return BadRequest(400);
+            }
+            
         }
         #endregion
 
@@ -41,8 +57,16 @@ namespace DeskAPI.Controllers
         [HttpDelete("DeleteQScanner")]
         public IActionResult DeleteQScanner(int qScannerId)
         {
-            _qScannerService.DeleteQScanner(qScannerId);
-            return Ok("Department deleted successfully");
+            try
+            {
+                _qScannerService.DeleteQScanner(qScannerId);
+                return Ok("Department deleted successfully");
+            }
+            catch
+            {
+                return BadRequest(400);
+            }
+            
         }
         #endregion
 

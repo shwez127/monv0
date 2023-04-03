@@ -18,9 +18,9 @@ namespace DeskBusiness.Services
             _roomRepository = roomRepository;
         }
         //CRUD service operations for BookingRoom
-        public void AddBookingRoom(BookingRoom bookingRoom)
+        public int AddBookingRoom(BookingRoom bookingRoom)
         {
-            _roomRepository.AddBookingRoom(bookingRoom);
+           return _roomRepository.AddBookingRoom(bookingRoom);
         }
         public void UpdateBookingRoom(BookingRoom bookingRoom)
         {

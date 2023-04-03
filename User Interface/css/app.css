@@ -1,0 +1,433 @@
+
+html,
+body {
+  height: 100%;
+}
+
+.row1{
+  --bs-gutter-x:0 !important;
+}
+
+body {
+  background: rgb(119,6,71);
+  background: linear-gradient(231deg, rgba(119,6,71,1) 0%, rgba(13,1,47,1) 50%, rgba(27,26,26,1) 100%);
+}
+.form-login {
+  background: rgba(255, 255, 255);
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  margin: auto;
+}
+.btn-primary {
+  /* background: #f1c40f; */
+  border: 0;
+}
+.btn-primary:hover {
+  background: #d35400;
+}
+
+.btn-link {
+	text-decoration: none;
+}
+.header
+{
+	background: url(../img/bg1.jpg);
+	color: white;	
+	text-decoration: none;
+  height: 105px;
+}
+
+/* #logoContainer
+{
+	height: 86px;
+	padding: 30px;
+	transition: transform .2s;
+	width: 116px;
+	color: white;
+}
+#logoContainer:hover
+{
+	/* transform: scale(0.95); */
+
+.field{
+	height: 40px;
+	width: 100%;
+	margin-top: 20px;
+	position: relative;
+  }
+   .field input{
+	height: 100%;
+	width: 100%;
+	border-radius: 4px;
+	outline: none;
+	font-size: 17px;
+	padding-left: 20px;
+	border: 1px solid #009688;
+	transition: all 0.3s ease;
+  }
+   .field input:focus,form .field input:valid{
+	border-color: #009688;
+  }
+   .field label{
+	position: absolute;
+	top: 50%;
+	left: 20px;
+	color: #999999;
+	font-weight: 400;
+	font-size: 17px;
+	pointer-events: none;
+	transform: translateY(-50%);
+	transition: all 0.3s ease;
+  }
+  form .field input:focus ~ label,
+  form .field input:valid ~ label{
+	top: 0%;
+	font-size: 16px;
+	color: #009688;
+	background: #fff;
+	transform: translateY(-50%);
+  }
+
+  .navbar-dark .nav-item .nav-link {
+	color: #fff;
+  }
+  
+  .navbar-dark .nav-item .nav-link:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+	transition: all 0.3s ease;
+	border-radius: 0.25rem;
+	color: #fff;
+  }
+  .notification{
+    float: right;
+    width: 280px;
+    height: 966px;
+    background-color: lightgray ;
+    padding: 10px;
+}
+.noti{
+    font-weight: bold;
+    justify-content: space-around;
+}
+.notif{
+	background: rgba(255,255,255,0.1)
+}
+
+.anchbtn {
+    text-decoration: none;
+    color: white;
+}
+.anchbtn:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.recc {
+  
+}
+.ctitle {
+  font-family:'Roboto','sans-serif';
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+
+}
+
+
+.bnav,
+.bnav:after,
+.bnav:before {
+  background: #ffffff;
+  border-radius: 1px;
+  content: "";
+  cursor: pointer;
+  display: block;
+  height: 3px;
+  transition: background 0.1s ease-in-out, color 0.1s ease-in-out;
+  width: 24px;
+}
+.bnav {
+  position: relative;
+}
+.bnav:before {
+  position: absolute;
+  top: -7.5px;
+  width: 24px;
+}
+.bnav:after {
+  bottom: -7.5px;
+  position: absolute;
+  width: 16px;
+}
+
+.bnav-right,
+.bnav-right:after,
+.bnav-right:before {
+  right: 0;
+}
+
+.sbody {
+  display: flex;
+  justify-content: center;
+}
+
+.indicator {
+  background: #3b7ddd;
+  border-radius: 50%;
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.05);
+  color: #fff;
+  display: block;
+  font-size: 0.675rem;
+  height: 18px;
+  padding: 1px;
+  position: absolute;
+  right: -8px;
+  text-align: center;
+  top: 0;
+  transition: top 0.1s ease-out;
+  width: 18px;
+}
+/* Style the dropdown button */
+.dropbtn {
+  background-color: rgba(255,255,255,0);
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Style the badge */
+.badge {
+  background-color: red;
+  color: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 40px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  border: 1px solid #ddd;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+.card {
+  width: 300px;
+  height: 200px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.card-content {
+  padding: 20px;
+}
+.card-title {
+  font-family:'Roboto','sans-serif';
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.card-description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+.card-button {
+  font-family:'Roboto','sans-serif';
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.card-button:hover {
+  background-color: #615f5f;
+  color: #fff;
+}
+
+.card-btn {
+  font-family:'Roboto','sans-serif';
+  background-color: #ffffff00;
+  font-size: 24px;
+  color: #fff;
+  text-decoration: none;
+}
+#date-picker {
+  width: 200px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* .floor{
+ 
+  height: 400px;
+  overflow: auto;
+  background-color: cadetblue;
+  border: 1px solid transparent;
+  margin: 100px auto;
+}
+.floor .box{
+  height: 100px;
+  width: 200px;
+  background-color: rgb(191, 224, 225);
+  border: 1px solid transparent;
+  float: left;
+  margin: 25px;
+}
+.floor .box span{
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: rgb(49, 227, 129,0.8);
+  /* border: 1px solid transparent; 
+  float: right;
+  color : white;
+  text-align: center;
+  vertical-align: 20px;
+}
+.floor .box span:hover{
+  background-color: rgb(250, 7, 7);
+  cursor: pointer;
+}*/
+/* @media screen and (max-width: 490px)
+{
+	.card
+	{
+		flex-direction: column-reverse;
+	}
+
+} */
+/* @media screen and (max-width:576px) {
+  .card{
+    width: 250px!important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+} */
+
+.sidebar {
+  font-family:'Roboto','sans-serif';
+
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+#mySidebar {
+  width:250px
+}
+
+.alink {
+  text-decoration: none;
+}
