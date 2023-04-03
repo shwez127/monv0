@@ -165,6 +165,7 @@ namespace DeskUI.Controllers
             return View(employee);
             #endregion
         }
+
         [HttpPost]
         public async Task<IActionResult> EditEmployee(Employee employee)
         {
@@ -183,7 +184,7 @@ namespace DeskUI.Controllers
                         if (response.StatusCode == System.Net.HttpStatusCode.OK)
                         {   //dynamic viewbag we can create any variable name in run time
                             ViewBag.status = "Ok";
-                            ViewBag.message = "Employees Details Updated Successfully!!";
+                            ViewBag.message = "Employees Details Updated Successfully";
                         }
 
                         else
