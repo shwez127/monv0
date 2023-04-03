@@ -31,7 +31,9 @@ namespace DeskData.Data
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
 
-           dbContextOptionsBuilder.UseSqlServer("Data Source=DESKTOP-SSFI2H6\\SQLEXPRESS;Initial Catalog=deskdb; Integrated Security=true; ");
+
+           dbContextOptionsBuilder.UseSqlServer("Data Source=DESKTOP-TQ40A7V;Initial Catalog=deskdb501; Integrated Security=true; ");
+
 
         }
     }
