@@ -31,7 +31,7 @@
    
 
     <div class="form-group">
-        <label>Floor</label>
+        <label>Seat</label>
         <select asp-for="SeatId" class="form-control" asp-items="@ViewBag.seatlist" required></select>
     </div>
 
@@ -49,12 +49,12 @@
 
     <div class="col-12 mt-5" style="margin-left:510px">
         <button type="reset" class="btn btn-outline-secondary float-end me-2">Reset</button>
-        <button type="submit" class="btn btn-primary float-end">Select Floors</button>
+        <button type="submit" class="btn btn-primary float-end">Book Seat</button>
     </div>
 
 
-    <input type="submit" value="Save" class="btn btn-outline-success" />
-    <input type="button" value="Reset" class="btn btn-outline-secondary" />
+    @*<input type="submit" value="Save" class="btn btn-outline-success" />
+    <input type="button" value="Reset" class="btn btn-outline-secondary" />*@
     <hr />
     @if (ViewBag.Status == "Ok")
     {

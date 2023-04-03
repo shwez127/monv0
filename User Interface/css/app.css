@@ -3,14 +3,18 @@ html,
 body {
   height: 100%;
 }
+
+.row1{
+  --bs-gutter-x:0 !important;
+}
+
 body {
-  background: url(../img/bg.jpg);
-  background-size: cover;
+  background: rgb(119,6,71);
+  background: linear-gradient(231deg, rgba(119,6,71,1) 0%, rgba(13,1,47,1) 50%, rgba(27,26,26,1) 100%);
 }
 .form-login {
-  background: rgba(212, 210, 210, 0.3);
+  background: rgba(255, 255, 255);
   border-radius: 20px;
-  
   padding: 20px;
   position: relative;
   margin: auto;
@@ -26,18 +30,6 @@ body {
 .btn-link {
 	text-decoration: none;
 }
-
-.labform {
-	width: 500px;
-	margin: auto;
-	
-	
-}
-.inpform {
-	width: 250px;
-	margin: auto;
-}
-
 .header
 {
 	background: url(../img/bg1.jpg);
@@ -107,11 +99,6 @@ body {
 	border-radius: 0.25rem;
 	color: #fff;
   }
-  
-  .fa-li {
-	position: relative;
-	left: 0;
-  }
   .notification{
     float: right;
     width: 280px;
@@ -143,43 +130,6 @@ body {
   font-family:'Roboto','sans-serif';
 }
 
-
-.sidebar {
-  font-family:'Roboto','sans-serif';
-
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidebar a:hover {
-  color: #f1f1f1;
-}
-
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
 .openbtn {
   font-size: 20px;
   cursor: pointer;
@@ -198,11 +148,6 @@ body {
 
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-}
 
 .bnav,
 .bnav:after,
@@ -229,11 +174,7 @@ body {
   position: absolute;
   width: 16px;
 }
-.sidebar-toggle:hover .bnav,
-.sidebar-toggle:hover .bnav:after,
-.sidebar-toggle:hover .bnav:before {
-  background: #3b7ddd;
-}
+
 .bnav-right,
 .bnav-right:after,
 .bnav-right:before {
@@ -376,7 +317,7 @@ body {
   border: 1px solid #ccc;
 }
 
-.floor{
+/* .floor{
  
   height: 400px;
   overflow: auto;
@@ -397,7 +338,7 @@ body {
   height: 20px;
   border-radius: 20px;
   background-color: rgb(49, 227, 129,0.8);
-  /* border: 1px solid transparent; */
+  /* border: 1px solid transparent; 
   float: right;
   color : white;
   text-align: center;
@@ -406,11 +347,87 @@ body {
 .floor .box span:hover{
   background-color: rgb(250, 7, 7);
   cursor: pointer;
-}
- /* @media screen and (max-width: 490px)
+}*/
+/* @media screen and (max-width: 490px)
 {
 	.card
 	{
 		flex-direction: column-reverse;
 	}
-*/
+
+} */
+/* @media screen and (max-width:576px) {
+  .card{
+    width: 250px!important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+} */
+
+.sidebar {
+  font-family:'Roboto','sans-serif';
+
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+#mySidebar {
+  width:250px
+}
+
+.alink {
+  text-decoration: none;
+}

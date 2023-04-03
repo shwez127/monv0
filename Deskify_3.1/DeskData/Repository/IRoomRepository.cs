@@ -12,5 +12,7 @@ namespace DeskData.Repository
         void UpdateRoom(Room room);
         Room GetRoomsById(int roomId);
         IEnumerable<Room> GetAllRooms();
+
+        IEnumerable<Room> GetSeatsByFloorId1(int floorId);
     }
 }

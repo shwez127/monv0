@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5" />
+  <meta name="author" content="AdminKit" />
+  <meta name="keywords"
+    content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+
+  <link rel="canonical" href="https://demo-basic.adminkit.io/" />
+
+  <title>Deskify_</title>
+
+  <link href="css/app.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div>
+      <nav class="navbar bg-body-tertiary  header">
+        <div class="container-fluid">
+          <h1 class="ctitle">Deskify_</h1>
+          <div class="d-flex">
+            <a href="#"> <button class="dropbtn">
+                <i class="fa fa-bell"></i>
+                <a href="">
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bell"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                  </svg>
+                </a>
+
+              </button>
+            </a>
+            <a href="view-records.html" class="card-btn"> <button class="dropbtn">
+                <a href="profile.html">
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                    class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path fill-rule="evenodd"
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                  </svg>
+                </a>
+              </button>
+            </a>
+            <a href="seat-booked.html" class="card-btn"> <button class="dropbtn">
+
+                <a href="login.html"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-log-out">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                  </svg></a>
+              </button></a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- <div class="header row position-relative">
+      <div class="col-md-4 col-sm-4 col-4">
+        <br />
+        <h3 id="stitle">&nbsp;&nbsp;&nbsp;Deskify_</h3>
+      </div>
+      <br>
+      <div class="col-md-2 col-sm-2 col-4 ms-auto">
+        <br>
+        <div class="row">
+
+          <div class="dropdown col-md-3 col-sm-3 col-3 ms-auto">
+            <button class="dropbtn">
+              <i class="fa fa-bell"></i>
+              <a href="">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bell"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                </svg>
+              </a>
+              
+            </button>
+            <div class="dropdown-content position-absolute end-0">
+              <a href="#">Notification 1</a>
+              <a href="#">Notification 2</a>
+              <a href="#">Notification 3</a>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-2 col-2">
+            <button class="dropbtn">
+              <a href="profile.html">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                  <path fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                </svg>
+              </a>
+            </button>
+          </div>
+          <div class="col-md-2 col-sm-2 col-2 me-4">
+            <button class="dropbtn">
+
+              <a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg></a>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div> -->
+  </div>
+
+  <div class="row row1 d-flex flex-column-reverse flex-sm-column-reverse flex-md-row justify-content-md-end ">
+    <div class="card col-md-3 offest-md-1 col-8 mx-auto mt-4  text-center mb-4">
+      <div class="card-content">
+        <h2 class="card-title">Status</h2>
+        <p class="card-description"></p>
+      </div>
+
+      <div class="row">
+        <div class="card col-md-10 col-10 mb-4 mx-auto">
+          <div class="card-content">
+            <h2 class="card-title">Approved</h2>
+            <p class="card-description"></p>
+            <a href="#" class="card-button">0</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card col-md-10 col-10 mb-4 mx-auto">
+          <div class="card-content">
+            <h2 class="card-title">Pending</h2>
+            <p class="card-description"></p>
+            <a href="#" class="card-button">1</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card col-md-10 col-10 mb-4 mx-auto">
+          <div class="card-content">
+            <h2 class="card-title">Rejected</h2>
+            <p class="card-description"></p>
+            <a href="#" class="card-button">0</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7 col-8 mx-auto text-center text-black">
+      <h1 class="ctitle">Hi, Pavan</h1>
+      <h1 class="ctitle">Today, March 28, 2023</h1>
+      <div class="row">
+        <div class="card col-md-7 mb-4 mx-auto">
+          <div class="card-content">
+            <h1 class="card-title">Your seating for today</h1>
+            <h1 class="card-title">Your desk is F11 at first floor</h1>
+            <a href="seat-pass.html" class="card-button">View Seat Pass</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card col-md-7 mb-4 mx-auto">
+          <div class="card-content">
+            <h1 class="card-title">Your meeting room for today</h1>
+            <h1 class="card-title">Your chair is 4A at first floor</h1>
+            <a href="meeting-pass.html" class="card-button">View Meeting Pass</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card col-md-7 mb-4 mx-auto">
+          <div class="card-content">
+            <a href="seat-booking.html" class="card-button">Book a seat</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
