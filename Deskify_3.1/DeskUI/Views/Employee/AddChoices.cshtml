@@ -1,0 +1,36 @@
+﻿@model DeskEntity.Model.Choices;
+@{
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "AddChoices";
+}
+
+<h1>Food Preferences</h1>
+
+<form method="post" enctype="multipart/form-data">
+<div class="form-group">
+    <label style="color:#003399;font-size:20px">Opting for food in office?</label>
+    <select asp-for="FoodPerferences" asp-items="@ViewBag.choices" class="form-control" required></select>
+</div>
+
+<div class="col-12 mt-5" style="margin-left:510px">
+    <button type="reset" class="btn btn-outline-secondary float-end me-2">Reset</button>
+    <button type="submit" class="btn btn-primary float-end">Book Seat</button>
+</div>
+    <hr />
+    @if (ViewBag.Status == "Ok")
+    {
+        <div class="alert alert-success">
+            @ViewBag.message;
+        </div>
+    }
+
+    else if (ViewBag.Status == "Error")
+    {
+        <div class="alert alert-danger">
+            @ViewBag.message;
+        </div>
+    }
+</form>

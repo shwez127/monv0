@@ -16,6 +16,8 @@ namespace DeskEntity.Model
 
         public string SeatNumber { get; set; }
 
+        public bool Status { get; set; }
+
         [ForeignKey("Floor")]
         public int FloorId { get; set; }
         public Floor Floor { get; set; }
