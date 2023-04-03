@@ -4,121 +4,132 @@
 @{
     ViewData["Title"] = "EmployeeRegister1";
 }
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="~/css/site4.css" />
-<body style="background:-webkit-linear-gradient(left, #3931af, #00c6ff)">
-    <form method="post">
 
-        <div class="row register" style="margin-top:5px">
-            <div class="col-md-3 register-left">
-                <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-                <h3>Welcome</h3>
-                <p>You are 30 seconds away from taking your valuable service!</p><br />
-                <input asp-controller="LoginTable" asp-action="Index" type="submit" name="" value="Login" />
-                <p>If you already have an account?</p><br />
-            </div>
-            <div class="col-md-9 register-right">
-                <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee Registration</a>
-                    </li>
-                    @*<li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Doctor</a>
-                    </li>*@
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h3 class="register-heading">Register as an Employee</h3>
-                        <div class="row register-form">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" asp-for="EmployeeName" class="form-control" placeholder="Name *" value="" />
+<html>
+<body style="background:-webkit-linear-gradient(left, #fff, #000)">
+<section class="vh-70 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                        <form method="post">
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                            <input required type="text" placeholder="" asp-for="EmployeeName" id="Name" class="form-control form-control-lg" />
+                                        <label class="form-label" for="Name">Employee Name <span style="color:red">*</span></label>
+                                    </div>
+
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" asp-for="LoginTable.Email" class="form-control" placeholder="Your Email *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" asp-for="LoginTable.Password" class="form-control" placeholder="Password *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input asp-for="SecurityQuestion" type="text" class="form-control" placeholder="Security code *" value="" />
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <input required type="text" placeholder="" asp-for="EmployeeID" id="empId" class="form-control form-control-lg" />
+                                            <label class="form-label" for="empId">Employee ID <span style="color:red">*</span></label>
+                                    </div>
+
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <select asp-for="Gender" class="form-control" asp-items="@ViewBag.genderlist" required></select>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline w-100">
+                                        <input type="text" required="" pattern="[0-9]{10}" value="" title='Please enter a valid 10 digit phone number.'  placeholder="" asp-for="PhoneNumber" class="form-control form-control-lg" id="phone" />
+                                        <label for="phone" class="form-label">Phone Number <span style="color:red">*</span></label>
+                                    </div>
+
                                 </div>
-                                <div class="form-group">
-                                    @*<input asp-for="Patient.Phone" type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />*@
-                                    <input asp-for="PhoneNumber" type="number" class="form-control" placeholder="Phone No *" value="" />
+                                <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                        <input type="text" placeholder="" asp-for="Role" id="role" class="form-control form-control-lg" />
+                                        <label class="form-label" for="role">Role <span style="color:red">*</span></label>
+                                    </div>
+
                                 </div>
-                                <div class="form-group">
-                                    <input asp-for="Role" type="text" class="form-control" placeholder="Your Role *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input asp-for="EmployeeNumber" type="text" class="form-control" placeholder="Your Employee ID *" value="" />
-                                </div>
-                                <input onclick="myfunction()" asp-route-Type="0" type="submit" class="btnRegister" value="Register" />
                             </div>
-                        </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <div class="form-outline">
+                                            <input required type="email" placeholder="" asp-for="LoginTable.Email" id="emailAddress" class="form-control form-control-lg" />
+                                            <label class="form-label" for="emailAddress">Email <span style="color:red">*</span></label>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <div class="form-outline">
+                                            <input required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title='Please enter atleast 6 characters, 1 uppercase, 1 lowercase and 1 number.'  type="password" asp-for="LoginTable.Password" id="password" class="form-control form-control-lg" />
+                                         <label class="form-label" for="password">Password <span style="color:red">*</span></label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <input required type="text" asp-for="SecurityQuestion" id="question" class="form-control form-control-lg" />
+                                            <label class="form-label" for="question">What city were you born in? <span style="color:red">*</span></label>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                            <select class="form-control form-control-lg" asp-for="Gender">
+                                                <option>Select</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                                <option value="O">Others</option>   
+                                            </select>
+                                            <label class="form-label" for="gender">Gender <span style="color:red">*</span></label>
+                                    </div>                                 
+                                </div>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="checkbox" id="checkbox" required />
+                                <span>
+                                    I have read and agree to Deskify 
+                                    <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+                                        User Agreement
+                                    </a>and
+                                    <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+                                        Privacy Policy.
+                                    </a>
+                                </span>
+                            </div>
+                            <center>
+                                <div class="mt-4 pt-2">
+                                        <input class="btn btn-dark btn-lg" type="submit" asp-route-Type="0" value="Register" />
+                                </div>
+                                <br />
+                                <div>
+                                     Already have an account?
+                                     <a asp-controller="LoginTable" asp-action="Index">
+                                         <span class="right-label">Login</span>
+                                     </a>
+                                </div>
+                            </center>
+
+                            </form>
+                            
                     </div>
-                    @*<div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <h3 class="register-heading">Register as a Doctor</h3>
-                    <div class="row register-form">
-                    <div class="col-md-4">
-                    <div class="form-group">
-                    <input type="text" asp-for="Doctor.Name" class="form-control" placeholder="Name *" value="" />
-                    </div>
-                    <div class="form-group">
-                    <input asp-for="Doctor.Address" type="text" class="form-control" placeholder="Address *" value="" />
-                    </div>
-                    <div class="form-group">
-                    <input asp-for="Doctor.LoginTable.Email" type="email" class="form-control" placeholder="Email *" value="" />
-                    </div>
-                    <div class="form-group">
-                    <input asp-for="Doctor.LoginTable.Password" type="password" class="form-control" placeholder="Password *" value="" />
-                    </div>
-                    </div>
-                    <div class="col-md-4">
-                    <div class="form-group">
-                    <input asp-for="Doctor.Specialization" type="text" class="form-control" placeholder="Specilization *" value="" />
-                    </div>
-                    <div class="form-group">
-                    <input asp-for="Doctor.Qualification" type="text" class="form-control" placeholder="Qualification *" value="" />
-                    </div>
-                    <div class="form-group">
-                    <select asp-for="Doctor.Gender" class="form-control" asp-items="@ViewBag.genderlist" required></select>
-                    </div>
-                    <div class="form-group">
-                    <input asp-for="Doctor.BirthDate" type="date" class="form-control" placeholder="Birth Date *" value="" />
-                    </div>
-                    </div>
-                    <div class="col-md-4">
-                    <div class="form-group">
-                    <input asp-for="Doctor.Phone" type="text" class="form-control" placeholder="Phone No *" value="" />
-                    </div>
-                    <div class="form-group">
-                    <select asp-for="Doctor.Deptno" class="form-control" asp-items="@ViewBag.Departmentlist" required></select>
-                    </div>
-                    <div class="form-group">
-                    <input asp-for="Doctor.Charges_Per_Visit" type="text" class="form-control" placeholder="Charges Per Visit *" value="" />
-                    </div>
-                    <div class="form-group">
-                    <input asp-for="Doctor.Work_Experience" type="text" class="form-control" placeholder="Work Experience *" value="" />
-                    </div>
-                    <input onclick="myfunction()" type="submit" asp-route-Type="1" class="btnRegister" value="Register" />
-                    </div>
-                    </div>
-                    </div>*@
-                </div>
-            </div>
+              </div>
+           </div>
         </div>
-    </form>
+    </div>
+</section>
     <script>
         function myfunction() {
             alert("Registerd Succesfully!")
         }
     </script>
 </body>
+</html>
