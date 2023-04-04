@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -129,11 +130,10 @@ namespace DeskUI.Controllers
             #endregion
         }
 
-        [HttpGet]
         public async Task<IActionResult> EditEmployee(int employeeId)
         {
             #region Editing/Updating Employee Get Method to View
-            employeeId = 5;
+            //employeeId = 5;
             Employee employee = null;
             try
             {
@@ -173,6 +173,12 @@ namespace DeskUI.Controllers
             ViewBag.status = "";
             try
             {
+                if (Request.Form.Files.Count > 0)
+                {
+                    MemoryStream ms = new MemoryStream();
+                    Request.Form.Files[0].CopyTo(ms);
+                    employee.Image = ms.ToArray();
+                }
                 //using grabage collection only for inbuilt classes
                 using (HttpClient client = new HttpClient())
                 {
@@ -185,6 +191,7 @@ namespace DeskUI.Controllers
                         {   //dynamic viewbag we can create any variable name in run time
                             ViewBag.status = "Ok";
                             ViewBag.message = "Employees Details Updated Successfully";
+                            return RedirectToAction("Profile", "Employee");
                         }
 
                         else
@@ -551,6 +558,7 @@ namespace DeskUI.Controllers
                     }
                 }
             }
+
             List<SelectListItem> floor = new List<SelectListItem>();
 
             //fetching the departments and adding to the Viewbag for selecting appointment
@@ -721,7 +729,6 @@ namespace DeskUI.Controllers
         }
 
         [HttpPut]
-
         public async Task<IActionResult> UpdateBookingRooms(BookingRoom bookingRoom)
         {
             ViewBag.status = "";
@@ -792,6 +799,7 @@ namespace DeskUI.Controllers
             return View();
         }
         #endregion BookingRegion
+
         public async Task<IActionResult> SelectingFloor()
         {
             #region Selecting the floor

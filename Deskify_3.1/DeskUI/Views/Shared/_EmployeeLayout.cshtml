@@ -23,12 +23,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="Profile">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="EditEmployee">Edit Details</a>
-                        </li>
+
                         <li class="nav-item">
 
                             <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="BookingSeat">BookSeat</a>
@@ -43,15 +38,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="BookingRoomHistory">BookRoomHistory</a>
                         </li>*@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="UserSeatBookHstory">UserSeatBookHistory</a>
+                       @* <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="UserSeatBookHstory">UserSeatBookHistory</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="UserRoomBookHistory">UserRoomBookHistory</a>
-                        </li>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="UserRoomBookHistory">UserRoomBookHistory</a>
+                        </li>*@
                     </ul>
                 </div>
-                <div class="btn-group">
+                <div class="nav-item">
+                    <a class="nav-link text-uppercase" asp-area="" asp-controller="" asp-action="" style="font-size:large">
+                        <img class="img-fluid" style="height:28px" src="https://www.svgrepo.com/show/18861/bell.svg">
+                    </a>
+                </div>
+                <div class="nav-item">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#f0f8ff"><img class="img-fluid" style="height:28px" src="https://www.svgrepo.com/show/213315/avatar-profile.svg"></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" asp-area="" asp-controller="Employee" asp-action="Profile"><img class="img-fluid" style="height:20px" src="https://www.svgrepo.com/show/318484/profile.svg">&nbsp; Profile</a>
@@ -75,7 +75,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>

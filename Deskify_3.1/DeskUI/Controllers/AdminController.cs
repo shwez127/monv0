@@ -521,6 +521,7 @@ namespace DeskUI.Controllers
             return View(employee);
             #endregion
         }
+
         [HttpPost]
         public async Task<IActionResult> EditEmployee(Employee employee)
         {

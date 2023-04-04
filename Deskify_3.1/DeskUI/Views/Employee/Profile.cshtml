@@ -7,11 +7,11 @@
     <style>
         .gradient-custom {
             /* fallback for old browsers */
-            background: #000000;
+            background: #050D0F;
             /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(right, #ffffff, #000000);
+            background: -webkit-linear-gradient(to right bottom, #ffffff, #050D0F);
             /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(right, #ffffff, #000000)
+            background: linear-gradient(left, #050D0F, #ffffff);
         }
 
     </style>
@@ -25,10 +25,18 @@
                         <div class="row g-0 ">
                             <div class="col-md-4 gradient-custom text-center text-black"
                                  style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                                <img src="https://www.pngrepo.com/png/284208/180/patient.png"
-                                     alt="Avatar" class="img-fluid my-5" style="width: 110px;" />                               
+                                @if(Model.Image==null)
+                                {
+                                    <img src="https://www.svgrepo.com/show/57853/avatar.svg" alt="Avatar" class="img-fluid my-5" style="width:120px;" />
+                                }
+                                else
+                                {
+                                    string imageBase64Data = Convert.ToBase64String(Model.Image);
+                                    string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
+                                    <img src="@imageDataURL" alt="Avatar" class="img-fluid my-5" style="width:120px;height:120px;border-radius:50%" />
+                                }
                                 <h5 class="text-white">@Model.EmployeeName</h5>
-                                <a asp-controller="Employee" asp-action="EditEmployee" asp-route-employeeId="@Model.EmployeeID"><i class="far fa-edit mb-5 text-white"></i></a>
+                                <a asp-controller="Employee" asp-action="EditEmployee" asp-route-employeeId="@Model.EmployeeID"><i class="far fa-edit mb-5" style="color:#ADD8E6"></i></a>
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body p-4">
