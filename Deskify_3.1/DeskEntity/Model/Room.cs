@@ -12,6 +12,7 @@ namespace DeskEntity.Model
         [Key]
         public int RoomId { get; set; }
         public string RoomNumber { get; set; }
+        public bool RStatus { get; set; }
 
         [ForeignKey("Floor")]
         public int FloorId { get; set; }
