@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -129,11 +130,10 @@ namespace DeskUI.Controllers
             #endregion
         }
 
-        [HttpGet]
         public async Task<IActionResult> EditEmployee(int employeeId)
         {
             #region Editing/Updating Employee Get Method to View
-            employeeId = 5;
+            //employeeId = 5;
             Employee employee = null;
             try
             {
@@ -173,6 +173,12 @@ namespace DeskUI.Controllers
             ViewBag.status = "";
             try
             {
+                if (Request.Form.Files.Count > 0)
+                {
+                    MemoryStream ms = new MemoryStream();
+                    Request.Form.Files[0].CopyTo(ms);
+                    employee.Image = ms.ToArray();
+                }
                 //using grabage collection only for inbuilt classes
                 using (HttpClient client = new HttpClient())
                 {
@@ -185,6 +191,7 @@ namespace DeskUI.Controllers
                         {   //dynamic viewbag we can create any variable name in run time
                             ViewBag.status = "Ok";
                             ViewBag.message = "Employees Details Updated Successfully";
+                            return RedirectToAction("Profile", "Employee");
                         }
 
                         else
@@ -243,7 +250,9 @@ namespace DeskUI.Controllers
             }
             List<SelectListItem> floor = new List<SelectListItem>();
 
-            //fetching the departments and adding to the Viewbag for selecting appointment
+            //fetching the departments and adding to the Viewbag for selecting Floor
+
+
             floor.Add(new SelectListItem { Value = null, Text = "Select Floor" });
             foreach (var item in floors)
             {
@@ -258,10 +267,12 @@ namespace DeskUI.Controllers
         
         [HttpPost]
         public async Task<IActionResult> BookingSeat(BookingSeat bookingSeat)
-        {       
+        {   
+
+          
             bookingSeat.EmployeeID = Convert.ToInt32(TempData["EmployeeID"]);
             TempData.Keep();
-            bookingSeat.SeatId = 26;
+            bookingSeat.SeatId = 1;
             TempData["floorId"] = bookingSeat.Seat.FloorId;
             bookingSeat.Seat = null;
             int bookingSeatId = 0;
@@ -295,9 +306,56 @@ namespace DeskUI.Controllers
       
         public async Task<IActionResult> GetSeatsByFloorId(int SeatId)
         {
+            
             if(SeatId != 0)
             {
+               
                 BookingSeat bookingSeat1 = new BookingSeat();
+                Seat seat = new Seat();
+              
+                // Availabel and unavailabel
+
+                using (HttpClient client = new HttpClient())
+                {
+                    string endPoint = _configuration["WebApiBaseUrl"] + "Seat/GetSeatsById?seatId=" + SeatId;
+                    //EmployeeId is apicontroleer passing argument name//api controller name and httppost name given inside httppost in Employeecontroller of api
+                    using (var response = await client.GetAsync(endPoint))
+                    {
+                        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                        {   //dynamic viewbag we can create any variable name in run time
+                            var result = await response.Content.ReadAsStringAsync();
+                           seat = JsonConvert.DeserializeObject<Seat>(result);
+                        }
+                    }
+                }
+
+                seat.Status = true;
+
+                // Updating in seat table
+
+
+                using (HttpClient client = new HttpClient())
+                {
+                    StringContent content = new StringContent(JsonConvert.SerializeObject(seat), Encoding.UTF8, "application/json");
+                    string endPoint = _configuration["WebApiBaseUrl"] + "Seat/UpdateSeat";
+                    using (var response = await client.PutAsync(endPoint, content))
+                    {
+                        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                        {
+                            ViewBag.status = "Ok";
+
+                        }
+                        else
+                        {
+                            ViewBag.status = "Error";
+                            ViewBag.message = "Wrong Entries";
+                        }
+                    }
+                }
+
+
+
+
                 bookingSeat1.SeatStatus = 0;
                 using (HttpClient client = new HttpClient())
                 {
@@ -315,6 +373,7 @@ namespace DeskUI.Controllers
 
                 bookingSeat1.SeatId = SeatId;
                 bookingSeat1.SeatStatus = 1;
+                
                 using (HttpClient client = new HttpClient())
                 {
                     StringContent content = new StringContent(JsonConvert.SerializeObject(bookingSeat1), Encoding.UTF8, "application/json");
@@ -325,7 +384,6 @@ namespace DeskUI.Controllers
                         {
                             ViewBag.status = "Ok";
                             ViewBag.message = "Booking Seat Added!!";
-                            
                             return RedirectToAction("AddChoices", "Employee");
 
 
@@ -500,6 +558,7 @@ namespace DeskUI.Controllers
                     }
                 }
             }
+
             List<SelectListItem> floor = new List<SelectListItem>();
 
             //fetching the departments and adding to the Viewbag for selecting appointment
@@ -754,7 +813,6 @@ namespace DeskUI.Controllers
         }
 
         [HttpPut]
-
         public async Task<IActionResult> UpdateBookingRooms(BookingRoom bookingRoom)
         {
             ViewBag.status = "";
@@ -825,6 +883,7 @@ namespace DeskUI.Controllers
             return View();
         }
         #endregion BookingRegion
+
         public async Task<IActionResult> SelectingFloor()
         {
             #region Selecting the floor
