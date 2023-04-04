@@ -9,10 +9,8 @@
     Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
 }
 
-@model IEnumerable<DeskEntity.Model.BookingRoom>
+@model DeskEntity.Model.BookingRoom
 
-@if (Model.Count() >= 1)
-{
     <!DOCTYPE html>
     <html>
     <head>
@@ -23,7 +21,7 @@
         <br />
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a class="text-uppercase d-inline-block text-center" style="color:#003399;font-size:x-large" align="center"> Appointment <span class="font-weight-bold" style="font-size:x-large">Details</span></a>
+                <a class="text-uppercase d-inline-block text-center" style="color:#003399;font-size:x-large" align="center"> Room Booked <span class="font-weight-bold" style="font-size:x-large">Details</span></a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -38,58 +36,36 @@
                                 <th>ToDate</th>
                                 <th>Room Number</th>
                                 <th>Room Status</th>
-                                <th>Food Preferences</th>
-
-                                <th>Action</th>
+                                <th>Employee Number</th>
+                            
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var bookingRoom in Model)
-                            {
-                                if (bookingRoom.RoomStatus == 1)
-                                {
+                          
                                     <tr>
-                                        <td>@bookingRoom.EmployeeID</td>
-                                        <td>@bookingRoom.Employee.EmployeeName</td>
-                                        <td>@bookingRoom.Employee.PhoneNumber</td>
-                                        <td>@bookingRoom.Employee.Role</td>
-                                        <td>@bookingRoom.FromDate.ToShortDateString()</td>
-                                        <td>@bookingRoom.ToDate</td>
-                                        <td>@bookingRoom.Room.RoomNumber</td>
-                                        @if (bookingRoom.RoomStatus == 1)
+                                        <td>@Model.BookingRoomId</td>
+                                        <td>@Model.Employee.EmployeeName</td>
+                                        <td>@Model.Employee.PhoneNumber</td>
+                                        <td>@Model.Employee.Role</td>
+                                        <td>@Model.FromDate.ToShortDateString()</td>
+                                        <td>@Model.ToDate.ToShortDateString()</td>
+                                        <td>@Model.Room.RoomNumber</td>
+                                        @if (Model.RoomStatus == 1)
                                         {
                                             <td>Approved</td>
                                         }
-                                        else if (bookingRoom.RoomStatus == 2)
+                                        else if (Model.RoomStatus == 0)
                                         {
-                                            <td>Cancelled</td>
+                                            <td>Rejected</td>
                                         }
-                                        @*else if (doctor.Appointment_Status == 2)
-                            {
-                            <td>Pending</td>
-                            }
-                            else if (doctor.Appointment_Status == 3)
-                            {
-                            <td>Completed</td>
-                            }
-                            else if (doctor.Appointment_Status == 4)
-                            {
-                            <td>Rejected</td>
-                            }*@
+                                        else if (Model.RoomStatus == 2)
+                                        {
+                                            <td>Pending</td>
+                                        }
+                                        
 
-                                        <td>@bookingRoom.Employee.EmployeeNumber</td>
-                                        @* @if (doctor.Bill_Status == 0)
-                            {
-                            <td>Unpaid</td>
-                            }
-                            else if (doctor.Bill_Status == 1)
-                            {
-                            <td>Paid</td>
-                            }
-                            <td><a class="btn btn-info " asp-controller="Employee" asp-action="Prescription" asp-route-AppointmentId="@doctor.AppointID">Prescription</a></td>*@
-                                    </tr>
-                                }
-                            }
+                                        <td>@Model.Employee.EmployeeNumber</td>
+                                          </tr>
                         </tbody>
                     </table>
                 </div>
@@ -97,10 +73,3 @@
         </div>
     </body>
     </html>
-}
-else
-{
-    <h2 class="container h-100 d-flex align-items-center justify-content-center" style="color:#003399;font-family:Roboto,'sans-serif';padding-top:340px">
-        You have not Booked Any Room yet
-    </h2>
-}

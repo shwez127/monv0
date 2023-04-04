@@ -1,7 +1,4 @@
 ﻿
-@{
-    ViewData["Title"] = "GetSeatsByFloorId1";
-}
 
 <h1>GetSeatsByFloorId1</h1>
 
@@ -9,7 +6,6 @@
     Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
 }
 
-@model DeskEntity.Model.BookingRoom
 
 
 <div>
@@ -17,63 +13,79 @@
 
 </div>
 
-<form method="post" enctype="multipart/form-data">
+
+@model IEnumerable<DeskEntity.Model.Room>
+@*//this name should be the name of projects under dependencies after adding referrences in MvcUi*@
 
 
+    <body>
+  
+        <div class="container">
+            <center>
+                <h2 class="text-light text-center">Select Your Room</h2>
+                <div class=" row">
+                    @{
+                        int c = 0;
+
+                        @foreach (var item in Model)
+                        {
 
 
-
-    @*<div class="form-group">
-    <label>ShiftStart</label>
-    <input type="date" asp-for="ShiftStart" class="form-control"
-    placeholder="enter seat" required />
-    </div>
+                            @if (item.RStatus == false)
+                            {
 
 
-    <div class="form-group">
-    <label>ShiftEnd</label>
-    <input type="date" asp-for="ShiftEnd" class="form-control"
-    placeholder="enter seat" required />
-    </div>*@
+                                <div class="col-2">
+                                    <div>
+                                    <a asp-controller="Employee" asp-action="GetSeatsByFloorId1" asp-route-RoomId="@item.RoomId" value="room" class="btn">
+                                            Room Num:@item.RoomNumber
+                                            <svg width="70" height="70" style="border-radius:50%">
+                                                <rect x="5" y="5" rx="5" ry="5" width="50" height="50"
+                                                style="fill:green;stroke:black;stroke-width:5;opacity:0.5" />
+                                                </svg>
+                                        </a>
 
 
-    <div class="form-group">
-        <label>Room</label>
-        <select asp-for="RoomId" class="form-control" asp-items="@ViewBag.roomlist" required></select>
-    </div>
+                                        @if (c == 12)
+                                        {
+                                            c = 0;
+                                            <div class="row">
+                                                <div class="col-1">
+                                                    <svg width="400" height="50">
+                                                        <rect x="5" y="5" rx="5" ry="5" width="400" height="30"
+                                                        style="fill:blue;stroke:black;stroke-width:5;opacity:0.8" />
+                                                        </svg>
+                                                </div>
+                                            </div>
+                                        }
 
-    @*<div class="form-group">
-    <label>Seat Id</label>
-    <input type="text" asp-for="@Model.SeatId" class="form-control"
-    placeholder="enter seat" required />
-    </div>
+                                    </div>
 
-    <div class="form-group">
-    <label>Employee Id</label>
-    <input type="text" asp-for="@Model.EmployeeID" class="form-control"
-    placeholder="enter seat" required />
-    </div>*@
 
-    <div class="col-12 mt-5" style="margin-left:510px">
-        <button type="reset" class="btn btn-outline-secondary float-end me-2">Reset</button>
-        <button type="submit" class="btn btn-primary float-end">Book Seat</button>
-    </div>
+                                </div>
 
-@*
-    <input type="submit" value="Save" class="btn btn-outline-success" />
-    <input type="button" value="Reset" class="btn btn-outline-secondary" />*@
-    <hr />
-    @if (ViewBag.Status == "Ok")
-    {
-        <div class="alert alert-success">
-            @ViewBag.message;
+                            }
+                            else
+                            {
+                                <div>
+
+                                    Room Num:@item.RoomNumber<svg width="40" height="50">
+                                        <rect x="5" y="5" rx="5" ry="5" width="30" height="30"
+                                           style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+
+
+                                    </svg>
+
+                                </div>
+                            }
+                        }
+
+                    }
+                </div>
+                <div>
+                    <br />
+                </div>
+            </center>
         </div>
-    }
-
-    else if (ViewBag.Status == "Error")
-    {
-        <div class="alert alert-danger">
-            @ViewBag.message;
-        </div>
-    }
-</form>
+   
+    </body>

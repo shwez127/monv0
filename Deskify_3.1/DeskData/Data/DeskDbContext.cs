@@ -28,10 +28,15 @@ namespace DeskData.Data
         public DbSet<QRScanner> qrscanners { get; set; }
         public DbSet<Receptionist> receptionists { get; set; }
 
+        public DbSet<SecretKey> secretKeys { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
 
-           dbContextOptionsBuilder.UseSqlServer("Data Source=DESKTOP-SSFI2H6\\SQLEXPRESS;Initial Catalog=deskdb; Integrated Security=true; ");
+
+
+           dbContextOptionsBuilder.UseSqlServer("Data Source=DESKTOP-TQ40A7V;Initial Catalog=deskdb505; Integrated Security=true; ");
+
 
         }
     }
