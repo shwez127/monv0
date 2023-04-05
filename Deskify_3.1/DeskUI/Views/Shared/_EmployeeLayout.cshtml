@@ -48,10 +48,10 @@
                 </div>
                 <div class="nav-item">
                     <a class="nav-link text-uppercase" asp-area="" asp-controller="" asp-action="" style="font-size:large">
-                        <img class="img-fluid" style="height:28px" src="https://www.svgrepo.com/show/18861/bell.svg">
+                        <img class="img-fluid" style="height:28px;margin-right:20px" src="https://www.svgrepo.com/show/18861/bell.svg">
                     </a>
                 </div>
-                <div class="nav-item">
+                <div class="nav-item" style="margin-right:20px">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#f0f8ff"><img class="img-fluid" style="height:28px" src="https://www.svgrepo.com/show/213315/avatar-profile.svg"></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" asp-area="" asp-controller="Employee" asp-action="Profile"><img class="img-fluid" style="height:20px" src="https://www.svgrepo.com/show/318484/profile.svg">&nbsp; Profile</a>
@@ -61,7 +61,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
