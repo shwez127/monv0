@@ -20,7 +20,7 @@
         <br />
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a class="text-uppercase d-inline-block text-center" style="color:#003399;font-size:x-large" align="center"> Appointment <span class="font-weight-bold" style="font-size:x-large">Details</span></a>
+                <a class="text-uppercase d-inline-block text-center" style="color:#003399;font-size:x-large" align="center"> Seat Booked <span class="font-weight-bold" style="font-size:x-large">Details</span></a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -36,9 +36,8 @@
                                 <th>Seat Number</th>
                                 <th>Seat Status</th>
                                 <th>Employee Number</th>
-                               @* <th>Food Preferences</th>
+                               @* <th>Food Preferences</th>*@
                               
-                                <th>Action</th>*@
                             </tr>
                         </thead>
                         <tbody>
@@ -58,32 +57,16 @@
                                         }
                                         else if (Model.SeatStatus == 0)
                                         {
-                                            <td>Cancelled</td>
+                                            <td>Rejected</td>
                                         }
-                                        @*else if (doctor.Appointment_Status == 2)
+                                        else if (Model.SeatStatus == 2)
                                         {
                                             <td>Pending</td>
                                         }
-                                        else if (doctor.Appointment_Status == 3)
-                                        {
-                                            <td>Completed</td>
-                                        }
-                                        else if (doctor.Appointment_Status == 4)
-                                        {
-                                            <td>Rejected</td>
-                                        }*@
+                                        
 
                                         <td>@Model.Employee.EmployeeNumber</td>
-                                       @* @if (doctor.Bill_Status == 0)
-                                        {
-                                            <td>Unpaid</td>
-                                        }
-                                        else if (doctor.Bill_Status == 1)
-                                        {
-                                            <td>Paid</td>
-                                        }
-                                        <td><a class="btn btn-info " asp-controller="Employee" asp-action="Prescription" asp-route-AppointmentId="@doctor.AppointID">Prescription</a></td>*@
-                                    </tr>
+                                        </tr>
                                 
                             
                         </tbody>
