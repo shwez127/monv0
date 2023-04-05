@@ -28,9 +28,28 @@ namespace DeskUI.Controllers
 
         public static BookingSeat bookingSeat1 = new BookingSeat();
         public static BookingRoom bookingRoom1 = new BookingRoom();
-        public IActionResult Index()
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            int EmployeeProfileId = Convert.ToInt32(TempData["ProfileID"]);
+            TempData.Keep();
+
+            Employee employee = null;
+            using (HttpClient client = new HttpClient())
+            {
+                string endpoint = _configuration["WebApiBaseUrl"] + "Employee/GetEmployeeById?employeeId=" + EmployeeProfileId;
+                using (var response = await client.GetAsync(endpoint))
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        employee = JsonConvert.DeserializeObject<Employee>(result);
+                    }
+                }
+            }
+            return View(employee);
+
         }
 
         public async Task<IActionResult> Profile()
@@ -272,7 +291,7 @@ namespace DeskUI.Controllers
           
             bookingSeat.EmployeeID = Convert.ToInt32(TempData["EmployeeID"]);
             TempData.Keep();
-            bookingSeat.SeatId = 1;
+            bookingSeat.SeatId = 16;
             TempData["floorId"] = bookingSeat.Seat.FloorId;
             bookingSeat.Seat = null;
             int bookingSeatId = 0;
@@ -1002,9 +1021,9 @@ namespace DeskUI.Controllers
         {
             List<SelectListItem> choices = new List<SelectListItem>()
             {
-             new SelectListItem{Value="Select",Text="select"},
-             new SelectListItem{Value=true.ToString(),Text="YES"},
-             new SelectListItem{Value=false.ToString(),Text="NO"},
+             new SelectListItem{Value="Select",Text="Select"},
+             new SelectListItem{Value=true.ToString(),Text="Yes"},
+             new SelectListItem{Value=false.ToString(),Text="No"},
             };
             return choices;
         }

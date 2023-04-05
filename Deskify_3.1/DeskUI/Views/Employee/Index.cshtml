@@ -2,3 +2,134 @@
     Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
 }
 
+@model DeskEntity.Model.Employee;
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5" />
+  <meta name="author" content="AdminKit" />
+  <link href="css/site1.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div>
+  <div class="modal fade" id="approved" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Approved</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Approved
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="pending" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Pending</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Pending
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="rejected" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Rejected</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Rejected
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-div">
+    <div class="card p-2 mt-4">
+
+      <div class="card-title text-center">Hi, @Model.EmployeeName !
+        <br>
+                    <div class="card-title text-center"> Today, @DateTime.Now.ToString("dddd, dd MMMM yyyy")</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="message mb-4">
+                <div class="row row1 card-div mt-5 me-xl-5" >
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#approved"
+                            class="card-button bg-transparent  middle-row mx-sm-4 mx-md-4 mx-xxl-5">
+                        <div class="middle-row shadow p-3 mx-md-4 mx-xxl-5">
+                        <img src="https://cdn-icons-png.flaticon.com/128/8888/8888205.png" alt="" class="innerimage" style="width:50px;height:50px;margin-bottom:10px;" />
+                        <h3 class="mb-0 font-weight-bold">1</h3>
+                        <span class="text-uppercase " style="font-family:Arial">Approved</span>
+                        </div>
+                    </button>
+
+
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#pending"
+                            class="card-button bg-transparent middle-row mx-sm-4 mx-md-4 mx-xxl-5">
+                        <div class="middle-row shadow p-3 mx-md-4 mx-xxl-5">
+                        <img src="https://cdn-icons-png.flaticon.com/128/7887/7887122.png" alt="" class="innerimage" style="width:50px;height:50px;margin-bottom:10px;" /><br />
+                        <h3 class="mb-0 font-weight-bold">0</h3>
+                        <span class="text-uppercase " style="font-family:Arial">Pending</span>
+                        </div>
+                    </button>
+
+
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#rejected"
+                            class="card-button bg-transparent middle-row mx-sm-4 mx-md-4 mx-xxl-5">
+                        <div class="middle-row shadow p-3 mx-md-4 mx-xxl-5">
+                        <img src="https://cdn-icons-png.flaticon.com/128/5978/5978441.png" alt="" class="innerimage" style="width:50px;height:50px;margin-bottom: 10px;"/><br />
+                        <h3 class="mb-0 font-weight-bold">0</h3>
+                        <span class=" text-uppercase" style="font-family:Arial">Rejected</span>
+                        </div>
+                    </button>
+                </div>
+
+</div>
+        <center class="justify-content-center">
+            <a class="btn btn-dark btn-lg me-3 mt-3" asp-controller="Employee" asp-action="BookingSeat" style="font-size:x-large">Book a Seat</a>
+            <a class="btn btn-dark btn-lg mt-3" asp-controller="Employee" asp-action="BookingRoom" style="font-size:x-large">Book a Room</a>
+       </center>
+</div>
+    
+</body>
+
+</html>
