@@ -5,93 +5,124 @@
 @model DeskEntity.Model.BookingSeat
 
 @if (Model != null)
+
 {
-    <h1>You have already booked seat</h1>
-}else{
-<h1>AddBookingSeat</h1>
+    <center>
 
-<div>
-    <a asp-controller="Booking" asp-action="Index">Booking</a>
+    <h1>OOps!!You have already booked seat</h1>
 
-</div>
+    </center>
+}
+else{
+<html>
+<body style="background:-webkit-linear-gradient(left, #fff, #000)">
+    <section class="vh-70 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Seat Booking</h3>
+                            <form method="post" enctype="multipart/form-data">
 
-<form method="post" enctype="multipart/form-data">
-    <h2>BookingSeat</h2><hr />
+                                <div class="row">
+                                    <div class="col-md-12 mb-4">
+
+                                        <div class="form-outline">
+                                            <label class="form-label">Branch Name</label>
+                                            <select type="location" name="location" class="form-control form-control-lg" required>
+                                                <option value="">Select</option>
+                                                <option value="">Bengaluru</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12 mb-4">
+
+                                        <div class="form-outline">
+                                            <label class="form-label">Building Name</label>
+                                            <select type="location" name="location" class="form-control form-control-lg" required>
+                                                <option value="">Select</option>
+                                                <option value="">JP Nagar</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+
+                                        <div class="form-outline w-100">
+                                            <label class="form-label">From Date</label>
+                                            <input type="date" asp-for="FromDate" class="form-control form-control-lg" id="fromDate"
+                                                   placeholder="From Date" required>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label">To Date</label>
+                                            <input type="date" asp-for="ToDate" class="form-control form-control-lg" id="toDate"
+                                                   placeholder="To Date" required>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label">Shift Time</label>
+                                            <select asp-for="SeatShiftTime" class="form-control form-control-lg" asp-items="@ViewBag.shiftTimings" required></select>
+                                        </div>
 
 
-    @*<div class="form-group">
-        <label>SeatStatus</label>
-        <input type="text" asp-for="SeatStatus" class="form-control"
-               placeholder="enter seatstatus" required />
-    </div>*@
-    <div class="form-group">
-        <label>FromDate</label>
-        <input type="date" asp-for="FromDate" class="form-control"
-               placeholder="enter seat" required >
-               </div>
-    <div class="form-group">
-        <label>ToDate</label>
-        <input type="date" asp-for="ToDate" class="form-control"
-               placeholder="enter status" required />
-    </div>
-   
-
-        @*<div class="form-group">
-            <label>ShiftStart</label>
-            <input type="date" asp-for="ShiftStart" class="form-control"
-                   placeholder="enter seat" required />
-        </div>
-
-
-        <div class="form-group">
-            <label>ShiftEnd</label>
-            <input type="date" asp-for="ShiftEnd" class="form-control"
-                   placeholder="enter seat" required />
-        </div>
-*@
-        <div class="form-group">
-            <label>ShiftTime</label>
-            <select asp-for="SeatShiftTime" class="form-control" asp-items="@ViewBag.shiftTimings" required></select>
-        </div>
-
-    <div class="form-group">
-        <label>Floor</label>
-        <select asp-for="Seat.FloorId" class="form-control" asp-items="@ViewBag.FloorList" required></select>
-    </div>
-
-        @*<div class="form-group">
-            <label>Seat Id</label>
-            <input type="text" asp-for="@Model.SeatId" class="form-control"
-                   placeholder="enter seat" required />
-        </div>
-
-        <div class="form-group">
-            <label>Employee Id</label>
-            <input type="text" asp-for="@Model.EmployeeID" class="form-control"
-                   placeholder="enter seat" required />
-        </div>*@
-
-    <div class="col-12 mt-5" style="margin-left:510px">
-        <button type="reset" class="btn btn-outline-secondary float-end me-2">Reset</button>
-        <button type="submit" class="btn btn-primary float-end">Next</button>
-    </div>
-
-
-        @*<input type="submit" value="Save" class="btn btn-outline-success" />
-        <input type="button" value="Reset" class="btn btn-outline-secondary" />*@
-        <hr />
-        @if (ViewBag.Status == "Ok")
-        {
-            <div class="alert alert-success">
-                @ViewBag.message;
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-outline">
+                                            <label class="form-label">Floor</label>
+                                            <select asp-for="Seat.FloorId" class="form-control form-control-lg" asp-items="@ViewBag.FloorList" required></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <center>
+                                    <div class="mt-4 pt-2">
+                                        <input type="reset" value="Reset" class="btn btn-outline-secondary btn-lg" />
+                                        <input type="submit" value="Next" class="btn btn-dark btn-lg" />
+                                    </div>
+                                </center>
+                                @if (ViewBag.status == "Ok")
+                                {
+                                    <br />
+                                    <div class="alert alert-success">
+                                        @ViewBag.message
+                                    </div>
+                                }
+                                else if (ViewBag.status == "Error")
+                                {
+                                    <br />
+                                    <div class="alert alert-danger">
+                                        @ViewBag.message
+                                    </div>
+                                }
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-        }
+        </div>
+    </section>
+    <script>
+        const today = new Date().toISOString().split('T')[0];
+        const dateFrom = document.getElementById("fromDate");
+        dateFrom.setAttribute("min", today);
 
-        else if (ViewBag.Status == "Error")
-        {
-            <div class="alert alert-danger">
-                @ViewBag.message;
-            </div>
-        }
-</form>
+        const thisday = new Date().toISOString().split('T')[0];
+        const dateTo = document.getElementById("toDate");
+        dateTo.setAttribute("min", thisday);
+
+    </script>
+</body>
+</html>
 }

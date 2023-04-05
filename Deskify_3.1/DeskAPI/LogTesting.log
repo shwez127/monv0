@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2023-04-04 10:38:06.369 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2023-04-04 10:38:06.556 +05:30 [INF] Hosting environment: Development
 2023-04-04 10:38:06.558 +05:30 [INF] Content root path: C:\Users\Ayushi.Sinha\Desktop\Deskify_Web\New-Deskify\Deskify_3.1\DeskAPI
@@ -2900,3 +2901,5 @@ INNER JOIN [seats] AS [s] ON [b].[SeatId] = [s].[SeatId]
 2023-04-05 16:53:38.731 +05:30 [INF] Executed action DeskAPI.Controllers.BookingSeatController.GetSeatBookingByEmployeeId (DeskAPI) in 15.6616ms
 2023-04-05 16:53:38.731 +05:30 [INF] Executed endpoint 'DeskAPI.Controllers.BookingSeatController.GetSeatBookingByEmployeeId (DeskAPI)'
 2023-04-05 16:53:38.731 +05:30 [INF] Request finished in 20.9172ms 200 application/json; charset=utf-8
+=======
+>>>>>>> 899ec32f024ab20fef39fc4027bd2888fa646228

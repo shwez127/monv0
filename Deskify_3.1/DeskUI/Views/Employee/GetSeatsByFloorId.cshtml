@@ -4,170 +4,9 @@
 
 
 
-
-<div>
-    <a asp-controller="Booking" asp-action="Index">Booking</a>
-
-</div>
-@*
-<form method="post" enctype="multipart/form-data">*@
-
-
-
- 
-
-    @*<div class="form-group">
-    <label>ShiftStart</label>
-    <input type="date" asp-for="ShiftStart" class="form-control"
-    placeholder="enter seat" required />
-    </div>
-
-
-    <div class="form-group">
-    <label>ShiftEnd</label>
-    <input type="date" asp-for="ShiftEnd" class="form-control"
-    placeholder="enter seat" required />
-    </div>*@
-   
-
-@*    <div class="form-group">
-        <label>Seat</label>
-        <select asp-for="SeatId" class="form-control" asp-items="@ViewBag.seatlist" required></select>
-    </div>*@
-
-    @*<div class="form-group">
-    <label>Seat Id</label>
-    <input type="text" asp-for="@Model.SeatId" class="form-control"
-    placeholder="enter seat" required />
-    </div>
-
-    <div class="form-group">
-    <label>Employee Id</label>
-    <input type="text" asp-for="@Model.EmployeeID" class="form-control"
-    placeholder="enter seat" required />
-    </div>*@
-
-
-
-
-@*
-
-    <div class="col-12 mt-5" style="margin-left:510px">
-        <button type="reset" class="btn btn-outline-secondary float-end me-2">Reset</button>
-        <button type="submit" class="btn btn-primary float-end">Book Seat</button>
-    </div>
-*@
-
-    @*<input type="submit" value="Save" class="btn btn-outline-success" />
-    <input type="button" value="Reset" class="btn btn-outline-secondary" />*@
-    <hr />
-   @* @if (ViewBag.Status == "Ok")
-    {
-        <div class="alert alert-success">
-            @ViewBag.message;
-        </div>
-    }
-
-    else if (ViewBag.Status == "Error")
-    {
-        <div class="alert alert-danger">
-            @ViewBag.message;
-        </div>
-    }
-</form>*@
-
-
-@*//this name should be the name of projects under dependencies after adding referrences in MvcUi*@
-
-@*
-    <body>
-        <form method="post">
-        <div class="container">
-            <center>
-                <h2 class="text-light text-center">Select Your Seat</h2>
-                <div class=" row">
-                    @{
-                        int c = 0;
-
-                        @foreach (var item in Model)
-                        {
-                            <div class="col-2">
-
-                                @if (item.Status == false)
-
-                                {
-                                    <div>
-                                        <a asp-controller="Employee" asp-action="GetSeatsByFloorId" asp-route-SeatId="@item.SeatId" class="btn">
-                                            Seat Num:@item.SeatNumber
-                                            <svg width="40" height="40" style="border-radius:50%">
-                                                <rect x="5" y="5" rx="5" ry="5" width="30" height="30"
-                                                style="fill:green;stroke:black;stroke-width:5;opacity:0.5" />
-                                        </a>
-
-                                        @if (c == 12)
-                                        {
-                                            c = 0;
-                                            <div class="row">
-                                                <div class="col-1">
-                                                    <svg width="400" height="50">
-                                                        <rect x="5" y="5" rx="5" ry="5" width="400" height="30"
-                                                        style="fill:blue;stroke:black;stroke-width:5;opacity:0.8" />
-                                                </div>
-                                            </div>
-                                        }
-
-                                    </div>
-
-                                    @* <img class="img-fluid" src="https://www.svgrepo.com/show/105314/table.svg" style="width:100px;height:100px;background-color:green" />
-
-                        <a asp-controller="Order" asp-action="SelectedTable" asp-route-HallTableId="@item.HallTableId" class="btn"><img class="img-fluid" src="https://www.svgrepo.com/show/105314/table.svg" style="width:100px;height:100px;background-color:green" /></a>*@
-
-
-                            
-
-                        @*    </div>
-
-                        }
-                        }
-                        
-                    
-               
-
-
-                else
-
-                {
-
-                <div>
-
-                    Seat Num:@item.SeatNumber<svg width="40" height="50">
-
-                        <rect x="5" y="5" rx="5" ry="5" width="30" height="30"
-                              style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
-
-                    </svg>
-
-
-
-
-                </div>
-
-                </div>
-
-                }
-                <div>
-                }
-                    <br />
-                </div>
-            </center>
-        </div>
-    </form>
-    </body>*@
-
-
 @model IEnumerable<DeskEntity.Model.Seat>
 
-<body>
+@*<body>
 
     <div class="container">
 
@@ -180,10 +19,6 @@
                 @{
 
                     int c = 0;
-
-
-
-
                     @foreach (var item in Model)
 
                     {
@@ -275,14 +110,89 @@
                 <br />
 
             </div>
-
         </center>
-
     </div>
-
-
-
-
 </body>
+*@
 
 
+<html>
+<body style="background:-webkit-linear-gradient(left, #fff, #000)">
+    <section class="vh-70 gradient-custom">
+        <div class="container-fluid py-5 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <span class="mb-4 pb-2 pb-md-0 mb-md-5 ">
+                                <h3 style="margin-bottom:20px">
+                                    Seat Booking
+                                    @foreach(var item1 in Model)
+                                    {
+                                        <div style="width:300px;border-radius:20px;background-color:silver;margin-left:415px;font-size:20px;padding:6px" class="d-inline">@item1.Floor.FloorName</div>
+                                        break;
+                                    }
+                                </h3>
+                            </span>
+                            <div class="row row-cols-md-12 row-cols-sm-4 row-cols-4">
+                                @{
+                                    int c = 0;
+                                    @foreach (var item in Model)
+                                    {
+                                        @if (item.Status == false)
+                                        {
+                                            <div class="col-1 col-sm-1 col-md-1  p-2 mb-3">
+                                                <div>
+                                                    <a onclick="myfunction()" asp-controller="Employee" asp-action="GetSeatsByFloorId" asp-route-SeatId="@item.SeatId" style="text-decoration:none;color:black">
+                                                        
+                                                    <img src="~/img/seat-green.svg" style="height:50px;width:50px"></img>
+                                                        <center >@item.SeatNumber</center>
+                                                    </a>
+                                                    @if (c == 12)
+                                                    {
+                                                        c = 0;
+                                                        <div class="row">                                                        
+                                                            <div class="col-1">
+                                                                <svg width="400" height="50">
+                                                                    <rect x="5" y="5" rx="5" ry="5" width="400" height="30"
+                                                                          style="fill:blue;stroke:black;stroke-width:5;opacity:0.8" />
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="col-1 col-sm-1 col-md-1 p-2">
+                                                <a style="pointer-events:none;text-decoration:none">
+                                                        <img src="~/img/seat-red.svg" style="height:50px;width:50px"></img>
+                                                        <center>@item.SeatNumber</center>
+                                                    </a>
+                                                </div>
+                                        }
+                                    }
+                                }
+                            </div>
+                            <div class="row text-center">
+                                <div class="card col-2 offset-10 p-2 shadow-lg">
+                                    <img src="~/img/seat-green.svg" style="height:40px;width:40px" class="mx-auto"></img>
+                                    <span class="font-weight-bold mb-3">Vacant</span>
+                                    <img src="~/img/seat-red.svg" style="height:40px;width:40px" class="mx-auto"></img>
+                                    <span class="font-weight-bold">Occupied</span>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+         </div>
+</section>
+    <script>
+        function myfunction() {
+            alert("Are you sure you want to book this seat?");
+        }
+    </script>
+</body>
+</html>

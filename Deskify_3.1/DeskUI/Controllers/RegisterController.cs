@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System;
+using System.IO;
 
 namespace DeskUI.Controllers
 {
@@ -40,6 +41,7 @@ namespace DeskUI.Controllers
             return View();
 
         }
+
         [HttpPost]
         public async Task<IActionResult> EmployeeRegister1(Employee employee, int Type)
         {
@@ -103,7 +105,7 @@ namespace DeskUI.Controllers
                         if (response.StatusCode == System.Net.HttpStatusCode.OK)
                         {
                             ViewBag.status = "Ok";
-                            ViewBag.message = "Employee Registered Successfully";
+                            ViewBag.message = "You are Successfully Registered. Please login to access your Profile!";
                             return RedirectToAction("Index", "LoginTable");
                         }
                         else

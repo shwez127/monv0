@@ -133,6 +133,7 @@ namespace DeskUI.Controllers
             }
             return View(seat);
         }
+
         [HttpPost]
         public async Task<IActionResult> EditBookingSeat(BookingSeat bookseat)
 
