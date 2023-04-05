@@ -4,14 +4,16 @@ using DeskData.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DeskData.Migrations
 {
     [DbContext(typeof(DeskDbContext))]
-    partial class DeskDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230405063132_bookingcount")]
+    partial class bookingcount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -252,9 +254,6 @@ namespace DeskData.Migrations
                     b.Property<int>("FloorId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("RStatus")
-                        .HasColumnType("bit");
-
                     b.Property<string>("RoomNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -286,29 +285,6 @@ namespace DeskData.Migrations
                     b.HasIndex("FloorId");
 
                     b.ToTable("seats");
-                });
-
-            modelBuilder.Entity("DeskEntity.Model.SecretKey", b =>
-                {
-                    b.Property<int>("SecretId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("BookingSeatId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SecretKeyGen")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SecretKeyType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SecretId");
-
-                    b.HasIndex("BookingSeatId");
-
-                    b.ToTable("secretKeys");
                 });
 
             modelBuilder.Entity("DeskEntity.Model.BookingRoom", b =>
@@ -413,17 +389,6 @@ namespace DeskData.Migrations
                         .IsRequired();
 
                     b.Navigation("Floor");
-                });
-
-            modelBuilder.Entity("DeskEntity.Model.SecretKey", b =>
-                {
-                    b.HasOne("DeskEntity.Model.BookingSeat", "BookingSeat")
-                        .WithMany()
-                        .HasForeignKey("BookingSeatId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BookingSeat");
                 });
 #pragma warning restore 612, 618
         }

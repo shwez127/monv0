@@ -4,6 +4,16 @@
 
 @model DeskEntity.Model.BookingSeat
 
+@if (Model != null)
+
+{
+    <center>
+
+    <h1>OOps!!You have already booked seat</h1>
+
+    </center>
+}
+else{
 <html>
 <body style="background:-webkit-linear-gradient(left, #fff, #000)">
     <section class="vh-70 gradient-custom">
@@ -115,3 +125,4 @@
     </script>
 </body>
 </html>
+}

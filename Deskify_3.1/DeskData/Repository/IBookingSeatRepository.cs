@@ -12,5 +12,8 @@ namespace DeskData.Repository
         void UpdateSeatBooking(BookingSeat bookseat);
         BookingSeat GetSeatBookingById(int bookseatId);
         IEnumerable<BookingSeat> GetAllBookingSeats();
+        BookingSeat GetBookingSeatByEmployeeId(int employeeid);
+
+
     }
 }
