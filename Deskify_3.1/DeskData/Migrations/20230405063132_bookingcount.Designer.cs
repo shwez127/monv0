@@ -4,14 +4,16 @@ using DeskData.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DeskData.Migrations
 {
     [DbContext(typeof(DeskDbContext))]
-    partial class DeskDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230405063132_bookingcount")]
+    partial class bookingcount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -4,6 +4,10 @@
 
 @model DeskEntity.Model.BookingSeat
 
+@if (Model != null)
+{
+    <h1>You have already booked seat</h1>
+}else{
 <h1>AddBookingSeat</h1>
 
 <div>
@@ -90,3 +94,4 @@
             </div>
         }
 </form>
+}
