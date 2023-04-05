@@ -28,8 +28,8 @@
                                 <div class="col-md-6 mb-4">
 
                                     <div class="form-outline">
-                                        <input required type="text" placeholder="" asp-for="EmployeeID" id="empId" class="form-control form-control-lg" />
-                                            <label class="form-label" for="empId">Employee ID <span style="color:red">*</span></label>
+                                        <input required type="text" placeholder="" asp-for="EmployeeNumber" id="empNo" class="form-control form-control-lg" />
+                                        <label class="form-label" for="empNo">Employee Number <span style="color:red">*</span></label>
                                     </div>
 
                                 </div>
@@ -39,7 +39,7 @@
                                 <div class="col-md-6 mb-4">
 
                                     <div class="form-outline w-100">
-                                        <input type="text" required="" pattern="[0-9]{10}" value="" title='Please enter a valid 10 digit phone number.'  placeholder="" asp-for="PhoneNumber" class="form-control form-control-lg" id="phone" />
+                                        <input type="text" required="" placeholder="" pattern="[0-9]{10}" value="" title='Please enter a valid 10 digit phone number.'  placeholder="" asp-for="PhoneNumber" class="form-control form-control-lg" id="phone" />
                                         <label for="phone" class="form-label">Phone Number <span style="color:red">*</span></label>
                                     </div>
 
@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
-                                            <select class="form-control form-control-lg" asp-for="Gender">
+                                            <select required class="form-control form-control-lg" asp-for="Gender">
                                                 <option>Select</option>
                                                 <option value="M">Male</option>
                                                 <option value="F">Female</option>
@@ -107,19 +107,17 @@
                             </div>
                             <center>
                                 <div class="mt-4 pt-2">
-                                        <input class="btn btn-dark btn-lg" type="submit" asp-route-Type="0" value="Register" />
+                                        <input onclick="myfunction()" class="btn btn-dark btn-lg" type="submit" asp-route-Type="0" value="Register" />
                                 </div>
                                 <br />
                                 <div>
                                      Already have an account?
                                      <a asp-controller="LoginTable" asp-action="Index">
-                                         <span class="right-label">Login</span>
+                                         <span class="right-label">Login Here</span>
                                      </a>
                                 </div>
                             </center>
-
-                            </form>
-                            
+                            </form>                         
                     </div>
               </div>
            </div>
@@ -127,8 +125,13 @@
     </div>
 </section>
     <script>
-        function myfunction() {
-            alert("Registerd Succesfully!")
+        function myfunction() 
+        {
+            console.log($('form')[0].checkValidity())
+            if ($('form')[0].checkValidity()) 
+            {
+                alert("You are Successfully Registered. Please login to access your Profile!")
+            }
         }
     </script>
 </body>

@@ -90,8 +90,8 @@ namespace DeskData.Migrations
                     b.Property<DateTime>("ToDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("bookingrequesttype")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("bookingcount")
+                        .HasColumnType("int");
 
                     b.HasKey("BookingSeatId");
 
@@ -252,6 +252,9 @@ namespace DeskData.Migrations
                     b.Property<int>("FloorId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("RStatus")
+                        .HasColumnType("bit");
+
                     b.Property<string>("RoomNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -283,6 +286,29 @@ namespace DeskData.Migrations
                     b.HasIndex("FloorId");
 
                     b.ToTable("seats");
+                });
+
+            modelBuilder.Entity("DeskEntity.Model.SecretKey", b =>
+                {
+                    b.Property<int>("SecretId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("BookingSeatId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SecretKeyGen")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SecretKeyType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SecretId");
+
+                    b.HasIndex("BookingSeatId");
+
+                    b.ToTable("secretKeys");
                 });
 
             modelBuilder.Entity("DeskEntity.Model.BookingRoom", b =>
@@ -387,6 +413,17 @@ namespace DeskData.Migrations
                         .IsRequired();
 
                     b.Navigation("Floor");
+                });
+
+            modelBuilder.Entity("DeskEntity.Model.SecretKey", b =>
+                {
+                    b.HasOne("DeskEntity.Model.BookingSeat", "BookingSeat")
+                        .WithMany()
+                        .HasForeignKey("BookingSeatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BookingSeat");
                 });
 #pragma warning restore 612, 618
         }

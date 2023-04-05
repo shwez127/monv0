@@ -7,30 +7,55 @@
     ViewData["Title"] = "AddChoices";
 }
 
-<h1>Food Preferences</h1>
+<html>
+<body style="background:-webkit-linear-gradient(left, #fff, #000)">
+    <section class="vh-70 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Questionnaire</h3>
+                            <form method="post" enctype="multipart/form-data">
 
-<form method="post" enctype="multipart/form-data">
-<div class="form-group">
-    <label style="color:#003399;font-size:20px">Opting for food in office?</label>
-    <select asp-for="FoodPerferences" asp-items="@ViewBag.choices" class="form-control" required></select>
-</div>
+                                <div class="row">
+                                    <div class="col-md-12 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label">Would you like to opt for Lunct at Office? (It would help us to arrange the lunch for you)<span style="color:red">*</span></label>
+                                            <select asp-for="FoodPerferences" asp-items="@ViewBag.choices" class="form-control form-control-lg" required></select>
+                                        </div>
 
-<div class="col-12 mt-5" style="margin-left:510px">
-    <button type="reset" class="btn btn-outline-secondary float-end me-2">Reset</button>
-    <button type="submit" class="btn btn-primary float-end">Book Seat</button>
-</div>
-    <hr />
-    @if (ViewBag.Status == "Ok")
-    {
-        <div class="alert alert-success">
-            @ViewBag.message;
+                                    </div>
+                                </div>
+
+                                
+                                <center>
+                                    <div class="mt-4 pt-2">
+                                        <input type="reset" value="Reset" class="btn btn-outline-secondary btn-lg" />
+                                        <input type="submit" value="Next" class="btn btn-dark btn-lg" />
+                                    </div>
+                                </center>
+                                @if (ViewBag.status == "Ok")
+                                {
+                                    <br />
+                                    <div class="alert alert-success">
+                                        @ViewBag.message
+                                    </div>
+                                }
+                                else if (ViewBag.status == "Error")
+                                {
+                                    <br />
+                                    <div class="alert alert-danger">
+                                        @ViewBag.message
+                                    </div>
+                                }
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    }
-
-    else if (ViewBag.Status == "Error")
-    {
-        <div class="alert alert-danger">
-            @ViewBag.message;
-        </div>
-    }
-</form>
+    </section>
+</body>
+</html>

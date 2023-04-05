@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DeskData.Migrations
 {
-    public partial class bookingdesk : Migration
+    public partial class secretkeys : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -42,6 +42,7 @@ namespace DeskData.Migrations
                     RoomId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoomNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RStatus = table.Column<bool>(type: "bit", nullable: false),
                     FloorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -62,6 +63,7 @@ namespace DeskData.Migrations
                     SeatId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SeatNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
                     FloorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -227,6 +229,27 @@ namespace DeskData.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "secretKeys",
+                columns: table => new
+                {
+                    SecretId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SecretKeyGen = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecretKeyType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BookingSeatId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_secretKeys", x => x.SecretId);
+                    table.ForeignKey(
+                        name: "FK_secretKeys_bookingSeats_BookingSeatId",
+                        column: x => x.BookingSeatId,
+                        principalTable: "bookingSeats",
+                        principalColumn: "BookingSeatId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_bookingRooms_EmployeeID",
                 table: "bookingRooms",
@@ -271,6 +294,11 @@ namespace DeskData.Migrations
                 name: "IX_seats_FloorId",
                 table: "seats",
                 column: "FloorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_secretKeys_BookingSeatId",
+                table: "secretKeys",
+                column: "BookingSeatId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -286,6 +314,9 @@ namespace DeskData.Migrations
 
             migrationBuilder.DropTable(
                 name: "receptionists");
+
+            migrationBuilder.DropTable(
+                name: "secretKeys");
 
             migrationBuilder.DropTable(
                 name: "rooms");
