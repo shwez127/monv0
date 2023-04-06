@@ -41,6 +41,9 @@ namespace DeskData.Migrations
                     b.Property<DateTime>("MeetingStart")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("NumberofPeople")
+                        .HasColumnType("int");
+
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
 

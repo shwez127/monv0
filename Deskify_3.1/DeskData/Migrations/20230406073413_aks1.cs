@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DeskData.Migrations
 {
-    public partial class secretkeys : Migration
+    public partial class aks1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -113,6 +113,7 @@ namespace DeskData.Migrations
                     MeetingHours = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MeetingStart = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MeetingEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    NumberofPeople = table.Column<int>(type: "int", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false),
                     EmployeeID = table.Column<int>(type: "int", nullable: false)
                 },
@@ -145,7 +146,7 @@ namespace DeskData.Migrations
                     SeatShiftTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ShiftStart = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ShiftEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    bookingrequesttype = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    bookingcount = table.Column<int>(type: "int", nullable: false),
                     SeatId = table.Column<int>(type: "int", nullable: false),
                     EmployeeID = table.Column<int>(type: "int", nullable: false)
                 },

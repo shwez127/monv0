@@ -2903,3 +2903,36 @@ INNER JOIN [seats] AS [s] ON [b].[SeatId] = [s].[SeatId]
 2023-04-05 16:53:38.731 +05:30 [INF] Request finished in 20.9172ms 200 application/json; charset=utf-8
 =======
 >>>>>>> 899ec32f024ab20fef39fc4027bd2888fa646228
+2023-04-06 11:46:41.141 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-06 11:46:41.205 +05:30 [INF] Hosting environment: Development
+2023-04-06 11:46:41.206 +05:30 [INF] Content root path: C:\Users\shwetha.b\Desktop\thu-aks-deskify\New-Deskify\Deskify_3.1\DeskAPI
+2023-04-06 11:46:41.297 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/weatherforecast  
+2023-04-06 11:46:41.461 +05:30 [INF] Executing endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-04-06 11:46:41.506 +05:30 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[DeskAPI.WeatherForecast] Get() on controller DeskAPI.Controllers.WeatherForecastController (DeskAPI).
+2023-04-06 11:46:41.514 +05:30 [INF] Executing ObjectResult, writing value of type 'DeskAPI.WeatherForecast[]'.
+2023-04-06 11:46:41.615 +05:30 [INF] Executed action DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI) in 99.9489ms
+2023-04-06 11:46:41.617 +05:30 [INF] Executed endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-04-06 11:46:41.626 +05:30 [INF] Request finished in 334.6096ms 200 application/json; charset=utf-8
+2023-04-06 11:46:41.723 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/favicon.ico  
+2023-04-06 11:46:41.726 +05:30 [INF] Request finished in 3.3038ms 404 
+2023-04-06 11:46:44.363 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/swagger/index.html  
+2023-04-06 11:46:44.695 +05:30 [INF] Request finished in 333.4469ms 200 text/html;charset=utf-8
+2023-04-06 11:46:44.727 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/_framework/aspnetcore-browser-refresh.js  
+2023-04-06 11:46:44.729 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/_vs/browserLink  
+2023-04-06 11:46:44.733 +05:30 [INF] Request finished in 5.7816ms 200 application/javascript; charset=utf-8
+2023-04-06 11:46:44.790 +05:30 [INF] Request finished in 61.0888ms 200 text/javascript; charset=UTF-8
+2023-04-06 11:46:46.350 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/_framework/aspnetcore-browser-refresh.js  
+2023-04-06 11:46:46.353 +05:30 [INF] Request finished in 3.4946ms 200 application/javascript; charset=utf-8
+2023-04-06 11:46:46.583 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/swagger/v1/swagger.json  
+2023-04-06 11:46:46.815 +05:30 [INF] Request finished in 232.1808ms 200 application/json;charset=utf-8
+2023-04-06 11:47:11.436 +05:30 [INF] Application is shutting down...
+2023-04-06 12:28:12.609 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-06 12:28:12.639 +05:30 [INF] Request starting HTTP/2.0 GET https://localhost:44385/weatherforecast  
+2023-04-06 12:28:12.654 +05:30 [INF] Hosting environment: Development
+2023-04-06 12:28:12.654 +05:30 [INF] Content root path: C:\Users\shwetha.b\Desktop\thu-aks-deskify\New-Deskify\Deskify_3.1\DeskAPI
+2023-04-06 12:28:12.718 +05:30 [INF] Executing endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-04-06 12:28:12.740 +05:30 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[DeskAPI.WeatherForecast] Get() on controller DeskAPI.Controllers.WeatherForecastController (DeskAPI).
+2023-04-06 12:28:12.745 +05:30 [INF] Executing ObjectResult, writing value of type 'DeskAPI.WeatherForecast[]'.
+2023-04-06 12:28:12.776 +05:30 [INF] Executed action DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI) in 30.0642ms
+2023-04-06 12:28:12.777 +05:30 [INF] Executed endpoint 'DeskAPI.Controllers.WeatherForecastController.Get (DeskAPI)'
+2023-04-06 12:28:12.781 +05:30 [INF] Request finished in 149.8219ms 200 application/json; charset=utf-8
