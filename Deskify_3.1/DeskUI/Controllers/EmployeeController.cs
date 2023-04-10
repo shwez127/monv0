@@ -316,7 +316,7 @@ namespace DeskUI.Controllers
           
             bookingSeat.EmployeeID = Convert.ToInt32(TempData["EmployeeID"]);
             TempData.Keep();
-            bookingSeat.SeatId = 16;
+            bookingSeat.SeatId = 2;
             TempData["floorId"] = bookingSeat.Seat.FloorId;
             bookingSeat.Seat = null;
             int bookingSeatId = 0;
@@ -656,7 +656,7 @@ namespace DeskUI.Controllers
         {
             bookingRoom.EmployeeID = Convert.ToInt32(TempData["EmployeeID"]);
             TempData.Keep();
-            bookingRoom.RoomId = 3;
+            bookingRoom.RoomId = 1;
             TempData["floorId"] = bookingRoom.Room.FloorId;
             bookingRoom.Room = null;
             int bookingRoomId = 0;

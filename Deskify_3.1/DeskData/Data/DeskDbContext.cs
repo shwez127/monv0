@@ -35,7 +35,7 @@ namespace DeskData.Data
 
 
 
-           dbContextOptionsBuilder.UseSqlServer("Server=tcp:deskifyaksserver.database.windows.net,1433;Initial Catalog=deskifyaksdb;Persist Security Info=False;User ID=adminaks;Password=Password1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+           dbContextOptionsBuilder.UseSqlServer("Server=tcp:deskifyserver.database.windows.net,1433;Initial Catalog=deskifydb;Persist Security Info=False;User ID=admin1;Password=Password1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30");
 
 
         }
